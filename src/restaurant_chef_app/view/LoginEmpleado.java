@@ -55,6 +55,11 @@ public class LoginEmpleado extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(254, 178, 26));
         jButton1.setText("INGRESAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 244, 227));
@@ -163,6 +168,12 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:}
+        new Empleado().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
