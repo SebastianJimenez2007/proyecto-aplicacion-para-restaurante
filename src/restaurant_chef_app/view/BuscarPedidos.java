@@ -4,6 +4,8 @@
  */
 package restaurant_chef_app.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -32,8 +34,8 @@ public class BuscarPedidos extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_total$ = new javax.swing.JButton();
+        btn_pedidoFinalizado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +44,7 @@ public class BuscarPedidos extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 63, 39)), "Pedidos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(237, 63, 39))); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Pedido 1", "Pedido 2", "Pedido 3", "Pedido 4", "Pedido 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -64,42 +66,42 @@ public class BuscarPedidos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 244, 227));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("EMPLEADO");
+        jLabel1.setText("BUSCAR PEDIDO");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(132, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(131, 131, 131))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(254, 178, 26));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(237, 63, 39));
-        jButton1.setText("PEDIDOS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_total$.setBackground(new java.awt.Color(254, 178, 26));
+        btn_total$.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_total$.setForeground(new java.awt.Color(237, 63, 39));
+        btn_total$.setText("TOTAL $");
+        btn_total$.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_total$ActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(254, 178, 26));
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(237, 63, 39));
-        jButton2.setText("Pedido Finalizado");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_pedidoFinalizado.setBackground(new java.awt.Color(254, 178, 26));
+        btn_pedidoFinalizado.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_pedidoFinalizado.setForeground(new java.awt.Color(237, 63, 39));
+        btn_pedidoFinalizado.setText("Pedido Finalizado");
+        btn_pedidoFinalizado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_pedidoFinalizadoActionPerformed(evt);
             }
         });
 
@@ -111,9 +113,9 @@ public class BuscarPedidos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(167, 167, 167)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_total$, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
-                        .addComponent(jButton2))
+                        .addComponent(btn_pedidoFinalizado))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,8 +133,8 @@ public class BuscarPedidos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_total$, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_pedidoFinalizado, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -154,13 +156,13 @@ public class BuscarPedidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_total$ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_total$ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_total$ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_pedidoFinalizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidoFinalizadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_pedidoFinalizadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,8 +200,8 @@ public class BuscarPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_pedidoFinalizado;
+    private javax.swing.JButton btn_total$;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;

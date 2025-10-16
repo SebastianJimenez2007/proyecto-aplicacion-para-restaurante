@@ -29,15 +29,14 @@ public class TomarPedidos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txt_nombreDelCliente = new javax.swing.JTextField();
+        txt_idDelPedido = new javax.swing.JTextField();
+        btn_EnviarACocina = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
 
@@ -65,33 +64,33 @@ public class TomarPedidos extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jTextField3.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(237, 63, 39));
-        jTextField3.setText("Nombre del Cliente");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txt_nombreDelCliente.setBackground(new java.awt.Color(242, 242, 242));
+        txt_nombreDelCliente.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_nombreDelCliente.setForeground(new java.awt.Color(237, 63, 39));
+        txt_nombreDelCliente.setText("Nombre del Cliente");
+        txt_nombreDelCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txt_nombreDelClienteActionPerformed(evt);
             }
         });
 
-        jTextField5.setBackground(new java.awt.Color(242, 242, 242));
-        jTextField5.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(237, 63, 39));
-        jTextField5.setText("ID del Pedido");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txt_idDelPedido.setBackground(new java.awt.Color(242, 242, 242));
+        txt_idDelPedido.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_idDelPedido.setForeground(new java.awt.Color(237, 63, 39));
+        txt_idDelPedido.setText("ID del Pedido");
+        txt_idDelPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txt_idDelPedidoActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(254, 178, 26));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(237, 63, 39));
-        jButton1.setText("Enviar a cocina");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_EnviarACocina.setBackground(new java.awt.Color(254, 178, 26));
+        btn_EnviarACocina.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_EnviarACocina.setForeground(new java.awt.Color(237, 63, 39));
+        btn_EnviarACocina.setText("Enviar a cocina");
+        btn_EnviarACocina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_EnviarACocinaActionPerformed(evt);
             }
         });
 
@@ -117,42 +116,36 @@ public class TomarPedidos extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(178, 178, 178)
-                        .addComponent(jButton1))
+                        .addComponent(btn_EnviarACocina))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_idDelPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nombreDelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(65, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(93, 93, 93)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(568, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115)
+                .addComponent(txt_idDelPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(txt_nombreDelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_EnviarACocina, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(251, 251, 251)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(343, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,18 +166,18 @@ public class TomarPedidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txt_nombreDelClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreDelClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txt_nombreDelClienteActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txt_idDelPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idDelPedidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txt_idDelPedidoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_EnviarACocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EnviarACocinaActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_EnviarACocinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,14 +215,14 @@ public class TomarPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_EnviarACocina;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txt_idDelPedido;
+    private javax.swing.JTextField txt_nombreDelCliente;
     // End of variables declaration//GEN-END:variables
 }
