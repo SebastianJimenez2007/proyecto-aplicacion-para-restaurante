@@ -1,0 +1,106 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam classFontSize 12
+
+' Clase principal
+class Restaurante {
+  - String nombre
+  - String direccion
+  - String telefono
+  - ArrayList<Usuario> usuarios
+  - Menu menu
+  - ArrayList<Pedido> pedidos
+  --
+  + agregarUsuario(usuario: Usuario): void
+  + eliminarUsuario(idUsuario: String): void
+  + mostrarInformacion(): void
+}
+
+' Clase abstracta Usuario
+abstract class Usuario {
+  - String id
+  - String nombre
+  - String contraseña
+  --
+  + autenticar(contraseña: String): boolean
+}
+
+class Propietario {
+  + crearCuentaAdministrador(...): void
+  + crearCuentaEmpleado(...): void
+  + supervisarActividad(): void
+}
+
+class Administrador {
+  + agregarPlatillo(platillo: Platillo): void
+  + eliminarPlatillo(nombre: String): void
+  + modificarPlatillo(platillo: Platillo): void
+  + verMenu(): void
+}
+
+class Empleado {
+  + tomarPedido(pedido: Pedido): void
+  + enviarPedidoACocina(pedido: Pedido): void
+}
+
+class Cocinero {
+  + verPedidosPendientes(): List<Pedido>
+  + actualizarEstadoPedido(idPedido: int, nuevoEstado: String): void
+}
+
+' Herencia
+Usuario <|-- Propietario
+Usuario <|-- Administrador
+Usuario <|-- Empleado
+Usuario <|-- Cocinero
+
+' Clases auxiliares
+class Menu {
+  - ArrayList<Platillo> platillos
+  --
+  + agregarPlatillo(platillo: Platillo): void
+  + eliminarPlatillo(nombre: String): void
+  + modificarPlatillo(nuevo: Platillo): void
+  + listarPlatillos(): void
+}
+
+class Platillo {
+  - String nombre
+  - String descripcion
+  - double precio
+}
+
+class Pedido {
+  - int idPedido
+  - ArrayList<Platillo> platillosSeleccionados
+  - String estado
+  - String nombreCliente
+  --
+  + calcularTotal(): void
+  + imprimirRecibo(): void
+}
+
+class ArchivoManager {
+  + guardarUsuarios(List<Usuario>): void
+  + cargarUsuarios(): List<Usuario>
+  + guardarMenu(Menu): void
+  + cargarMenu(): Menu
+  + guardarPedidos(List<Pedido>): void
+  + cargarPedidos(): List<Pedido>
+}
+
+' Relaciones
+Restaurante --> Usuario
+Restaurante --> Menu
+Restaurante --> Pedido
+Menu --> Platillo
+Pedido --> Platillo
+Empleado --> Pedido
+Administrador --> Platillo
+Cocinero --> Pedido
+ArchivoManager --> Usuario
+ArchivoManager --> Menu
+ArchivoManager --> Pedido
+
+@enduml
