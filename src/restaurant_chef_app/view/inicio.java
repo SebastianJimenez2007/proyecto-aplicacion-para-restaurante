@@ -29,13 +29,13 @@ public class inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnEmpleado = new javax.swing.JButton();
+        btnPropietario = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnAdministrador = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCocinero = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,11 +44,11 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(235, 245, 246));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(48, 143, 230));
+        jPanel2.setBackground(new java.awt.Color(19, 70, 134));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Variable", 1, 50)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 50)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("elija un rol");
+        jLabel1.setText("ELIJA UN ROL");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -56,8 +56,8 @@ public class inicio extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(326, 326, 326)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,56 +67,76 @@ public class inicio extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 960, 130));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 960, 130));
 
-        jButton3.setBackground(new java.awt.Color(243, 209, 85));
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 230, 210));
+        btnEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        btnEmpleado.setBorder(null);
+        btnEmpleado.setBorderPainted(false);
+        btnEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 230, 210));
 
-        jButton4.setBackground(new java.awt.Color(243, 209, 85));
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 230, 210));
+        btnPropietario.setBackground(new java.awt.Color(254, 178, 26));
+        btnPropietario.setBorder(null);
+        btnPropietario.setBorderPainted(false);
+        btnPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPropietarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 230, 210));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(237, 63, 39));
         jLabel9.setText("Propietario");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(237, 63, 39));
         jLabel8.setText("Empleado");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
 
-        jButton5.setBackground(new java.awt.Color(243, 209, 85));
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 230, 210));
+        btnAdministrador.setBackground(new java.awt.Color(254, 178, 26));
+        btnAdministrador.setBorder(null);
+        btnAdministrador.setBorderPainted(false);
+        btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 230, 210));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(237, 63, 39));
         jLabel3.setText("Administrador");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 660, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 660, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(243, 209, 85));
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 230, 210));
+        btnCocinero.setBackground(new java.awt.Color(254, 178, 26));
+        btnCocinero.setBorder(null);
+        btnCocinero.setBorderPainted(false);
+        btnCocinero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(btnCocinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 230, 210));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(237, 63, 39));
         jLabel10.setText("Cocinero");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 660, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
+        // TODO add your handling code here:
+        new LoginEmpleado().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnEmpleadoActionPerformed
+
+    private void btnPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPropietarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPropietarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,10 +174,10 @@ public class inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnAdministrador;
+    private javax.swing.JButton btnCocinero;
+    private javax.swing.JButton btnEmpleado;
+    private javax.swing.JButton btnPropietario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
