@@ -1,0 +1,31 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package restaurant_chef_app.clases;
+
+
+/**
+ *
+ * @author Usuario
+ */
+public class Propietario extends Usuario {
+
+    public Propietario(String id, String nombre, String contraseña) {
+        super(id, nombre, contraseña);
+    }
+
+    public Administrador crearCuentaAdministrador(String id, String nombre, String contraseña) {
+        return new Administrador(id, nombre, contraseña);
+    }
+
+    public Empleado crearCuentaEmpleado(String id, String nombre, String contraseña) {
+        return new Empleado(id, nombre, contraseña);
+    }
+
+    public void supervisarActividad() {
+        System.out.println("Supervisando actividad del restaurante...");
+        // Aquí podrías agregar lógica para ver reportes, pedidos, usuarios activos, etc.
+    }
+}
+
