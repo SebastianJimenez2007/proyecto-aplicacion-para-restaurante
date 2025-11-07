@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC%20PERSONAL/Desktop/JAIDER/Universidad_/4to%20Semestre/PA-restaurant/proyecto-aplicacion-para-restaurante/src/restaurant_chef_app/view/inicio.java</file>
             <file>file:/C:/Users/PC%20PERSONAL/Desktop/JAIDER/Universidad_/4to%20Semestre/PA-restaurant/proyecto-aplicacion-para-restaurante/src/restaurant_chef_app/view/Emergente_inicio.java</file>
+            <file>file:/C:/Users/PC%20PERSONAL/Desktop/JAIDER/Universidad_/4to%20Semestre/PA-restaurant/proyecto-aplicacion-para-restaurante/src/restaurant_chef_app/view/LoginEmpleado.java</file>
+            <file>file:/C:/Users/PC%20PERSONAL/Desktop/JAIDER/Universidad_/4to%20Semestre/PA-restaurant/proyecto-aplicacion-para-restaurante/src/restaurant_chef_app/view/LoginCocinero.java</file>
+            <file>file:/C:/Users/PC%20PERSONAL/Desktop/JAIDER/Universidad_/4to%20Semestre/PA-restaurant/proyecto-aplicacion-para-restaurante/src/restaurant_chef_app/view/LoginAdministrador.java</file>
         </group>
     </open-files>
 </project-private>
