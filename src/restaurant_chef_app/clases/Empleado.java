@@ -22,7 +22,7 @@ public class Empleado extends Usuario {
     }
 
     public void enviarPedidoACocina(Pedido pedido) {
-        pedido.setEstado("En preparación");
-        System.out.println("Pedido enviado a cocina: " + pedido.getIdPedido());
+        pedido.cambiarEstado("en preparacion");
+        System.out.println("Pedido enviado a cocina: " + pedido.getId());
     }
 }
