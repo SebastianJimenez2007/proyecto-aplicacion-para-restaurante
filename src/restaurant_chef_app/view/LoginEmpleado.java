@@ -28,9 +28,9 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
         Background = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txt_pass_Empleado = new javax.swing.JTextField();
+        txt_Id_Empleado = new javax.swing.JTextField();
+        btn_Ingresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,20 +41,25 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(19, 70, 134));
 
-        jTextField1.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField1.setText("CONTRASEÑA");
+        txt_pass_Empleado.setBackground(new java.awt.Color(254, 178, 26));
+        txt_pass_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_pass_Empleado.setForeground(new java.awt.Color(253, 244, 227));
+        txt_pass_Empleado.setText("CONTRASEÑA");
 
-        jTextField2.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField2.setText("ID");
+        txt_Id_Empleado.setBackground(new java.awt.Color(254, 178, 26));
+        txt_Id_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_Id_Empleado.setForeground(new java.awt.Color(253, 244, 227));
+        txt_Id_Empleado.setText("ID");
 
-        jButton1.setBackground(new java.awt.Color(237, 63, 39));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(254, 178, 26));
-        jButton1.setText("INGRESAR");
+        btn_Ingresar.setBackground(new java.awt.Color(237, 63, 39));
+        btn_Ingresar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_Ingresar.setForeground(new java.awt.Color(254, 178, 26));
+        btn_Ingresar.setText("INGRESAR");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 244, 227));
@@ -73,30 +78,23 @@ public class LoginEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn_Ingresar)
+                            .addComponent(txt_pass_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Id_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(67, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(67, 67, 67)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(79, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addComponent(txt_Id_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(txt_pass_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(260, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(246, 246, 246)))
         );
 
         jPanel2.setBackground(new java.awt.Color(253, 244, 227));
@@ -164,6 +162,12 @@ public class LoginEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
+        // TODO add your handling code here:}
+        new Empleado().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_IngresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,12 +206,12 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_Ingresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txt_Id_Empleado;
+    private javax.swing.JTextField txt_pass_Empleado;
     // End of variables declaration//GEN-END:variables
 }
