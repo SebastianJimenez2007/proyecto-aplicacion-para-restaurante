@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-/*package restaurant_chef_app.Controller;
+package restaurant_chef_app.Controller;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -48,4 +48,4 @@ public class PedidoController {
         }
         guardarPedidos(pedidos);
     }
-}**/
+}
