@@ -21,7 +21,7 @@ public class Pedido implements Serializable {
     public Pedido(String id, String estado) {
         this.id = id;
         this.platillos = new ArrayList<>();
-        this.estado = "pendiente";
+        this.estado = estado;
         this.nombreCliente = nombreCliente;
         this.total = 0;
     }
