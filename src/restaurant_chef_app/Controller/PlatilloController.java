@@ -4,6 +4,11 @@
  */
 package restaurant_chef_app.Controller;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import restaurant_chef_app.clases.Platillo;
@@ -13,19 +18,17 @@ import restaurant_chef_app.clases.Platillo;
  * @author Sebastian
  */
 public class PlatilloController {
-    
-   
+
+    private static final String FILE_PATH = "src/restaurant_chef_app/Data/platillos.json";
+
     public static List<Platillo> obtenerPlatillosDisponibles() {
-        List<Platillo> platillos = new ArrayList<>();
-
-        platillos.add(new Platillo("Hamburguesa", 15000, "Comidas"));
-        platillos.add(new Platillo("Perro caliente", 10000, "Comidas"));
-        platillos.add(new Platillo("Jugo de mora", 4000, "Bebidas"));
-        platillos.add(new Platillo("Gaseosa", 3000, "Bebidas"));
-        platillos.add(new Platillo("Torta de chocolate", 6000, "Postres"));
-        platillos.add(new Platillo("Helado", 5000, "Postres"));
-
-        return platillos;
+        try (FileReader reader = new FileReader(FILE_PATH)) {
+            Gson gson = new Gson();
+            Type tipoLista = new TypeToken<List<Platillo>>() {}.getType();
+            return gson.fromJson(reader, tipoLista);
+        } catch (IOException e) {
+            System.out.println("Error al cargar los platillos: " + e.getMessage());
+            return List.of(); 
+        }
     }
-    
 }
