@@ -16,12 +16,26 @@ public class PedidoController {
     private static final String ARCHIVO_PEDIDOS = "pedidos.json";
     private static Gson gson = new Gson();
 
-    public static List<Pedido> cargarPedidos() {
+   
+    
+     public static List<Pedido> cargarPedidos() {
+        List<Pedido> listaPedidos = new ArrayList<>();
+
         try (Reader reader = new FileReader(ARCHIVO_PEDIDOS)) {
-            return gson.fromJson(reader, new TypeToken<List<Pedido>>() {}.getType());
+            Gson gson = new Gson();
+            listaPedidos = gson.fromJson(reader, new TypeToken<List<Pedido>>(){}.getType());
+
+            if (listaPedidos == null) {
+                listaPedidos = new ArrayList<>();
+            }
+        } catch (FileNotFoundException e) {
+            // Si no existe el archivo, se crea vacío
+            System.out.println("Archivo no encontrado, se creará uno nuevo.");
         } catch (IOException e) {
-            return new ArrayList<>();
+            System.out.println("Error al cargar pedidos: " + e.getMessage());
         }
+
+        return listaPedidos;
     }
 
     public static void guardarPedidos(List<Pedido> pedidos) {
