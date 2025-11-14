@@ -5,6 +5,7 @@
 package restaurant_chef_app;
 
 import restaurant_chef_app.clases.*;
+import restaurant_chef_app.view.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,9 @@ public class Restaurant_Chef_APP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       /*// Cargar pedidos existentes
+       inicio run = new inicio();
+       run.setVisible(true);
+        /*// Cargar pedidos existentes
         List<Pedido> listaPedidos = PedidoController.cargarPedidos();
 
         // Crear empleado

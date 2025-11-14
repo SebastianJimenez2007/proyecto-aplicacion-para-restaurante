@@ -15,10 +15,8 @@ import java.util.List;
 public class PedidoController {
     private static final String ARCHIVO_PEDIDOS = "pedidos.json";
     private static Gson gson = new Gson();
-
-   
     
-     public static List<Pedido> cargarPedidos() {
+    public static List<Pedido> cargarPedidos() {
         List<Pedido> listaPedidos = new ArrayList<>();
 
         try (Reader reader = new FileReader(ARCHIVO_PEDIDOS)) {
