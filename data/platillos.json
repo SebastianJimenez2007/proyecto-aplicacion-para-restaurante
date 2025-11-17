@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "nombre": "Nachos con queso",
+    "precio": 12500,
+    "categoria": "Entrada",
+    "descripcion": "Tortilla chips con queso cheddar fundido y jalapeños."
+  },
+  {
+    "id": 2,
+    "nombre": "Bruschetta clásica",
+    "precio": 10000,
+    "categoria": "Entrada",
+    "descripcion": "Pan tostado con tomate, ajo y aceite de oliva."
+  },
+  {
+    "id": 3,
+    "nombre": "Aros de cebolla",
+    "precio": 9000,
+    "categoria": "Entrada",
+    "descripcion": "Cebolla empanizada y frita, crujiente."
+  },
+  {
+    "id": 4,
+    "nombre": "Hamburguesa clásica",
+    "precio": 22000,
+    "categoria": "Rápida",
+    "descripcion": "Carne 150g, queso, lechuga y tomate, acompañada de papas."
+  },
+  {
+    "id": 5,
+    "nombre": "Pasta Alfredo",
+    "precio": 18000,
+    "categoria": "Pasta",
+    "descripcion": "Fettuccine con salsa cremosa de queso parmesano."
+  },
+  {
+    "id": 6,
+    "nombre": "Pollo a la plancha",
+    "precio": 17500,
+    "categoria": "Saludable",
+    "descripcion": "Pechuga de pollo a la plancha con ensalada fresca."
+  },
+  {
+    "id": 7,
+    "nombre": "Bandeja paisa",
+    "precio": 28000,
+    "categoria": "Típico",
+    "descripcion": "Arroz, fríjoles, carne molida, chicharrón, huevo y plátano."
+  },
+  {
+    "id": 8,
+    "nombre": "Arroz con pollo",
+    "precio": 16000,
+    "categoria": "Típico",
+    "descripcion": "Arroz amarillo con pollo desmechado y verduras."
+  },
+  {
+    "id": 9,
+    "nombre": "Sushi roll california",
+    "precio": 24000,
+    "categoria": "Internacional",
+    "descripcion": "Rollo con aguacate, pepino y kanikama."
+  },
+  {
+    "id": 10,
+    "nombre": "Carne a la parrilla",
+    "precio": 30000,
+    "categoria": "Parrilla",
+    "descripcion": "250g de carne asada con papas criollas."
+  },
+  {
+    "id": 11,
+    "nombre": "Limonada natural",
+    "precio": 7000,
+    "categoria": "Bebida",
+    "descripcion": "Refrescante limonada con hielo."
+  },
+  {
+    "id": 12,
+    "nombre": "Gaseosa 400ml",
+    "precio": 4000,
+    "categoria": "Bebida",
+    "descripcion": "Bebida gaseosa de sabores varios."
+  },
+  {
+    "id": 13,
+    "nombre": "Jugo natural de mango",
+    "precio": 8000,
+    "categoria": "Bebida",
+    "descripcion": "Jugo espeso de mango en agua o leche."
+  },
+  {
+    "id": 14,
+    "nombre": "Flan de caramelo",
+    "precio": 9500,
+    "categoria": "Postre",
+    "descripcion": "Flan suave con salsa dulce de caramelo."
+  },
+  {
+    "id": 15,
+    "nombre": "Brownie con helado",
+    "precio": 12000,
+    "categoria": "Postre",
+    "descripcion": "Brownie tibio con bola de helado de vainilla."
+  },
+  {
+    "id": 16,
+    "nombre": "Tiramisú",
+    "precio": 13000,
+    "categoria": "Postre",
+    "descripcion": "Postre clásico de café y queso mascarpone."
+  },
+  {
+    "id": 17,
+    "nombre": "Papas fritas",
+    "precio": 6000,
+    "categoria": "Acompañamiento",
+    "descripcion": "Papas fritas crocantes."
+  },
+  {
+    "id": 18,
+    "nombre": "Arepa con queso",
+    "precio": 4500,
+    "categoria": "Acompañamiento",
+    "descripcion": "Arepa blanca con queso fundido."
+  },
+  {
+    "id": 19,
+    "nombre": "Ensalada fresca",
+    "precio": 7500,
+    "categoria": "Acompañamiento",
+    "descripcion": "Lechuga, pepino, tomate y aderezo."
+  },
+  {
+    "id": 20,
+    "nombre": "Arroz blanco",
+    "precio": 3000,
+    "categoria": "Acompañamiento",
+    "descripcion": "Porción de arroz blanco esponjoso."
+  }
+]

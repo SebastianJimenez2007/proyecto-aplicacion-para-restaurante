@@ -3,20 +3,94 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurant_chef_app.view;
-
+import restaurant_chef_app.Controller.PedidoController;
+import restaurant_chef_app.clases.Pedido;
+import javax.swing.DefaultListModel;
+import java.util.List;
 /**
  *
  * @author PC PERSONAL
  */
 public class Cocinero extends javax.swing.JFrame {
-
+private DefaultListModel<String> modeloLista = new DefaultListModel<>();
+private List<Pedido> listaPedidos;
     /**
      * Creates new form Cocinero
      */
-    public Cocinero() {
-        initComponents();
-        setLocationRelativeTo(null);
+   public Cocinero() {
+    initComponents();
+    setLocationRelativeTo(null);
+    cargarPedidosEnLista();
+    agregarEventos();
+}
+   private void cargarPedidosEnLista() {
+    modeloLista.clear();
+    listaPedidos = PedidoController.cargarPedidos();
+
+    for (Pedido p : listaPedidos) {
+        modeloLista.addElement("Pedido #" + p.getId() + " - Estado: " + p.getEstado());
     }
+
+    jList1.setModel(modeloLista);
+}
+   private void mostrarDetalles(int index) {
+    if (index < 0 || index >= listaPedidos.size()) {
+        return;
+    }
+
+    Pedido p = listaPedidos.get(index);
+
+    StringBuilder detalles = new StringBuilder();
+    detalles.append("ID: ").append(p.getId()).append("\n");
+    detalles.append("Cliente: ").append(p.getNombreCliente()).append("\n");
+    detalles.append("Estado: ").append(p.getEstado()).append("\n\n");
+    detalles.append("Platillos:\n");
+
+    p.getPlatillos().forEach(pl -> detalles.append("- ").append(pl.getNombre())
+                                            .append("  $")
+                                            .append(pl.getPrecio()).append("\n"));
+
+    detalles.append("\nTotal: $").append(p.getTotal());
+
+    jTextArea1.setText(detalles.toString());
+}
+private void agregarEventos() {
+
+    // Cuando selecciona un pedido
+    jList1.addListSelectionListener(e -> {
+        if (!e.getValueIsAdjusting()) {
+            int index = jList1.getSelectedIndex();
+            mostrarDetalles(index);
+        }
+    });
+
+    // Botón ENTREGAR -> cambiar estado
+    btn_ingresarPedido.addActionListener(e -> {
+        int index = jList1.getSelectedIndex();
+        if (index == -1) return;
+
+        Pedido p = listaPedidos.get(index);
+        PedidoController.actualizarEstado(p.getId(), "ENTREGADO");
+
+        cargarPedidosEnLista();
+        jTextArea1.setText("PEDIDO ENTREGADO.");
+    });
+
+    // Botón ELIMINAR -> eliminar del JSON
+    btn_eliminarPedido.addActionListener(e -> {
+        int index = jList1.getSelectedIndex();
+        if (index == -1) return;
+
+        Pedido p = listaPedidos.get(index);
+        PedidoController.eliminarPedido(p.getId());
+
+        cargarPedidosEnLista();
+        jTextArea1.setText("");
+    });
+}
+
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +107,10 @@ public class Cocinero extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jPanel2 = new javax.swing.JPanel();
+        txtDetalles = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         btn_ingresarPedido = new javax.swing.JButton();
         btn_eliminarPedido = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -99,18 +176,29 @@ public class Cocinero extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(253, 244, 227));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 70, 134), 2, true));
+        txtDetalles.setBackground(new java.awt.Color(253, 244, 227));
+        txtDetalles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 70, 134), 2, true));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jScrollPane3.setViewportView(jScrollPane2);
+
+        javax.swing.GroupLayout txtDetallesLayout = new javax.swing.GroupLayout(txtDetalles);
+        txtDetalles.setLayout(txtDetallesLayout);
+        txtDetallesLayout.setHorizontalGroup(
+            txtDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(txtDetallesLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+        txtDetallesLayout.setVerticalGroup(
+            txtDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(txtDetallesLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 56, Short.MAX_VALUE))
         );
 
         btn_ingresarPedido.setBackground(new java.awt.Color(19, 70, 134));
@@ -160,15 +248,14 @@ public class Cocinero extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99))
-                    .addGroup(BackgroundLayout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_ingresarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_eliminarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btn_eliminarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(BackgroundLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(txtDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(666, Short.MAX_VALUE))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,8 +269,8 @@ public class Cocinero extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
+                        .addComponent(txtDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116)
                         .addComponent(btn_ingresarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_eliminarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,9 +342,12 @@ public class Cocinero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JPanel txtDetalles;
     // End of variables declaration//GEN-END:variables
 }

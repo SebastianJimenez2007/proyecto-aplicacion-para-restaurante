@@ -201,7 +201,7 @@ public class TomarPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdPedidoActionPerformed
 
     private void btn_EnviarACocina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EnviarACocina1ActionPerformed
-          String id = txtIdPedido.getText().trim();
+     String id = txtIdPedido.getText().trim();
     String nombre = txtNombreCliente.getText().trim();
 
     if (id.isEmpty() || nombre.isEmpty()) {
@@ -217,17 +217,27 @@ public class TomarPedidos extends javax.swing.JFrame {
         return;
     }
 
+    // Crear el pedido con estado "En cocina"
     Pedido pedido = new Pedido(id, nombre);
+    pedido.setEstado("En cocina");
 
     // Buscar objetos Platillo según el nombre
     for (String linea : seleccion) {
         if (!linea.startsWith("----")) { // Ignorar líneas de categoría
-            String nombrePlatillo = linea.substring(linea.indexOf("• ") + 2, linea.indexOf(" ($"));
-            for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
-                if (p.getNombre().equals(nombrePlatillo)) {
-                    pedido.agregarPlatillo(p);
-                    break;
+            try {
+                String nombrePlatillo = linea.substring(
+                        linea.indexOf("• ") + 2,
+                        linea.indexOf(" ($")
+                );
+
+                for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
+                    if (nombrePlatillo.equals(p.getNombre())) {
+                        pedido.agregarPlatillo(p);
+                        break;
+                    }
                 }
+            } catch (Exception e) {
+                System.err.println("⚠️ Error al procesar línea: " + linea);
             }
         }
     }
@@ -236,7 +246,7 @@ public class TomarPedidos extends javax.swing.JFrame {
     listaPedidos.add(pedido);
     PedidoController.guardarPedidos(listaPedidos);
 
-    JOptionPane.showMessageDialog(this, "Pedido enviado a cocina correctamente");
+    JOptionPane.showMessageDialog(this, "✅ Pedido enviado a cocina correctamente");
 
     // Limpiar campos
     txtIdPedido.setText("");
