@@ -197,7 +197,7 @@ public class LoginPropietario extends javax.swing.JFrame {
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
             // Aquí abres la ventana del administrador/propietario
-            new Administrador().setVisible(true);
+            new Propietario().setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "ID o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
