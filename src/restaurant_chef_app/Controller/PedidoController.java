@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package restaurant_chef_app.Controller;
 
 import com.google.gson.Gson;
@@ -13,51 +9,78 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoController {
+
     private static final String ARCHIVO_PEDIDOS = "pedidos.json";
-    private static Gson gson = new Gson();
-    
+    private static final Gson gson = new Gson();
+
+    // -----------------------
+    //  CARGAR PEDIDOS
+    // -----------------------
     public static List<Pedido> cargarPedidos() {
-        List<Pedido> listaPedidos = new ArrayList<>();
+        File file = new File(ARCHIVO_PEDIDOS);
 
-        try (Reader reader = new FileReader(ARCHIVO_PEDIDOS)) {
-            Gson gson = new Gson();
-            listaPedidos = gson.fromJson(reader, new TypeToken<List<Pedido>>(){}.getType());
-
-            if (listaPedidos == null) {
-                listaPedidos = new ArrayList<>();
-            }
-        } catch (FileNotFoundException e) {
-            // Si no existe el archivo, se crea vacío
-            System.out.println("Archivo no encontrado, se creará uno nuevo.");
-        } catch (IOException e) {
-            System.out.println("Error al cargar pedidos: " + e.getMessage());
+        // Si no existe, lo creamos vacío
+        if (!file.exists()) {
+            guardarPedidos(new ArrayList<>());
         }
 
-        return listaPedidos;
+        try (Reader reader = new FileReader(file)) {
+
+            List<Pedido> lista = gson.fromJson(reader, new TypeToken<List<Pedido>>() {}.getType());
+            return (lista != null) ? lista : new ArrayList<>();
+
+        } catch (IOException e) {
+            System.out.println("Error al cargar pedidos: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
+    // -----------------------
+    //  GUARDAR PEDIDOS
+    // -----------------------
     public static void guardarPedidos(List<Pedido> pedidos) {
         try (Writer writer = new FileWriter(ARCHIVO_PEDIDOS)) {
             gson.toJson(pedidos, writer);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al guardar pedidos: " + e.getMessage());
         }
     }
 
-    public static void agregarPedido(Pedido p) {
+    // -----------------------
+    //  AGREGAR PEDIDO NUEVO
+    // -----------------------
+    public static void agregarPedido(Pedido nuevo) {
         List<Pedido> pedidos = cargarPedidos();
-        pedidos.add(p);
+        pedidos.add(nuevo);
         guardarPedidos(pedidos);
     }
 
-    public static void actualizarEstado(String id, String nuevoEstado) {
+    // -----------------------
+    //  ACTUALIZAR ESTADO
+    // -----------------------
+    public static void actualizarEstado(String idPedido, String nuevoEstado) {
+
         List<Pedido> pedidos = cargarPedidos();
+
         for (Pedido p : pedidos) {
-            if (p.getId().equals(id)) {
-                p.cambiarEstado(nuevoEstado);
+            if (p.getId().equals(idPedido)) {
+                p.setEstado(nuevoEstado);
                 break;
             }
         }
+
+        guardarPedidos(pedidos);
+    }
+
+    // -----------------------
+    //  ELIMINAR PEDIDO ENTREGADO (opcional)
+    // -----------------------
+    public static void eliminarPedido(String idPedido) {
+
+        List<Pedido> pedidos = cargarPedidos();
+
+        pedidos.removeIf(p -> p.getId().equals(idPedido));
+
         guardarPedidos(pedidos);
     }
 }

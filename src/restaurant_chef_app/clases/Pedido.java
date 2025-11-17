@@ -18,14 +18,14 @@ public class Pedido implements Serializable {
     private String nombreCliente;
     private double total;
 
-    public Pedido(String id, String estado) {
+    public Pedido(String id, String nombreCliente) {
         this.id = id;
-        this.platillos = new ArrayList<>();
-        this.estado = estado;
         this.nombreCliente = nombreCliente;
+        this.platillos = new ArrayList<>();
+        this.estado = "Pendiente";
         this.total = 0;
     }
-    
+
     public void agregarPlatillo(Platillo p){
         platillos.add(p);
         total += p.getPrecio();
@@ -33,6 +33,10 @@ public class Pedido implements Serializable {
 
     public void cambiarEstado(String nuevoEstado){
         this.estado = nuevoEstado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getId() {
@@ -54,11 +58,10 @@ public class Pedido implements Serializable {
     public double getTotal() {
         return total;
     }
-    
+
     @Override
     public String toString(){
         return "Pedido [ID=" + id + ", Cliente=" + nombreCliente + ", Total = $" +
                 total + ", Estado=" + estado + "]";
     }
-    
 }

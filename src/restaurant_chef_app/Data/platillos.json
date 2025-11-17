@@ -1,8 +1,0 @@
-[
-  {"nombre": "Hamburguesa", "precio": 15000, "categoria": "Comidas"},
-  {"nombre": "Perro caliente", "precio": 10000, "categoria": "Comidas"},
-  {"nombre": "Jugo de mora", "precio": 4000, "categoria": "Bebidas"},
-  {"nombre": "Gaseosa", "precio": 3000, "categoria": "Bebidas"},
-  {"nombre": "Torta de chocolate", "precio": 6000, "categoria": "Postres"},
-  {"nombre": "Helado", "precio": 5000, "categoria": "Postres"}
-]
