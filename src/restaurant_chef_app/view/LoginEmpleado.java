@@ -180,6 +180,7 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:}
+        
         new Empleado().setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_IngresarActionPerformed

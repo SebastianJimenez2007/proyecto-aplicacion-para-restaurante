@@ -16,13 +16,13 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class ArchivoManager {
-    private static final String RUTA_USUARIOS = "data/usuarios.json";
+    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Usuarios.json";
     private static final Gson gson = new Gson();
     
     public static List<Propietario> leerPropietarios() {
         try {
             // Crear el directorio si no existe
-            java.io.File directorio = new java.io.File("data");
+            java.io.File directorio = new java.io.File(RUTA_USUARIOS);
             if (!directorio.exists()) {
                 directorio.mkdirs();
             }

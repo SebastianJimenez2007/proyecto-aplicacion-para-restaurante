@@ -73,7 +73,7 @@ public class inicio extends javax.swing.JFrame {
         btnEmpleado.setBackground(new java.awt.Color(254, 178, 26));
         btnEmpleado.setBorder(null);
         btnEmpleado.setBorderPainted(false);
-        btnEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmpleadoActionPerformed(evt);
@@ -84,7 +84,7 @@ public class inicio extends javax.swing.JFrame {
         btnPropietario.setBackground(new java.awt.Color(254, 178, 26));
         btnPropietario.setBorder(null);
         btnPropietario.setBorderPainted(false);
-        btnPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPropietarioActionPerformed(evt);
@@ -105,7 +105,12 @@ public class inicio extends javax.swing.JFrame {
         btnAdministrador.setBackground(new java.awt.Color(254, 178, 26));
         btnAdministrador.setBorder(null);
         btnAdministrador.setBorderPainted(false);
-        btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministradorActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 230, 210));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -116,7 +121,7 @@ public class inicio extends javax.swing.JFrame {
         btnCocinero.setBackground(new java.awt.Color(254, 178, 26));
         btnCocinero.setBorder(null);
         btnCocinero.setBorderPainted(false);
-        btnCocinero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCocinero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(btnCocinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 230, 210));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -140,6 +145,11 @@ public class inicio extends javax.swing.JFrame {
         new Emergente_inicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPropietarioActionPerformed
+
+    private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
+        // TODO add your handling code here:
+        new LoginAdministrador().setVisible(true);
+    }//GEN-LAST:event_btnAdministradorActionPerformed
 
     /**
      * @param args the command line arguments
