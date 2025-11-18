@@ -1,47 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package restaurant_chef_app.clases;
 
-/**
- *
- * @author Usuario
- */
-public class Platillo {
-    private String nombre;
-    private String descripcion;
-    private double precio;
+import java.io.Serializable;
 
-    public Platillo(String nombre, String descripcion, double precio) {
+public class Platillo implements Serializable {
+    
+    private int id;
+    private String nombre;
+    private double precio;
+    private String categoria;
+    private String descripcion;
+
+    public Platillo(int id, String nombre, double precio, String categoria, String descripcion) {
+        this.id = id;
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.precio = precio;
+        this.categoria = (categoria != null) ? categoria : "Sin categoría";
+        this.descripcion = (descripcion != null) ? descripcion : "Sin descripción";
     }
 
-    // Getters
+    // Constructor vacío obligatorio para Gson
+    public Platillo() {}
+
+    // Getters y Setters
+    public int getId() {
+        return id;
+    }
+
     public String getNombre() {
         return nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
     }
 
     public double getPrecio() {
         return precio;
     }
 
-    // Setters
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    @Override
+    public String toString() {
+        return nombre + " - $" + precio;
     }
 }

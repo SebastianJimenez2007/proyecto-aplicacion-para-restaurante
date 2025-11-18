@@ -4,16 +4,19 @@
  */
 package restaurant_chef_app.view;
 
+import restaurant_chef_app.clases.*;
+import javax.swing.*;
+
 /**
  *
- * @author Sebastian JB
+ * @author Sebastian
  */
-public class LoginEmpleado extends javax.swing.JFrame {
+public class LoginPropietario extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginEmpleado
+     * Creates new form Iniciar_sesion
      */
-    public LoginEmpleado() {
+    public LoginPropietario() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -29,13 +32,13 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
         Background = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        txt_pass_Empleado = new javax.swing.JTextField();
-        txt_Id_Empleado = new javax.swing.JTextField();
-        btn_Ingresar = new javax.swing.JButton();
+        txt_contraseña = new javax.swing.JTextField();
+        txt_idAdministrador = new javax.swing.JTextField();
+        btn_ingresarLoginAdministrador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,23 +46,23 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(19, 70, 134));
 
-        txt_pass_Empleado.setBackground(new java.awt.Color(254, 178, 26));
-        txt_pass_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        txt_pass_Empleado.setForeground(new java.awt.Color(253, 244, 227));
-        txt_pass_Empleado.setText("CONTRASEÑA");
+        txt_contraseña.setBackground(new java.awt.Color(254, 178, 26));
+        txt_contraseña.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_contraseña.setForeground(new java.awt.Color(253, 244, 227));
+        txt_contraseña.setText("CONTRASEÑA");
 
-        txt_Id_Empleado.setBackground(new java.awt.Color(254, 178, 26));
-        txt_Id_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        txt_Id_Empleado.setForeground(new java.awt.Color(253, 244, 227));
-        txt_Id_Empleado.setText("ID");
+        txt_idAdministrador.setBackground(new java.awt.Color(254, 178, 26));
+        txt_idAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_idAdministrador.setForeground(new java.awt.Color(253, 244, 227));
+        txt_idAdministrador.setText("ID");
 
-        btn_Ingresar.setBackground(new java.awt.Color(237, 63, 39));
-        btn_Ingresar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btn_Ingresar.setForeground(new java.awt.Color(254, 178, 26));
-        btn_Ingresar.setText("INGRESAR");
-        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+        btn_ingresarLoginAdministrador.setBackground(new java.awt.Color(237, 63, 39));
+        btn_ingresarLoginAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_ingresarLoginAdministrador.setForeground(new java.awt.Color(254, 178, 26));
+        btn_ingresarLoginAdministrador.setText("INGRESAR");
+        btn_ingresarLoginAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_IngresarActionPerformed(evt);
+                btn_ingresarLoginAdministradorActionPerformed(evt);
             }
         });
 
@@ -80,9 +83,9 @@ public class LoginEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_Ingresar)
-                            .addComponent(txt_pass_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_Id_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn_ingresarLoginAdministrador)
+                            .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -90,12 +93,12 @@ public class LoginEmpleado extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                .addComponent(txt_Id_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(txt_pass_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(btn_ingresarLoginAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
 
@@ -115,13 +118,13 @@ public class LoginEmpleado extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(237, 63, 39));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("EMPLEADO");
+        jLabel2.setText("Propietario");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                btnVolverMouseClicked(evt);
             }
         });
 
@@ -130,36 +133,35 @@ public class LoginEmpleado extends javax.swing.JFrame {
         BackgroundLayout.setHorizontalGroup(
             BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(24, 24, 24)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(BackgroundLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78))))
-            .addGroup(BackgroundLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(52, 52, 52))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
         BackgroundLayout.setVerticalGroup(
             BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackgroundLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
+                        .addGap(43, 43, 43)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(125, 125, 125)
+                        .addGap(95, 95, 95)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(74, 74, 74))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,17 +180,38 @@ public class LoginEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
-        // TODO add your handling code here:}
-        new Empleado().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_IngresarActionPerformed
+    private void btn_ingresarLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarLoginAdministradorActionPerformed
+        // TODO add your handling code here:
+        String id = txt_idAdministrador.getText().trim();
+        String contraseña = txt_contraseña.getText().trim();
+        
+        // Validar campos vacíos
+        if (id.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Validar credenciales usando el archivo JSON
+        boolean credencialesValidas = ArchivoManager.validarCredenciales(id, contraseña);
+        
+        if (credencialesValidas) {
+            JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+            // Aquí abres la ventana del administrador/propietario
+            new Propietario().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "ID o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+            // Limpiar campos
+            txt_contraseña.setText("");
+            txt_idAdministrador.requestFocus();
+        }
+    }//GEN-LAST:event_btn_ingresarLoginAdministradorActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
         // TODO add your handling code here:
         new inicio().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_btnVolverMouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,34 +230,40 @@ public class LoginEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginEmpleado().setVisible(true);
+                new LoginPropietario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
-    private javax.swing.JButton btn_Ingresar;
+    private javax.swing.JLabel btnVolver;
+    private javax.swing.JButton btn_ingresarLoginAdministrador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txt_Id_Empleado;
-    private javax.swing.JTextField txt_pass_Empleado;
+    private javax.swing.JTextField txt_contraseña;
+    private javax.swing.JTextField txt_idAdministrador;
     // End of variables declaration//GEN-END:variables
 }

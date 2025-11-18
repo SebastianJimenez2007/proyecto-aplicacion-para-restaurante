@@ -27,7 +27,7 @@ public class Cocinero extends Usuario {
     }
 
     public void actualizarEstadoPedido(Pedido pedido, String nuevoEstado) {
-        pedido.setEstado(nuevoEstado);
+        pedido.cambiarEstado(nuevoEstado);
         System.out.println("Estado del pedido actualizado a: " + nuevoEstado);
     }
 }

@@ -8,61 +8,60 @@ package restaurant_chef_app.clases;
  *
  * @author Usuario
  */
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pedido {
-    private int idPedido;
-    private ArrayList<Platillo> platillosSeleccionados;
+public class Pedido implements Serializable {
+    private String id;
+    private ArrayList<Platillo> platillos;
     private String estado;
     private String nombreCliente;
+    private double total;
 
-    public Pedido(int idPedido, String nombreCliente) {
-        this.idPedido = idPedido;
+    public Pedido(String id, String nombreCliente) {
+        this.id = id;
         this.nombreCliente = nombreCliente;
+        this.platillos = new ArrayList<>();
         this.estado = "Pendiente";
-        this.platillosSeleccionados = new ArrayList<>();
+        this.total = 0;
     }
 
-    public void agregarPlatillo(Platillo platillo) {
-        platillosSeleccionados.add(platillo);
+    public void agregarPlatillo(Platillo p){
+        platillos.add(p);
+        total += p.getPrecio();
     }
 
-    public double calcularTotal() {
-        double total = 0;
-        for (Platillo p : platillosSeleccionados) {
-            total += p.getPrecio();
-        }
-        return total;
-    }
-
-    public void imprimirRecibo() {
-        System.out.println("Recibo del pedido #" + idPedido);
-        System.out.println("Cliente: " + nombreCliente);
-        for (Platillo p : platillosSeleccionados) {
-            System.out.println("- " + p.getNombre() + ": $" + p.getPrecio());
-        }
-        System.out.println("Total: $" + calcularTotal());
-        System.out.println("Estado: " + estado);
-    }
-
-    // Getters y Setters
-    public int getIdPedido() {
-        return idPedido;
-    }
-
-    public String getNombreCliente() {
-        return nombreCliente;
-    }
-
-    public String getEstado() {
-        return estado;
+    public void cambiarEstado(String nuevoEstado){
+        this.estado = nuevoEstado;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public ArrayList<Platillo> getPlatillosSeleccionados() {
-        return platillosSeleccionados;
+    public String getId() {
+        return id;
+    }
+
+    public ArrayList<Platillo> getPlatillos() {
+        return platillos;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    @Override
+    public String toString(){
+        return "Pedido [ID=" + id + ", Cliente=" + nombreCliente + ", Total = $" +
+                total + ", Estado=" + estado + "]";
     }
 }
