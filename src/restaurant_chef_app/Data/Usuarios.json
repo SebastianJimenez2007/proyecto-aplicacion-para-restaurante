@@ -1,0 +1,5 @@
+[
+  {"id": "0001", "nombre": "Jaider", "contraseña": "admin123", "tipo": "propietario"},
+  {"id": "0002", "nombre": "Sebas", "contraseña": "admin123", "tipo": "propietario"}
+]
+
