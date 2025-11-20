@@ -18,63 +18,63 @@ import restaurant_chef_app.clases.Platillo;
  */
 public class TomarPedidos extends javax.swing.JFrame {
 
-   
     private List<Pedido> listaPedidos;
-    
+
     public TomarPedidos() {
-       initComponents();
+        initComponents();
+        setLocationRelativeTo(null);
 
-    List<Platillo> menu = PlatilloController.obtenerPlatillosDisponibles();
-    DefaultListModel<String> modelo = new DefaultListModel<>();
+        List<Platillo> menu = PlatilloController.obtenerPlatillosDisponibles();
+        DefaultListModel<String> modelo = new DefaultListModel<>();
 
-    String categoriaActual = "";
+        String categoriaActual = "";
 
-    for (Platillo p : menu) {
-        if (!p.getCategoria().equals(categoriaActual)) {
-            categoriaActual = p.getCategoria();
-            modelo.addElement("---- " + categoriaActual.toUpperCase() + " ----");
+        for (Platillo p : menu) {
+            if (!p.getCategoria().equals(categoriaActual)) {
+                categoriaActual = p.getCategoria();
+                modelo.addElement("---- " + categoriaActual.toUpperCase() + " ----");
+            }
+            modelo.addElement("• " + p.getNombre() + " ($" + p.getPrecio() + ")");
         }
-        modelo.addElement("• " + p.getNombre() + " ($" + p.getPrecio() + ")");
+
+        listaPlatillos.setModel(modelo);
+        listaPedidos = PedidoController.cargarPedidos();
     }
 
-    listaPlatillos.setModel(modelo);
-    listaPedidos = PedidoController.cargarPedidos();
-    }
-    
-     private void enviarPedido() {
-    String id = txtIdPedido.getText();
-    String nombre = txtNombreCliente.getText();
-    List<String> platillosSeleccionados = listaPlatillos.getSelectedValuesList();
+    private void enviarPedido() {
+        String id = txtIdPedido.getText();
+        String nombre = txtNombreCliente.getText();
+        List<String> platillosSeleccionados = listaPlatillos.getSelectedValuesList();
 
-    if (id.isEmpty() || nombre.isEmpty() || platillosSeleccionados.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona al menos un platillo");
-        return;
-    }
+        if (id.isEmpty() || nombre.isEmpty() || platillosSeleccionados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona al menos un platillo");
+            return;
+        }
 
-    // Crear nuevo pedido
-    Pedido pedido = new Pedido(id, nombre);
+        // Crear nuevo pedido
+        Pedido pedido = new Pedido(id, nombre);
 
-    // Agregar los platillos seleccionados como objetos Platillo
-    for (String nombrePlatillo : platillosSeleccionados) {
-        for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
-            if (nombrePlatillo.contains(p.getNombre())) {
-                pedido.agregarPlatillo(p);
+        // Agregar los platillos seleccionados como objetos Platillo
+        for (String nombrePlatillo : platillosSeleccionados) {
+            for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
+                if (nombrePlatillo.contains(p.getNombre())) {
+                    pedido.agregarPlatillo(p);
+                }
             }
         }
+
+        // Guardar el pedido
+        PedidoController.guardarPedidos(listaPedidos); // por si deseas recargar antes
+        listaPedidos.add(pedido);
+        PedidoController.guardarPedidos(listaPedidos);
+
+        JOptionPane.showMessageDialog(this, "Pedido enviado a cocina correctamente");
+
+        // Limpiar campos
+        txtIdPedido.setText("");
+        txtNombreCliente.setText("");
+        listaPlatillos.clearSelection();
     }
-
-    // Guardar el pedido
-    PedidoController.guardarPedidos(listaPedidos); // por si deseas recargar antes
-    listaPedidos.add(pedido);
-    PedidoController.guardarPedidos(listaPedidos);
-
-    JOptionPane.showMessageDialog(this, "Pedido enviado a cocina correctamente");
-
-    // Limpiar campos
-    txtIdPedido.setText("");
-    txtNombreCliente.setText("");
-    listaPlatillos.clearSelection();
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -201,57 +201,57 @@ public class TomarPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIdPedidoActionPerformed
 
     private void btn_EnviarACocina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EnviarACocina1ActionPerformed
-     String id = txtIdPedido.getText().trim();
-    String nombre = txtNombreCliente.getText().trim();
+        String id = txtIdPedido.getText().trim();
+        String nombre = txtNombreCliente.getText().trim();
 
-    if (id.isEmpty() || nombre.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe ingresar el ID y el nombre del cliente");
-        return;
-    }
+        if (id.isEmpty() || nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el ID y el nombre del cliente");
+            return;
+        }
 
-    // Obtener platillos seleccionados
-    List<String> seleccion = listaPlatillos.getSelectedValuesList();
+        // Obtener platillos seleccionados
+        List<String> seleccion = listaPlatillos.getSelectedValuesList();
 
-    if (seleccion.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un platillo");
-        return;
-    }
+        if (seleccion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un platillo");
+            return;
+        }
 
-    // Crear el pedido con estado "En cocina"
-    Pedido pedido = new Pedido(id, nombre);
-    pedido.setEstado("En cocina");
+        // Crear el pedido con estado "En cocina"
+        Pedido pedido = new Pedido(id, nombre);
+        pedido.setEstado("En cocina");
 
-    // Buscar objetos Platillo según el nombre
-    for (String linea : seleccion) {
-        if (!linea.startsWith("----")) { // Ignorar líneas de categoría
-            try {
-                String nombrePlatillo = linea.substring(
-                        linea.indexOf("• ") + 2,
-                        linea.indexOf(" ($")
-                );
+        // Buscar objetos Platillo según el nombre
+        for (String linea : seleccion) {
+            if (!linea.startsWith("----")) { // Ignorar líneas de categoría
+                try {
+                    String nombrePlatillo = linea.substring(
+                            linea.indexOf("• ") + 2,
+                            linea.indexOf(" ($")
+                    );
 
-                for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
-                    if (nombrePlatillo.equals(p.getNombre())) {
-                        pedido.agregarPlatillo(p);
-                        break;
+                    for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
+                        if (nombrePlatillo.equals(p.getNombre())) {
+                            pedido.agregarPlatillo(p);
+                            break;
+                        }
                     }
+                } catch (Exception e) {
+                    System.err.println("⚠️ Error al procesar línea: " + linea);
                 }
-            } catch (Exception e) {
-                System.err.println("⚠️ Error al procesar línea: " + linea);
             }
         }
-    }
 
-    // Agregar y guardar pedido
-    listaPedidos.add(pedido);
-    PedidoController.guardarPedidos(listaPedidos);
+        // Agregar y guardar pedido
+        listaPedidos.add(pedido);
+        PedidoController.guardarPedidos(listaPedidos);
 
-    JOptionPane.showMessageDialog(this, "✅ Pedido enviado a cocina correctamente");
+        JOptionPane.showMessageDialog(this, "✅ Pedido enviado a cocina correctamente");
 
-    // Limpiar campos
-    txtIdPedido.setText("");
-    txtNombreCliente.setText("");
-    listaPlatillos.clearSelection();
+        // Limpiar campos
+        txtIdPedido.setText("");
+        txtNombreCliente.setText("");
+        listaPlatillos.clearSelection();
     }//GEN-LAST:event_btn_EnviarACocina1ActionPerformed
 
     /**
