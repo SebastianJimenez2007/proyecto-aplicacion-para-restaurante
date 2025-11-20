@@ -31,7 +31,7 @@ public class Crear_propietario extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         txt_idAdministrador = new javax.swing.JTextField();
-        btn_ingresarLoginAdministrador = new javax.swing.JButton();
+        btn_CrearPropietario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txt_idAdministrador1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -55,20 +55,20 @@ public class Crear_propietario extends javax.swing.JFrame {
         txt_idAdministrador.setForeground(new java.awt.Color(253, 244, 227));
         txt_idAdministrador.setText("ID");
 
-        btn_ingresarLoginAdministrador.setBackground(new java.awt.Color(237, 63, 39));
-        btn_ingresarLoginAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btn_ingresarLoginAdministrador.setForeground(new java.awt.Color(254, 178, 26));
-        btn_ingresarLoginAdministrador.setText("INGRESAR");
-        btn_ingresarLoginAdministrador.addActionListener(new java.awt.event.ActionListener() {
+        btn_CrearPropietario.setBackground(new java.awt.Color(237, 63, 39));
+        btn_CrearPropietario.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_CrearPropietario.setForeground(new java.awt.Color(254, 178, 26));
+        btn_CrearPropietario.setText("REGISTRAR");
+        btn_CrearPropietario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ingresarLoginAdministradorActionPerformed(evt);
+                btn_CrearPropietarioActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 244, 227));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("INICIAR SESION");
+        jLabel1.setText("CREAR PROPIETARIO");
 
         txt_idAdministrador1.setBackground(new java.awt.Color(254, 178, 26));
         txt_idAdministrador1.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
@@ -79,19 +79,19 @@ public class Crear_propietario extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_ingresarLoginAdministrador)
+                    .addComponent(btn_CrearPropietario)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_idAdministrador1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +105,7 @@ public class Crear_propietario extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
-                .addComponent(btn_ingresarLoginAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_CrearPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(110, Short.MAX_VALUE))
         );
 
@@ -176,12 +176,12 @@ public class Crear_propietario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_ingresarLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarLoginAdministradorActionPerformed
+    private void btn_CrearPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearPropietarioActionPerformed
         // TODO add your handling code here:
         
         new Administrador().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_ingresarLoginAdministradorActionPerformed
+    }//GEN-LAST:event_btn_CrearPropietarioActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
@@ -225,7 +225,7 @@ public class Crear_propietario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_ingresarLoginAdministrador;
+    private javax.swing.JButton btn_CrearPropietario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

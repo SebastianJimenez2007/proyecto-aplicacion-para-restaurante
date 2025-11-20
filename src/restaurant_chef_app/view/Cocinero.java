@@ -3,94 +3,102 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurant_chef_app.view;
+
 import restaurant_chef_app.Controller.PedidoController;
 import restaurant_chef_app.clases.Pedido;
 import javax.swing.DefaultListModel;
 import java.util.List;
+
 /**
  *
  * @author PC PERSONAL
  */
 public class Cocinero extends javax.swing.JFrame {
-private DefaultListModel<String> modeloLista = new DefaultListModel<>();
-private List<Pedido> listaPedidos;
+
+    private DefaultListModel<String> modeloLista = new DefaultListModel<>();
+    private List<Pedido> listaPedidos;
+
     /**
      * Creates new form Cocinero
      */
-   public Cocinero() {
-    initComponents();
-    setLocationRelativeTo(null);
-    cargarPedidosEnLista();
-    agregarEventos();
-}
-   private void cargarPedidosEnLista() {
-    modeloLista.clear();
-    listaPedidos = PedidoController.cargarPedidos();
-
-    for (Pedido p : listaPedidos) {
-        modeloLista.addElement("Pedido #" + p.getId() + " - Estado: " + p.getEstado());
+    public Cocinero() {
+        initComponents();
+        setLocationRelativeTo(null);
+        cargarPedidosEnLista();
+        agregarEventos();
     }
 
-    jList1.setModel(modeloLista);
-}
-   private void mostrarDetalles(int index) {
-    if (index < 0 || index >= listaPedidos.size()) {
-        return;
-    }
+    private void cargarPedidosEnLista() {
+        modeloLista.clear();
+        listaPedidos = PedidoController.cargarPedidos();
 
-    Pedido p = listaPedidos.get(index);
-
-    StringBuilder detalles = new StringBuilder();
-    detalles.append("ID: ").append(p.getId()).append("\n");
-    detalles.append("Cliente: ").append(p.getNombreCliente()).append("\n");
-    detalles.append("Estado: ").append(p.getEstado()).append("\n\n");
-    detalles.append("Platillos:\n");
-
-    p.getPlatillos().forEach(pl -> detalles.append("- ").append(pl.getNombre())
-                                            .append("  $")
-                                            .append(pl.getPrecio()).append("\n"));
-
-    detalles.append("\nTotal: $").append(p.getTotal());
-
-    jTextArea1.setText(detalles.toString());
-}
-private void agregarEventos() {
-
-    // Cuando selecciona un pedido
-    jList1.addListSelectionListener(e -> {
-        if (!e.getValueIsAdjusting()) {
-            int index = jList1.getSelectedIndex();
-            mostrarDetalles(index);
+        for (Pedido p : listaPedidos) {
+            modeloLista.addElement("Pedido #" + p.getId() + " - Estado: " + p.getEstado());
         }
-    });
 
-    // Botón ENTREGAR -> cambiar estado
-    btn_ingresarPedido.addActionListener(e -> {
-        int index = jList1.getSelectedIndex();
-        if (index == -1) return;
+        jList1.setModel(modeloLista);
+    }
 
-        Pedido p = listaPedidos.get(index);
-        PedidoController.actualizarEstado(p.getId(), "ENTREGADO");
-
-        cargarPedidosEnLista();
-        jTextArea1.setText("PEDIDO ENTREGADO.");
-    });
-
-    // Botón ELIMINAR -> eliminar del JSON
-    btn_eliminarPedido.addActionListener(e -> {
-        int index = jList1.getSelectedIndex();
-        if (index == -1) return;
+    private void mostrarDetalles(int index) {
+        if (index < 0 || index >= listaPedidos.size()) {
+            return;
+        }
 
         Pedido p = listaPedidos.get(index);
-        PedidoController.eliminarPedido(p.getId());
 
-        cargarPedidosEnLista();
-        jTextArea1.setText("");
-    });
-}
+        StringBuilder detalles = new StringBuilder();
+        detalles.append("ID: ").append(p.getId()).append("\n");
+        detalles.append("Cliente: ").append(p.getNombreCliente()).append("\n");
+        detalles.append("Estado: ").append(p.getEstado()).append("\n\n");
+        detalles.append("Platillos:\n");
 
+        p.getPlatillos().forEach(pl -> detalles.append("- ").append(pl.getNombre())
+                .append("  $")
+                .append(pl.getPrecio()).append("\n"));
 
-    
+        detalles.append("\nTotal: $").append(p.getTotal());
+
+        jTextArea1.setText(detalles.toString());
+    }
+
+    private void agregarEventos() {
+
+        // Cuando selecciona un pedido
+        jList1.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int index = jList1.getSelectedIndex();
+                mostrarDetalles(index);
+            }
+        });
+
+        // Botón ENTREGAR -> cambiar estado
+        btn_ingresarPedido.addActionListener(e -> {
+            int index = jList1.getSelectedIndex();
+            if (index == -1) {
+                return;
+            }
+
+            Pedido p = listaPedidos.get(index);
+            PedidoController.actualizarEstado(p.getId(), "ENTREGADO");
+
+            cargarPedidosEnLista();
+            jTextArea1.setText("PEDIDO ENTREGADO.");
+        });
+
+        // Botón ELIMINAR -> eliminar del JSON
+        btn_eliminarPedido.addActionListener(e -> {
+            int index = jList1.getSelectedIndex();
+            if (index == -1) {
+                return;
+            }
+
+            Pedido p = listaPedidos.get(index);
+            PedidoController.eliminarPedido(p.getId());
+
+            cargarPedidosEnLista();
+            jTextArea1.setText("");
+        });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -255,7 +263,7 @@ private void agregarEventos() {
                     .addGroup(BackgroundLayout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(txtDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(666, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,9 +290,7 @@ private void agregarEventos() {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

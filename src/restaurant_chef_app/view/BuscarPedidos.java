@@ -17,6 +17,7 @@ public class BuscarPedidos extends javax.swing.JFrame {
      */
     public BuscarPedidos() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

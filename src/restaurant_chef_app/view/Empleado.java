@@ -4,6 +4,8 @@
  */
 package restaurant_chef_app.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -15,6 +17,7 @@ public class Empleado extends javax.swing.JFrame {
      */
     public Empleado() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -166,8 +169,9 @@ public class Empleado extends javax.swing.JFrame {
 
     private void btn_tomarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tomarPedidoActionPerformed
         // TODO add your handling code here:
-        new TomarPedidos().setVisible(true);
-        dispose();
+        /*new TomarPedidos().setVisible(true);
+        dispose();AQUI!!*/
+        JOptionPane.showMessageDialog(null, "Abre la ventana Tomar pedido");
     }//GEN-LAST:event_btn_tomarPedidoActionPerformed
 
     private void btn_buscarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPedidoActionPerformed
