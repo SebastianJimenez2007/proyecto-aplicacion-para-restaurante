@@ -223,11 +223,11 @@ public class LoginAdministrador extends javax.swing.JFrame {
         }
         
         // Validar credenciales usando el archivo JSON
-        boolean credencialesValidas = LoginController.validarCredenciales(id, contraseña);
+        boolean credencialesValidas = LoginAdministradorController.validarCredenciales(id, contraseña);
         
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
-            administrador = LoginController.buscarAdministrador(id);
+            administrador = LoginAdministradorController.buscarAdministrador(id);
             // Aquí abres la ventana del administrador/propietario
             new VentanaAdministrador(administrador.getNombre()).setVisible(true);
             dispose();

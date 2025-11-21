@@ -16,12 +16,12 @@ import restaurant_chef_app.clases.*;
  *
  * @author Sebastian
  */
-public class LoginController {
+public class LoginCocineroController {
     
-    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Propietarios.json";
+    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Cocinero.json";
     private static final Gson gson = new Gson();
 
-    public static List<Administrador> leerAdministrador() {
+    public static List<Cocinero> leerCocinero() {
         try {
             // Crear el directorio si no existe
             java.io.File directorio = new java.io.File(RUTA_USUARIOS);
@@ -32,7 +32,7 @@ public class LoginController {
             // Crear archivo si no existe
             java.io.File archivo = new java.io.File(RUTA_USUARIOS);
             if (!archivo.exists()) {
-                crearArchivoUsuariosInicial();
+                crearArchivoCocineroInicial();
             }
 
             // Leer el archivo con BufferedReader y FileReader
@@ -46,9 +46,9 @@ public class LoginController {
             reader.close();
 
             // Convertir JSON a lista de usuarios usando Gson
-            Type listType = new TypeToken<ArrayList<Administrador>>() {
+            Type listType = new TypeToken<ArrayList<Cocinero>>() {
             }.getType();
-            List<Administrador> usuarios = gson.fromJson(contenido.toString(), listType);
+            List<Cocinero> usuarios = gson.fromJson(contenido.toString(), listType);
 
             
             return usuarios != null ? usuarios : new ArrayList<>();
@@ -59,13 +59,13 @@ public class LoginController {
         }
     }
 
-    private static void crearArchivoUsuariosInicial() {
+    private static void crearArchivoCocineroInicial() {
         try {
-            List<Administrador> usuarios = new ArrayList<>();
+            List<Cocinero> usuarios = new ArrayList<>();
 
             // Crear usuario propietario por defecto
-            Administrador administrador = new Administrador("001", "Administrador Principal", "admin123", "Administrador");
-            usuarios.add(administrador);
+            Cocinero cocinero = new Cocinero("001", "Cocinero Principal", "admin123", "cocinero");
+            usuarios.add(cocinero);
 
             // Guardar el archivo
             FileWriter file = new FileWriter(RUTA_USUARIOS);
@@ -78,20 +78,20 @@ public class LoginController {
     }
 
     public static boolean validarCredenciales(String id, String contraseña) {
-        List<Administrador> Usuarios = leerAdministrador();
+        List<Cocinero> Usuarios = leerCocinero();
 
-        for (Administrador usuario : Usuarios) {
-            if (usuario.getId().equals(id) && usuario.getContraseña().equals(contraseña) && usuario.getTipo().equals("administrador")) {
+        for (Cocinero usuario : Usuarios) {
+            if (usuario.getId().equals(id) && usuario.getContraseña().equals(contraseña) && usuario.getTipo().equals("cocinero")) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean validarUsuarioRegistrado(String id) {
-        List<Administrador> Usuarios = leerAdministrador();
+    public static boolean validarCocineroRegistrado(String id) {
+        List<Cocinero> Usuarios = leerCocinero();
 
-        for (Administrador usuario : Usuarios) {
+        for (Cocinero usuario : Usuarios) {
             if (usuario.getId().equals(id)) {
                 return true;
             }
@@ -99,10 +99,10 @@ public class LoginController {
         return false;
     }
 
-    public static Administrador buscarAdministrador(String id) {
-        List<Administrador> Usuarios = leerAdministrador();
+    public static Cocinero buscarCocinero(String id) {
+        List<Cocinero> Usuarios = leerCocinero();
 
-        for (Administrador usuario : Usuarios) {
+        for (Cocinero usuario : Usuarios) {
             if (usuario.getId().equals(id)) {
                 return usuario;
             }
@@ -110,18 +110,17 @@ public class LoginController {
         return null;
     }
 
-    public static void CrearUsuariosAdministrador(List<Administrador> usuarios, String id, String nombre, String contraseña) {
+    public static void CrearUsuariosCocinero(List<Cocinero> usuarios, String id, String nombre, String contraseña) {
         try {
 
             // Crear usuario propietario
-            Administrador administrador = new Administrador(id, nombre, contraseña, "administrador");
-            usuarios.add(administrador);
+            Cocinero cocinero = new Cocinero(id, nombre, contraseña, "cocinero");
+            usuarios.add(cocinero);
 
             // Guardar el archivo
             FileWriter file = new FileWriter(RUTA_USUARIOS);
             gson.toJson(usuarios, file);
             file.close();
-            JOptionPane.showMessageDialog(null, administrador.toString());
         } catch (IOException e) {
             System.err.println("Error al crear Usuario " + e.getMessage());
         }

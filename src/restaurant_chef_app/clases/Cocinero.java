@@ -12,10 +12,45 @@ import java.util.*;
 
 public class Cocinero extends Usuario {
 
-    public Cocinero(String id, String nombre, String contraseña) {
+    public String tipo;
+
+    public Cocinero(String id, String nombre, String contraseña, String tipo) {
         super(id, nombre, contraseña);
+        this.tipo = "propietario";
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
     public List<Pedido> verPedidosPendientes(List<Pedido> listaPedidos) {
         List<Pedido> pendientes = new ArrayList<>();
         for (Pedido pedido : listaPedidos) {
