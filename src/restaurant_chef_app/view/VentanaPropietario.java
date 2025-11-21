@@ -113,7 +113,7 @@ public class VentanaPropietario extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(237, 63, 39));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(254, 178, 26));
-        jButton1.setText("PLATILLOS");
+        jButton1.setText("MENU");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 

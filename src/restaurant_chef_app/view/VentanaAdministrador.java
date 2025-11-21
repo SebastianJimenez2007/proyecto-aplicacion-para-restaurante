@@ -109,7 +109,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(237, 63, 39));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(254, 178, 26));
-        jButton1.setText("PLATILLOS");
+        jButton1.setText("MENU");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -128,7 +128,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(237, 63, 39));
         jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(254, 178, 26));
-        jButton3.setText("MENU");
+        jButton3.setText("FINANZAS");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 

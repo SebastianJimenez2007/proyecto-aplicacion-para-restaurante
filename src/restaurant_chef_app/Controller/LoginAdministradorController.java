@@ -2,25 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package restaurant_chef_app.clases;
+package restaurant_chef_app.Controller;
 
-import java.io.*;
-import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.*;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import restaurant_chef_app.clases.*;
 
 /**
  *
- * @author Usuario
+ * @author Sebastian
  */
-public class ArchivoManager {
-
-    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Usuarios.json";
+public class LoginAdministradorController {
+    
+    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Administrador.json";
     private static final Gson gson = new Gson();
 
-    public static List<Propietario> leerPropietarios() {
+    public static List<Administrador> leerAdministrador() {
         try {
             // Crear el directorio si no existe
             java.io.File directorio = new java.io.File(RUTA_USUARIOS);
@@ -45,10 +46,11 @@ public class ArchivoManager {
             reader.close();
 
             // Convertir JSON a lista de usuarios usando Gson
-            Type listType = new TypeToken<ArrayList<Propietario>>() {
+            Type listType = new TypeToken<ArrayList<Administrador>>() {
             }.getType();
-            List<Propietario> usuarios = gson.fromJson(contenido.toString(), listType);
+            List<Administrador> usuarios = gson.fromJson(contenido.toString(), listType);
 
+            
             return usuarios != null ? usuarios : new ArrayList<>();
 
         } catch (IOException e) {
@@ -59,11 +61,11 @@ public class ArchivoManager {
 
     private static void crearArchivoUsuariosInicial() {
         try {
-            List<Propietario> usuarios = new ArrayList<>();
+            List<Administrador> usuarios = new ArrayList<>();
 
             // Crear usuario propietario por defecto
-            Propietario propietario = new Propietario("001", "Propietario Principal", "admin123", "Propietario");
-            usuarios.add(propietario);
+            Administrador administrador = new Administrador("001", "Administrador Principal", "admin123", "Administrador");
+            usuarios.add(administrador);
 
             // Guardar el archivo
             FileWriter file = new FileWriter(RUTA_USUARIOS);
@@ -76,10 +78,10 @@ public class ArchivoManager {
     }
 
     public static boolean validarCredenciales(String id, String contraseña) {
-        List<Propietario> Usuarios = leerPropietarios();
+        List<Administrador> Usuarios = leerAdministrador();
 
-        for (Propietario usuario : Usuarios) {
-            if (usuario.getId().equals(id) && usuario.getContraseña().equals(contraseña) && usuario.getTipo().equals("propietario")) {
+        for (Administrador usuario : Usuarios) {
+            if (usuario.getId().equals(id) && usuario.getContraseña().equals(contraseña) && usuario.getTipo().equals("administrador")) {
                 return true;
             }
         }
@@ -87,9 +89,9 @@ public class ArchivoManager {
     }
 
     public static boolean validarUsuarioRegistrado(String id) {
-        List<Propietario> Usuarios = leerPropietarios();
+        List<Administrador> Usuarios = leerAdministrador();
 
-        for (Propietario usuario : Usuarios) {
+        for (Administrador usuario : Usuarios) {
             if (usuario.getId().equals(id)) {
                 return true;
             }
@@ -97,10 +99,10 @@ public class ArchivoManager {
         return false;
     }
 
-    public static Propietario buscarPropietario(String id) {
-        List<Propietario> Usuarios = leerPropietarios();
+    public static Administrador buscarAdministrador(String id) {
+        List<Administrador> Usuarios = leerAdministrador();
 
-        for (Propietario usuario : Usuarios) {
+        for (Administrador usuario : Usuarios) {
             if (usuario.getId().equals(id)) {
                 return usuario;
             }
@@ -108,12 +110,12 @@ public class ArchivoManager {
         return null;
     }
 
-    public static void CrearUsuariosPropietario(List<Propietario> usuarios, String id, String nombre, String contraseña) {
+    public static void CrearUsuariosAdministrador(List<Administrador> usuarios, String id, String nombre, String contraseña) {
         try {
 
             // Crear usuario propietario
-            Propietario propietario = new Propietario(id, nombre, contraseña, "propietario");
-            usuarios.add(propietario);
+            Administrador administrador = new Administrador(id, nombre, contraseña, "administrador");
+            usuarios.add(administrador);
 
             // Guardar el archivo
             FileWriter file = new FileWriter(RUTA_USUARIOS);

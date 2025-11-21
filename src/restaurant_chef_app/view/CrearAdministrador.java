@@ -205,15 +205,15 @@ public class CrearAdministrador extends javax.swing.JFrame {
         String id = txt_idAdministrador.getText().trim();
         String nombre = txt_NombreAdministrador.getText().trim();
         String contraseña = txt_passwAdministrador.getText().trim();
-        List<Administrador> usuarios = LoginController.leerAdministrador();
+        List<Administrador> usuarios = LoginAdministradorController.leerAdministrador();
 
-        boolean credencialesValidas = LoginController.validarUsuarioRegistrado(id);
+        boolean credencialesValidas = LoginAdministradorController.validarUsuarioRegistrado(id);
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
         } else {
-            LoginController.CrearUsuariosAdministrador(usuarios, id, nombre, contraseña);
+            LoginAdministradorController.CrearUsuariosAdministrador(usuarios, id, nombre, contraseña);
             JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
-            
+
             dispose();
         }
     }//GEN-LAST:event_btn_CrearAdministradorActionPerformed
