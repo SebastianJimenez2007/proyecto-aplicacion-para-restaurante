@@ -311,7 +311,7 @@ public class TomarPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EnviarACocina1ActionPerformed
 
     private void btn_volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMouseClicked
-        new LoginCocinero().setVisible(true);
+        new VentanaEmpleado().setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_volverMouseClicked
 

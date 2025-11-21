@@ -58,6 +58,7 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         jLabel3.setText("Buscar Pedidos");
 
         btn_buscarPedido.setBackground(new java.awt.Color(253, 244, 227));
+        btn_buscarPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/buscar-pedido.png"))); // NOI18N
         btn_buscarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscarPedidoActionPerformed(evt);
@@ -65,6 +66,7 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         });
 
         btn_tomarPedido.setBackground(new java.awt.Color(253, 244, 227));
+        btn_tomarPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/tomar-pedido.png"))); // NOI18N
         btn_tomarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_tomarPedidoActionPerformed(evt);
