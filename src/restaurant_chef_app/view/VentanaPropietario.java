@@ -15,11 +15,13 @@ public class VentanaPropietario extends javax.swing.JFrame {
     /**
      * Creates new form Propietario
      */
-    public VentanaPropietario() {
+    public VentanaPropietario(String nombre_propietario) {
         initComponents();
         setLocationRelativeTo(null);
-        LblNombrePropietario.setText("Administrador: "+nombre_propietario);
+        this.nombre_propietario = nombre_propietario;
+        LblNombrePropietario.setText("Propietario: "+nombre_propietario);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -281,7 +283,7 @@ public class VentanaPropietario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPropietario().setVisible(true);
+                new VentanaPropietario("Propietario").setVisible(true);
             }
         });
     }

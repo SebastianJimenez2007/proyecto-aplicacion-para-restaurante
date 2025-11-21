@@ -4,12 +4,18 @@
  */
 package restaurant_chef_app.view;
 
+import javax.swing.JOptionPane;
+import restaurant_chef_app.clases.*;
+import restaurant_chef_app.Controller.*;
+
 /**
  *
  * @author PC PERSONAL
  */
 public class LoginAdministrador extends javax.swing.JFrame {
-
+    
+    Administrador administrador;
+    
     /**
      * Creates new form LoginAdministrador
      */
@@ -207,8 +213,30 @@ public class LoginAdministrador extends javax.swing.JFrame {
 
     private void btn_ingresarLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarLoginAdministradorActionPerformed
         // TODO add your handling code here:
-        new VentanaAdministrador().setVisible(true);
-        dispose();
+        String id = txt_idAdministrador.getText().trim();
+        String contraseña = txt_passwAdministrador.getText().trim();
+        
+        // Validar campos vacíos
+        if (id.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Validar credenciales usando el archivo JSON
+        boolean credencialesValidas = LoginController.validarCredenciales(id, contraseña);
+        
+        if (credencialesValidas) {
+            JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+            administrador = LoginController.buscarAdministrador(id);
+            // Aquí abres la ventana del administrador/propietario
+            new VentanaAdministrador(administrador.getNombre()).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "ID o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+            // Limpiar campos
+            txt_passwAdministrador.setText("");
+            txt_idAdministrador.requestFocus();
+        }
     }//GEN-LAST:event_btn_ingresarLoginAdministradorActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
