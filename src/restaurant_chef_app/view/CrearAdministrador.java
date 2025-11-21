@@ -122,10 +122,9 @@ public class CrearAdministrador extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_NombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txt_passwAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_CrearAdministrador)))))
+                            .addComponent(txt_passwAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_CrearAdministrador)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,9 +212,8 @@ public class CrearAdministrador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
         } else {
             LoginController.CrearUsuariosAdministrador(usuarios, id, nombre, contraseña);
-            JOptionPane.showMessageDialog(this, "Usuario creado", "Bievenido", JOptionPane.INFORMATION_MESSAGE);
-            //Ingresa a la ventana del Propietario
-            new VentanaPropietario(txt_NombreAdministrador.getText()).setVisible(true);
+            JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
+            
             dispose();
         }
     }//GEN-LAST:event_btn_CrearAdministradorActionPerformed
