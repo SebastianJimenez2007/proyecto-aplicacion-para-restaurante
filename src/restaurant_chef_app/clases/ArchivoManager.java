@@ -60,7 +60,7 @@ public class ArchivoManager {
             List<Propietario> usuarios = new ArrayList<>();
             
             // Crear usuario propietario por defecto
-            Propietario propietario = new Propietario("001","Propietario Principal","admin123");
+            Propietario propietario = new Propietario("001","Propietario Principal","admin123","Propietario");
             usuarios.add(propietario);
             
             // Guardar el archivo
@@ -82,5 +82,34 @@ public class ArchivoManager {
             }
         }
         return false;
+    }
+    
+    public static boolean validarUsuarioRegistrado(String id) {
+        List<Propietario> Usuarios = leerPropietarios();
+        
+        for (Propietario usuario : Usuarios) {
+            if (usuario.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static void CrearUsuariosPropietario(List<Propietario> usuarios, String id, String nombre, String contraseña) {
+        try {
+            
+            // Crear usuario propietario
+            Propietario propietario = new Propietario(id, nombre, contraseña, "Propietario");
+            usuarios.add(propietario);
+            
+            usuarios.add(propietario);
+            // Guardar el archivo
+            FileWriter file = new FileWriter(RUTA_USUARIOS);
+            gson.toJson(usuarios, file);
+            file.close();
+            JOptionPane.showMessageDialog(null, propietario.toString());
+        } catch (IOException e) {
+            System.err.println("Error al crear Usuario " + e.getMessage());
+        }
     }
 }
