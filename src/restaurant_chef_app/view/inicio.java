@@ -15,6 +15,7 @@ public class inicio extends javax.swing.JFrame {
      */
     public inicio() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -38,7 +39,7 @@ public class inicio extends javax.swing.JFrame {
         btnCocinero = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(235, 245, 246));
@@ -57,7 +58,7 @@ public class inicio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(326, 326, 326)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,6 +71,7 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 960, 130));
 
         btnEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/usuario.png"))); // NOI18N
         btnEmpleado.setBorder(null);
         btnEmpleado.setBorderPainted(false);
         btnEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -81,6 +83,7 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 230, 210));
 
         btnPropietario.setBackground(new java.awt.Color(254, 178, 26));
+        btnPropietario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/propietario.png"))); // NOI18N
         btnPropietario.setBorder(null);
         btnPropietario.setBorderPainted(false);
         btnPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -102,9 +105,15 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
 
         btnAdministrador.setBackground(new java.awt.Color(254, 178, 26));
+        btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/administrador.png"))); // NOI18N
         btnAdministrador.setBorder(null);
         btnAdministrador.setBorderPainted(false);
         btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdministradorActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 230, 210));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -113,9 +122,15 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 660, -1, -1));
 
         btnCocinero.setBackground(new java.awt.Color(254, 178, 26));
+        btnCocinero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/cocinero.png"))); // NOI18N
         btnCocinero.setBorder(null);
         btnCocinero.setBorderPainted(false);
         btnCocinero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCocinero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCocineroActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCocinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 230, 210));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -136,7 +151,21 @@ public class inicio extends javax.swing.JFrame {
 
     private void btnPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPropietarioActionPerformed
         // TODO add your handling code here:
+        new Emergente_inicio().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnPropietarioActionPerformed
+
+    private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
+        // TODO add your handling code here:
+        new LoginAdministrador().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnAdministradorActionPerformed
+
+    private void btnCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCocineroActionPerformed
+        // TODO add your handling code here:
+        new LoginCocinero().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCocineroActionPerformed
 
     /**
      * @param args the command line arguments

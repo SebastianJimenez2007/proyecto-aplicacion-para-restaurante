@@ -18,63 +18,63 @@ import restaurant_chef_app.clases.Platillo;
  */
 public class TomarPedidos extends javax.swing.JFrame {
 
-   
     private List<Pedido> listaPedidos;
-    
+
     public TomarPedidos() {
-       initComponents();
+        initComponents();
+        setLocationRelativeTo(null);
 
-    List<Platillo> menu = PlatilloController.obtenerPlatillosDisponibles();
-    DefaultListModel<String> modelo = new DefaultListModel<>();
+        List<Platillo> menu = PlatilloController.obtenerPlatillosDisponibles();
+        DefaultListModel<String> modelo = new DefaultListModel<>();
 
-    String categoriaActual = "";
+        String categoriaActual = "";
 
-    for (Platillo p : menu) {
-        if (!p.getCategoria().equals(categoriaActual)) {
-            categoriaActual = p.getCategoria();
-            modelo.addElement("---- " + categoriaActual.toUpperCase() + " ----");
+        for (Platillo p : menu) {
+            if (!p.getCategoria().equals(categoriaActual)) {
+                categoriaActual = p.getCategoria();
+                modelo.addElement("---- " + categoriaActual.toUpperCase() + " ----");
+            }
+            modelo.addElement("• " + p.getNombre() + " ($" + p.getPrecio() + ")");
         }
-        modelo.addElement("• " + p.getNombre() + " ($" + p.getPrecio() + ")");
+
+        listaPlatillos.setModel(modelo);
+        listaPedidos = PedidoController.cargarPedidos();
     }
 
-    listaPlatillos.setModel(modelo);
-    listaPedidos = PedidoController.cargarPedidos();
-    }
-    
-     private void enviarPedido() {
-    String id = txtIdPedido.getText();
-    String nombre = txtNombreCliente.getText();
-    List<String> platillosSeleccionados = listaPlatillos.getSelectedValuesList();
+    private void enviarPedido() {
+        String id = txt_IdPedido.getText();
+        String nombre = txtNombreCliente.getText();
+        List<String> platillosSeleccionados = listaPlatillos.getSelectedValuesList();
 
-    if (id.isEmpty() || nombre.isEmpty() || platillosSeleccionados.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona al menos un platillo");
-        return;
-    }
+        if (id.isEmpty() || nombre.isEmpty() || platillosSeleccionados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Completa todos los campos y selecciona al menos un platillo");
+            return;
+        }
 
-    // Crear nuevo pedido
-    Pedido pedido = new Pedido(id, nombre);
+        // Crear nuevo pedido
+        Pedido pedido = new Pedido(id, nombre);
 
-    // Agregar los platillos seleccionados como objetos Platillo
-    for (String nombrePlatillo : platillosSeleccionados) {
-        for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
-            if (nombrePlatillo.contains(p.getNombre())) {
-                pedido.agregarPlatillo(p);
+        // Agregar los platillos seleccionados como objetos Platillo
+        for (String nombrePlatillo : platillosSeleccionados) {
+            for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
+                if (nombrePlatillo.contains(p.getNombre())) {
+                    pedido.agregarPlatillo(p);
+                }
             }
         }
+
+        // Guardar el pedido
+        PedidoController.guardarPedidos(listaPedidos); // por si deseas recargar antes
+        listaPedidos.add(pedido);
+        PedidoController.guardarPedidos(listaPedidos);
+
+        JOptionPane.showMessageDialog(this, "Pedido enviado a cocina correctamente");
+
+        // Limpiar campos
+        txt_IdPedido.setText("");
+        txtNombreCliente.setText("");
+        listaPlatillos.clearSelection();
     }
-
-    // Guardar el pedido
-    PedidoController.guardarPedidos(listaPedidos); // por si deseas recargar antes
-    listaPedidos.add(pedido);
-    PedidoController.guardarPedidos(listaPedidos);
-
-    JOptionPane.showMessageDialog(this, "Pedido enviado a cocina correctamente");
-
-    // Limpiar campos
-    txtIdPedido.setText("");
-    txtNombreCliente.setText("");
-    listaPlatillos.clearSelection();
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,17 +88,18 @@ public class TomarPedidos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        btn_volver = new javax.swing.JLabel();
         txtNombreCliente = new javax.swing.JTextField();
-        txtIdPedido = new javax.swing.JTextField();
+        txt_IdPedido = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaPlatillos = new javax.swing.JList<>();
         btn_EnviarACocina1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(19, 70, 134));
 
@@ -107,52 +108,82 @@ public class TomarPedidos extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TOMAR PEDIDO");
 
+        jPanel4.setBackground(new java.awt.Color(19, 70, 134));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(254, 178, 26), 2, true));
+
+        btn_volver.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_volver.setForeground(new java.awt.Color(254, 178, 26));
+        btn_volver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_volver.setText("VOLVER");
+        btn_volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_volverMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btn_volver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_volver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(280, 280, 280)
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(255, 255, 255)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, -1));
 
         txtNombreCliente.setBackground(new java.awt.Color(242, 242, 242));
         txtNombreCliente.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txtNombreCliente.setForeground(new java.awt.Color(237, 63, 39));
         txtNombreCliente.setText("Nombre del Cliente");
-        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreClienteActionPerformed(evt);
+        txtNombreCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreClienteMouseClicked(evt);
             }
         });
-        jPanel1.add(txtNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 339, 53));
 
-        txtIdPedido.setBackground(new java.awt.Color(242, 242, 242));
-        txtIdPedido.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        txtIdPedido.setForeground(new java.awt.Color(237, 63, 39));
-        txtIdPedido.setText("ID del Pedido");
-        txtIdPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdPedidoActionPerformed(evt);
+        txt_IdPedido.setBackground(new java.awt.Color(242, 242, 242));
+        txt_IdPedido.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_IdPedido.setForeground(new java.awt.Color(237, 63, 39));
+        txt_IdPedido.setText("ID del Pedido");
+        txt_IdPedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_IdPedidoMouseClicked(evt);
             }
         });
-        jPanel1.add(txtIdPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 339, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(237, 63, 39));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("PLATILLOS");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 296, -1));
 
         listaPlatillos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -160,8 +191,6 @@ public class TomarPedidos extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listaPlatillos);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 310, 510));
 
         btn_EnviarACocina1.setBackground(new java.awt.Color(254, 178, 26));
         btn_EnviarACocina1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -172,7 +201,42 @@ public class TomarPedidos extends javax.swing.JFrame {
                 btn_EnviarACocina1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_EnviarACocina1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, -1, 49));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(160, 160, 160)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_IdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(btn_EnviarACocina1))))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_IdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btn_EnviarACocina1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,67 +256,82 @@ public class TomarPedidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreClienteActionPerformed
-
-    private void txtIdPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPedidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdPedidoActionPerformed
-
     private void btn_EnviarACocina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EnviarACocina1ActionPerformed
-     String id = txtIdPedido.getText().trim();
-    String nombre = txtNombreCliente.getText().trim();
+        String id = txt_IdPedido.getText().trim();
+        String nombre = txtNombreCliente.getText().trim();
 
-    if (id.isEmpty() || nombre.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe ingresar el ID y el nombre del cliente");
-        return;
-    }
+        if (id.isEmpty() || nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar el ID y el nombre del cliente");
+            return;
+        }
 
-    // Obtener platillos seleccionados
-    List<String> seleccion = listaPlatillos.getSelectedValuesList();
+        // Obtener platillos seleccionados
+        List<String> seleccion = listaPlatillos.getSelectedValuesList();
 
-    if (seleccion.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un platillo");
-        return;
-    }
+        if (seleccion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un platillo");
+            return;
+        }
 
-    // Crear el pedido con estado "En cocina"
-    Pedido pedido = new Pedido(id, nombre);
-    pedido.setEstado("En cocina");
+        // Crear el pedido con estado "En cocina"
+        Pedido pedido = new Pedido(id, nombre);
+        pedido.setEstado("En cocina");
 
-    // Buscar objetos Platillo según el nombre
-    for (String linea : seleccion) {
-        if (!linea.startsWith("----")) { // Ignorar líneas de categoría
-            try {
-                String nombrePlatillo = linea.substring(
-                        linea.indexOf("• ") + 2,
-                        linea.indexOf(" ($")
-                );
+        // Buscar objetos Platillo según el nombre
+        for (String linea : seleccion) {
+            if (!linea.startsWith("----")) { // Ignorar líneas de categoría
+                try {
+                    String nombrePlatillo = linea.substring(
+                            linea.indexOf("• ") + 2,
+                            linea.indexOf(" ($")
+                    );
 
-                for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
-                    if (nombrePlatillo.equals(p.getNombre())) {
-                        pedido.agregarPlatillo(p);
-                        break;
+                    for (Platillo p : PlatilloController.obtenerPlatillosDisponibles()) {
+                        if (nombrePlatillo.equals(p.getNombre())) {
+                            pedido.agregarPlatillo(p);
+                            break;
+                        }
                     }
+                } catch (Exception e) {
+                    System.err.println("⚠️ Error al procesar línea: " + linea);
                 }
-            } catch (Exception e) {
-                System.err.println("⚠️ Error al procesar línea: " + linea);
             }
         }
-    }
 
-    // Agregar y guardar pedido
-    listaPedidos.add(pedido);
-    PedidoController.guardarPedidos(listaPedidos);
+        // Agregar y guardar pedido
+        listaPedidos.add(pedido);
+        PedidoController.guardarPedidos(listaPedidos);
 
-    JOptionPane.showMessageDialog(this, "✅ Pedido enviado a cocina correctamente");
+        JOptionPane.showMessageDialog(this, "✅ Pedido enviado a cocina correctamente");
 
-    // Limpiar campos
-    txtIdPedido.setText("");
-    txtNombreCliente.setText("");
-    listaPlatillos.clearSelection();
+        // Limpiar campos
+        txt_IdPedido.setText("ID del Pedido");
+        txtNombreCliente.setText("Nombre del Cliente");
+        listaPlatillos.clearSelection();
     }//GEN-LAST:event_btn_EnviarACocina1ActionPerformed
+
+    private void btn_volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMouseClicked
+        new LoginCocinero().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_volverMouseClicked
+
+    private void txt_IdPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_IdPedidoMouseClicked
+        if (txt_IdPedido.getText().equals("ID del Pedido")){
+            txt_IdPedido.setText("");
+        }
+        if(txtNombreCliente.getText().isEmpty()){
+            txtNombreCliente.setText("Nombre del Cliente");
+        }
+    }//GEN-LAST:event_txt_IdPedidoMouseClicked
+
+    private void txtNombreClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreClienteMouseClicked
+        if(txt_IdPedido.getText().isEmpty()){
+            txt_IdPedido.setText("ID del Pedido");
+        }
+        if(txtNombreCliente.getText().equals("Nombre del Cliente")){
+            txtNombreCliente.setText("");
+        }
+    }//GEN-LAST:event_txtNombreClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -291,13 +370,15 @@ public class TomarPedidos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_EnviarACocina1;
+    private javax.swing.JLabel btn_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listaPlatillos;
-    private javax.swing.JTextField txtIdPedido;
     private javax.swing.JTextField txtNombreCliente;
+    private javax.swing.JTextField txt_IdPedido;
     // End of variables declaration//GEN-END:variables
 }
