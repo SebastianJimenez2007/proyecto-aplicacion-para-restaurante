@@ -8,15 +8,20 @@ package restaurant_chef_app.view;
  *
  * @author PC PERSONAL
  */
-public class Administrador extends javax.swing.JFrame {
+public class VentanaPropietario extends javax.swing.JFrame {
 
+    public String nombre_propietario;
+    
     /**
-     * Creates new form Administrador
+     * Creates new form Propietario
      */
-    public Administrador() {
+    public VentanaPropietario(String nombre_propietario) {
         initComponents();
         setLocationRelativeTo(null);
+        this.nombre_propietario = nombre_propietario;
+        LblNombrePropietario.setText("Propietario: "+nombre_propietario);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,16 +35,19 @@ public class Administrador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        LblNombrePropietario = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btn_volver = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        MenuBuscar = new javax.swing.JMenu();
-        MenuEditar = new javax.swing.JMenu();
-        MenuListar = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        MenuCrear = new javax.swing.JMenu();
+        MenuCrearAdm = new javax.swing.JMenuItem();
+        MenuCrearEmp = new javax.swing.JMenuItem();
+        MenuCrearCoc = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,10 +59,10 @@ public class Administrador extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(19, 70, 134));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(254, 178, 26), 2, true));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(233, 236, 239));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nombre Administrador");
+        LblNombrePropietario.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        LblNombrePropietario.setForeground(new java.awt.Color(233, 236, 239));
+        LblNombrePropietario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblNombrePropietario.setText("Nombre Propietario");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -62,25 +70,26 @@ public class Administrador extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addComponent(LblNombrePropietario, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LblNombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(19, 70, 134));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 63, 39), 2, true));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btn_volver.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btn_volver.setForeground(new java.awt.Color(233, 236, 239));
         btn_volver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_volver.setText("VOLVER");
-        btn_volver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_volver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_volverMouseClicked(evt);
@@ -105,26 +114,21 @@ public class Administrador extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(254, 178, 26));
         jButton1.setText("PLATILLOS");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jButton2.setBackground(new java.awt.Color(237, 63, 39));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(254, 178, 26));
-        jButton2.setText("EMPLEADO");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.setText("FINANZAS");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jButton3.setBackground(new java.awt.Color(237, 63, 39));
-        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 11)); // NOI18N
         jButton3.setForeground(new java.awt.Color(254, 178, 26));
-        jButton3.setText("MENU");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setText("EMPLEADOS");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -134,17 +138,17 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 613, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addGap(106, 106, 106)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(140, 140, 140)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
+                .addGap(140, 140, 140)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,12 +157,12 @@ public class Administrador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(140, 140, 140)
+                .addGap(83, 83, 83)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -178,17 +182,39 @@ public class Administrador extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(19, 70, 134));
-        jMenuBar1.setForeground(new java.awt.Color(19, 70, 134));
+        jMenu1.setText("BUSCAR");
+        jMenuBar1.add(jMenu1);
 
-        MenuBuscar.setText("BUSCAR");
-        jMenuBar1.add(MenuBuscar);
+        jMenu2.setText("EDITAR");
+        jMenuBar1.add(jMenu2);
 
-        MenuEditar.setText("EDITAR");
-        jMenuBar1.add(MenuEditar);
+        MenuCrear.setText("CREAR");
 
-        MenuListar.setText("LISTAR");
-        jMenuBar1.add(MenuListar);
+        MenuCrearAdm.setText("Crear Administrador");
+        MenuCrearAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCrearAdmActionPerformed(evt);
+            }
+        });
+        MenuCrear.add(MenuCrearAdm);
+
+        MenuCrearEmp.setText("Crear Empleado");
+        MenuCrearEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCrearEmpActionPerformed(evt);
+            }
+        });
+        MenuCrear.add(MenuCrearEmp);
+
+        MenuCrearCoc.setText("Crear Cocinero");
+        MenuCrearCoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCrearCocActionPerformed(evt);
+            }
+        });
+        MenuCrear.add(MenuCrearCoc);
+
+        jMenuBar1.add(MenuCrear);
 
         setJMenuBar(jMenuBar1);
 
@@ -207,13 +233,24 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMouseClicked
-        new LoginAdministrador().setVisible(true);
+        new LoginPropietario().setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_volverMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void MenuCrearAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearAdmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new CrearAdministrador().setVisible(true);
+    }//GEN-LAST:event_MenuCrearAdmActionPerformed
+
+    private void MenuCrearEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearEmpActionPerformed
+        // TODO add your handling code here:
+        new CrearEmpleado().setVisible(true);
+    }//GEN-LAST:event_MenuCrearEmpActionPerformed
+
+    private void MenuCrearCocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearCocActionPerformed
+        // TODO add your handling code here:
+        new CrearCocinero().setVisible(true);
+    }//GEN-LAST:event_MenuCrearCocActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,36 +269,37 @@ public class Administrador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPropietario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Administrador().setVisible(true);
+                new VentanaPropietario("Propietario").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MenuBuscar;
-    private javax.swing.JMenu MenuEditar;
-    private javax.swing.JMenu MenuListar;
+    private javax.swing.JLabel LblNombrePropietario;
+    private javax.swing.JMenu MenuCrear;
+    private javax.swing.JMenuItem MenuCrearAdm;
+    private javax.swing.JMenuItem MenuCrearCoc;
+    private javax.swing.JMenuItem MenuCrearEmp;
     private javax.swing.JLabel btn_volver;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

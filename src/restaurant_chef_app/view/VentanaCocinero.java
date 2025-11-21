@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author PC PERSONAL
  */
-public class Cocinero extends javax.swing.JFrame {
+public class VentanaCocinero extends javax.swing.JFrame {
 
     private DefaultListModel<String> modeloLista = new DefaultListModel<>();
     private List<Pedido> listaPedidos;
@@ -21,7 +21,7 @@ public class Cocinero extends javax.swing.JFrame {
     /**
      * Creates new form Cocinero
      */
-    public Cocinero() {
+    public VentanaCocinero() {
         initComponents();
         setLocationRelativeTo(null);
         cargarPedidosEnLista();
@@ -124,7 +124,7 @@ public class Cocinero extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btn_volver = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Background.setBackground(new java.awt.Color(233, 236, 239));
 
@@ -322,20 +322,21 @@ public class Cocinero extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCocinero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cocinero().setVisible(true);
+                new VentanaCocinero().setVisible(true);
             }
         });
     }

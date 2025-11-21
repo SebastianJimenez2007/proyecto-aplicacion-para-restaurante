@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -117,7 +117,7 @@
                               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="btn_ingrsarLoginCocinero" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pws_contraseña" alignment="1" min="-2" pref="274" max="-2" attributes="0"/>
+                                  <Component id="txt_passwCocinero" alignment="1" min="-2" pref="274" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -138,7 +138,7 @@
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="55" max="-2" attributes="0"/>
                       <EmptySpace pref="223" max="32767" attributes="0"/>
-                      <Component id="pws_contraseña" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="txt_passwCocinero" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="btn_ingrsarLoginCocinero" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -154,7 +154,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="pws_contrase&#xf1;a">
+            <Component class="javax.swing.JTextField" name="txt_passwCocinero">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="1a" green="b2" red="fe" type="rgb"/>
@@ -167,6 +167,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_passwCocineroMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_idCocinero">
               <Properties>
@@ -181,6 +184,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="ID"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_idCocineroMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_ingrsarLoginCocinero">
               <Properties>
@@ -223,15 +229,33 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="250" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel4" pref="238" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="250" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel4" pref="238" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/restaurant_chef_app/img/cocinero.png"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PedidoController {
 
-    private static final String ARCHIVO_PEDIDOS = "pedidos.json";
+    private static final String ARCHIVO_PEDIDOS = "data/pedidos.json";
     private static final Gson gson = new Gson();
 
     // -----------------------

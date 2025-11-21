@@ -4,6 +4,11 @@
  */
 package restaurant_chef_app.view;
 
+import java.util.*;
+import javax.swing.*;
+import restaurant_chef_app.clases.*;
+import restaurant_chef_app.Controller.*;
+
 /**
  *
  * @author PC PERSONAL
@@ -30,9 +35,10 @@ public class CrearAdministrador extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txt_idAdministrador = new javax.swing.JTextField();
+        txt_NombreAdministrador = new javax.swing.JTextField();
+        txt_passwAdministrador = new javax.swing.JTextField();
+        btn_CrearAdministrador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -62,20 +68,45 @@ public class CrearAdministrador extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTextField1.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField1.setText("ID");
+        txt_idAdministrador.setBackground(new java.awt.Color(254, 178, 26));
+        txt_idAdministrador.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txt_idAdministrador.setForeground(new java.awt.Color(253, 244, 227));
+        txt_idAdministrador.setText("ID");
+        txt_idAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_idAdministradorMouseClicked(evt);
+            }
+        });
 
-        jTextField2.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField2.setText("NOMBRE");
+        txt_NombreAdministrador.setBackground(new java.awt.Color(254, 178, 26));
+        txt_NombreAdministrador.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txt_NombreAdministrador.setForeground(new java.awt.Color(253, 244, 227));
+        txt_NombreAdministrador.setText("NOMBRE");
+        txt_NombreAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_NombreAdministradorMouseClicked(evt);
+            }
+        });
 
-        jTextField3.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField3.setText("CONTRASEÑA");
+        txt_passwAdministrador.setBackground(new java.awt.Color(254, 178, 26));
+        txt_passwAdministrador.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txt_passwAdministrador.setForeground(new java.awt.Color(253, 244, 227));
+        txt_passwAdministrador.setText("CONTRASEÑA");
+        txt_passwAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_passwAdministradorMouseClicked(evt);
+            }
+        });
+
+        btn_CrearAdministrador.setBackground(new java.awt.Color(237, 63, 39));
+        btn_CrearAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_CrearAdministrador.setForeground(new java.awt.Color(254, 178, 26));
+        btn_CrearAdministrador.setText("REGISTRAR");
+        btn_CrearAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CrearAdministradorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,15 +118,14 @@ public class CrearAdministrador extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_NombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_passwAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_CrearAdministrador)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,12 +133,18 @@ public class CrearAdministrador extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addComponent(txt_NombreAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_passwAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(47, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_CrearAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,6 +160,63 @@ public class CrearAdministrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_idAdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_idAdministradorMouseClicked
+        // TODO add your handling code here:
+        if (txt_idAdministrador.getText().equals("ID")) {
+            txt_idAdministrador.setText("");
+        }
+        if (txt_NombreAdministrador.getText().isEmpty()) {
+            txt_NombreAdministrador.setText("NOMBRE");
+        }
+        if (txt_passwAdministrador.getText().isEmpty()) {
+            txt_passwAdministrador.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_idAdministradorMouseClicked
+
+    private void txt_NombreAdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_NombreAdministradorMouseClicked
+        // TODO add your handling code here:
+        if (txt_idAdministrador.getText().isEmpty()) {
+            txt_idAdministrador.setText("ID");
+        }
+        if (txt_NombreAdministrador.getText().equals("NOMBRE")) {
+            txt_NombreAdministrador.setText("");
+        }
+        if (txt_passwAdministrador.getText().isEmpty()) {
+            txt_passwAdministrador.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_NombreAdministradorMouseClicked
+
+    private void txt_passwAdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passwAdministradorMouseClicked
+        // TODO add your handling code here:
+        if (txt_idAdministrador.getText().isEmpty()) {
+            txt_idAdministrador.setText("ID");
+        }
+        if (txt_NombreAdministrador.getText().isEmpty()) {
+            txt_NombreAdministrador.setText("NOMBRE");
+        }
+        if (txt_passwAdministrador.getText().equals("CONTRASEÑA")) {
+            txt_passwAdministrador.setText("");
+        }
+    }//GEN-LAST:event_txt_passwAdministradorMouseClicked
+
+    private void btn_CrearAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearAdministradorActionPerformed
+        // TODO add your handling code here:
+        String id = txt_idAdministrador.getText().trim();
+        String nombre = txt_NombreAdministrador.getText().trim();
+        String contraseña = txt_passwAdministrador.getText().trim();
+        List<Administrador> usuarios = LoginController.leerAdministrador();
+
+        boolean credencialesValidas = LoginController.validarUsuarioRegistrado(id);
+        if (credencialesValidas) {
+            JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
+        } else {
+            LoginController.CrearUsuariosAdministrador(usuarios, id, nombre, contraseña);
+            JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
+            
+            dispose();
+        }
+    }//GEN-LAST:event_btn_CrearAdministradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,11 +254,12 @@ public class CrearAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_CrearAdministrador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txt_NombreAdministrador;
+    private javax.swing.JTextField txt_idAdministrador;
+    private javax.swing.JTextField txt_passwAdministrador;
     // End of variables declaration//GEN-END:variables
 }
