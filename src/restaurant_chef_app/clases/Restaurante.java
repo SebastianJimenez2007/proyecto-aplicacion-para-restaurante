@@ -13,15 +13,13 @@ import java.util.ArrayList;
 public class Restaurante {
     private String nombre;
     private String direccion;
-    private String telefono;
     private ArrayList<Usuario> usuarios;
     private Menu menu;
     private ArrayList<Pedido> pedidos;
 
-    public Restaurante(String nombre, String direccion, String telefono) {
+    public Restaurante(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.telefono = telefono;
         this.usuarios = new ArrayList<>();
         this.menu = new Menu();
         this.pedidos = new ArrayList<>();
@@ -40,7 +38,6 @@ public class Restaurante {
     public void mostrarInformacion() {
         System.out.println("Restaurante: " + nombre);
         System.out.println("Dirección: " + direccion);
-        System.out.println("Teléfono: " + telefono);
         System.out.println("Usuarios registrados: " + usuarios.size());
         System.out.println("Platillos en el menú: " + menu.listarPlatillos().size());
         System.out.println("Pedidos activos: " + pedidos.size());

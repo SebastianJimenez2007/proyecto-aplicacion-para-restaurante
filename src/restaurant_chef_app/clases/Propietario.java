@@ -10,9 +10,43 @@ package restaurant_chef_app.clases;
  * @author Usuario
  */
 public class Propietario extends Usuario {
-
-    public Propietario(String id, String nombre, String contraseña) {
+    
+    public String tipo ;
+    public Propietario(String id, String nombre, String contraseña, String tipo) {
         super(id, nombre, contraseña);
+        this.tipo = "Propietario";
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public Administrador crearCuentaAdministrador(String id, String nombre, String contraseña) {

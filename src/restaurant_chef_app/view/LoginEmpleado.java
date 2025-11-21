@@ -15,6 +15,7 @@ public class LoginEmpleado extends javax.swing.JFrame {
      */
     public LoginEmpleado() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -28,28 +29,40 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
         Background = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        txt_pass_Empleado = new javax.swing.JTextField();
-        txt_Id_Empleado = new javax.swing.JTextField();
+        txt_passwEmpleado = new javax.swing.JTextField();
+        txt_IdEmpleado = new javax.swing.JTextField();
         btn_Ingresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Background.setBackground(new java.awt.Color(233, 236, 239));
 
         jPanel1.setBackground(new java.awt.Color(19, 70, 134));
 
-        txt_pass_Empleado.setBackground(new java.awt.Color(254, 178, 26));
-        txt_pass_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        txt_pass_Empleado.setForeground(new java.awt.Color(253, 244, 227));
-        txt_pass_Empleado.setText("CONTRASEÑA");
+        txt_passwEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        txt_passwEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_passwEmpleado.setForeground(new java.awt.Color(253, 244, 227));
+        txt_passwEmpleado.setText("CONTRASEÑA");
+        txt_passwEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_passwEmpleadoMouseClicked(evt);
+            }
+        });
 
-        txt_Id_Empleado.setBackground(new java.awt.Color(254, 178, 26));
-        txt_Id_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        txt_Id_Empleado.setForeground(new java.awt.Color(253, 244, 227));
-        txt_Id_Empleado.setText("ID");
+        txt_IdEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        txt_IdEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_IdEmpleado.setForeground(new java.awt.Color(253, 244, 227));
+        txt_IdEmpleado.setText("ID");
+        txt_IdEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_IdEmpleadoMouseClicked(evt);
+            }
+        });
 
         btn_Ingresar.setBackground(new java.awt.Color(237, 63, 39));
         btn_Ingresar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -79,8 +92,8 @@ public class LoginEmpleado extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_Ingresar)
-                            .addComponent(txt_pass_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_Id_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_passwEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_IdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,9 +102,9 @@ public class LoginEmpleado extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                .addComponent(txt_Id_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_IdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(txt_pass_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_passwEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -99,21 +112,38 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(253, 244, 227));
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/usuario.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(237, 63, 39));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("EMPLEADO");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout BackgroundLayout = new javax.swing.GroupLayout(Background);
         Background.setLayout(BackgroundLayout);
@@ -130,13 +160,19 @@ public class LoginEmpleado extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78))))
+            .addGroup(BackgroundLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         BackgroundLayout.setVerticalGroup(
             BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BackgroundLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
@@ -164,9 +200,34 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:}
-        new Empleado().setVisible(true);
+        
+        new VentanaEmpleado().setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_IngresarActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        new inicio().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void txt_IdEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_IdEmpleadoMouseClicked
+        if (txt_IdEmpleado.getText().equals("ID")){
+            txt_IdEmpleado.setText("");
+        }
+        if(txt_passwEmpleado.getText().isEmpty()){
+            txt_passwEmpleado.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_IdEmpleadoMouseClicked
+
+    private void txt_passwEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passwEmpleadoMouseClicked
+        if(txt_IdEmpleado.getText().isEmpty()){
+            txt_IdEmpleado.setText("ID");
+        }
+        if(txt_passwEmpleado.getText().equals("CONTRASEÑA")){
+            txt_passwEmpleado.setText("");
+        }
+    }//GEN-LAST:event_txt_passwEmpleadoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -209,9 +270,11 @@ public class LoginEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton btn_Ingresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txt_Id_Empleado;
-    private javax.swing.JTextField txt_pass_Empleado;
+    private javax.swing.JTextField txt_IdEmpleado;
+    private javax.swing.JTextField txt_passwEmpleado;
     // End of variables declaration//GEN-END:variables
 }
