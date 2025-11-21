@@ -1,3 +1,7 @@
 /build/
 /nbproject/private/
 /dist/
+# Archivos de configuración local
+nbproject/private/
+nbproject/project.properties
+data/*.json
