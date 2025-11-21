@@ -1,6 +1,8 @@
 /build/
 /nbproject/private/
 /dist/
+# Carpeta de datos temporales de la aplicación
+data/*.json
 # Archivos de configuración local
 nbproject/private/
 nbproject/project.properties
