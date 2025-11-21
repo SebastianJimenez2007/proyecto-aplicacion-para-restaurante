@@ -219,7 +219,7 @@ public class Crear_propietario extends javax.swing.JFrame {
             ArchivoManager.CrearUsuariosPropietario(usuarios, id, nombre, contraseña);
             JOptionPane.showMessageDialog(this, "Usuario creado", "Bievenido", JOptionPane.INFORMATION_MESSAGE);
             //Ingresa a la ventana del Propietario
-            new VentanaPropietario().setVisible(true);
+            new VentanaPropietario(txt_NombrePropietario.getText()).setVisible(true);
             dispose();
         }
 

@@ -14,7 +14,7 @@ public class Propietario extends Usuario {
     public String tipo ;
     public Propietario(String id, String nombre, String contraseña, String tipo) {
         super(id, nombre, contraseña);
-        this.tipo = "Propietario";
+        this.tipo = "propietario";
     }
 
     public String getId() {
@@ -50,7 +50,7 @@ public class Propietario extends Usuario {
     }
 
     public Administrador crearCuentaAdministrador(String id, String nombre, String contraseña) {
-        return new Administrador(id, nombre, contraseña);
+        return new Administrador(id, nombre, contraseña,"Administrador");
     }
 
     public Empleado crearCuentaEmpleado(String id, String nombre, String contraseña) {

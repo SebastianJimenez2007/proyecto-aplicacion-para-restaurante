@@ -16,9 +16,10 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     /**
      * Creates new form Administrador
      */
-    public VentanaAdministrador() {
+    public VentanaAdministrador(String nombre_administrador) {
         initComponents();
         setLocationRelativeTo(null);
+        this.nombre_administrador = nombre_administrador;
         LblNombreAdministrador.setText("Administrador: "+nombre_administrador);
     }
 
@@ -256,7 +257,7 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaAdministrador().setVisible(true);
+                new VentanaAdministrador("Administrador").setVisible(true);
             }
         });
     }
