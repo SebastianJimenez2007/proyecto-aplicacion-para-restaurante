@@ -63,17 +63,17 @@ public class CrearCocinero extends javax.swing.JFrame {
         );
 
         jTextField1.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(253, 244, 227));
         jTextField1.setText("ID");
 
         jTextField2.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(253, 244, 227));
         jTextField2.setText("NOMBRE");
 
         jTextField3.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(253, 244, 227));
         jTextField3.setText("CONTRASEÑA");
 
@@ -87,14 +87,11 @@ public class CrearCocinero extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
