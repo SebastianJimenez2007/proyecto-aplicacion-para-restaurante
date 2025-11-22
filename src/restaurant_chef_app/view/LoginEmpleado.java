@@ -113,7 +113,6 @@ public class LoginEmpleado extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(253, 244, 227));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/usuario.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -138,7 +137,7 @@ public class LoginEmpleado extends javax.swing.JFrame {
         jLabel2.setText("EMPLEADO");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
+        jLabel3.setText("<--");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
