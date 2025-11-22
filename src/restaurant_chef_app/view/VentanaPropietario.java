@@ -116,6 +116,11 @@ public class VentanaPropietario extends javax.swing.JFrame {
         jButton1.setText("MENU");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(237, 63, 39));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -251,6 +256,11 @@ public class VentanaPropietario extends javax.swing.JFrame {
         // TODO add your handling code here:
         new CrearCocinero().setVisible(true);
     }//GEN-LAST:event_MenuCrearCocActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

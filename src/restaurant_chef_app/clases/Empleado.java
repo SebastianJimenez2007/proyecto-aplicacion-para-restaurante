@@ -15,7 +15,7 @@ public class Empleado extends Usuario {
 
     public String tipo;
 
-    public Empleado(String id, String nombre, String contraseña, String tipo) {
+    public Empleado(String id, String nombre, String contraseña) {
         super(id, nombre, contraseña);
         this.tipo = "empleado";
     }

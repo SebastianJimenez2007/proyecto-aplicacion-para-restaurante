@@ -21,6 +21,8 @@ public class LoginPropietario extends javax.swing.JFrame {
     public LoginPropietario() {
         initComponents();
         setLocationRelativeTo(null);
+        txt_idPropietario.setText("0001");
+        txt_passwPropietario.setText("admin123");
     }
 
     /**

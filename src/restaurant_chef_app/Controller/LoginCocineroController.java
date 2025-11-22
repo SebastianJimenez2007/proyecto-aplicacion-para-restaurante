@@ -18,7 +18,7 @@ import restaurant_chef_app.clases.*;
  */
 public class LoginCocineroController {
     
-    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Cocinero.json";
+    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Cocineros.json";
     private static final Gson gson = new Gson();
 
     public static List<Cocinero> leerCocinero() {
@@ -64,7 +64,7 @@ public class LoginCocineroController {
             List<Cocinero> usuarios = new ArrayList<>();
 
             // Crear usuario propietario por defecto
-            Cocinero cocinero = new Cocinero("001", "Cocinero Principal", "admin123", "cocinero");
+            Cocinero cocinero = new Cocinero("001", "Cocinero Principal", "admin123");
             usuarios.add(cocinero);
 
             // Guardar el archivo
@@ -113,8 +113,8 @@ public class LoginCocineroController {
     public static void CrearUsuariosCocinero(List<Cocinero> usuarios, String id, String nombre, String contraseña) {
         try {
 
-            // Crear usuario propietario
-            Cocinero cocinero = new Cocinero(id, nombre, contraseña, "cocinero");
+            // Crear usuario cocinero
+            Cocinero cocinero = new Cocinero(id, nombre, contraseña);
             usuarios.add(cocinero);
 
             // Guardar el archivo

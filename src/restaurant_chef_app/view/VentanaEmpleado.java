@@ -5,6 +5,7 @@
 package restaurant_chef_app.view;
 
 import javax.swing.JOptionPane;
+import restaurant_chef_app.clases.*;
 
 /**
  *
@@ -12,15 +13,16 @@ import javax.swing.JOptionPane;
  */
 public class VentanaEmpleado extends javax.swing.JFrame {
 
-    public String nombre_empleado;
+    public Empleado empleado;
     
     /**
      * Creates new form Empleado
      */
-    public VentanaEmpleado() {
+    public VentanaEmpleado(Empleado empleado) {
         initComponents();
         setLocationRelativeTo(null);
-        LblNombreEmpleado.setText("Empleado: "+nombre_empleado);
+        this.empleado = empleado;
+        LblNombreEmpleado.setText("Empleado: "+empleado.getNombre());
     }
 
     /**
@@ -201,13 +203,13 @@ public class VentanaEmpleado extends javax.swing.JFrame {
 
     private void btn_tomarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tomarPedidoActionPerformed
         // TODO add your handling code here:
-        new TomarPedidos().setVisible(true);
+        new TomarPedidos(empleado).setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_tomarPedidoActionPerformed
 
     private void btn_buscarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarPedidoActionPerformed
         // TODO add your handling code here:
-        new BuscarPedidos().setVisible(true);
+        new BuscarPedidos(empleado).setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_buscarPedidoActionPerformed
 
@@ -248,7 +250,7 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaEmpleado().setVisible(true);
+                new VentanaEmpleado(new Empleado("0000","Empleado","1234")).setVisible(true);
             }
         });
     }

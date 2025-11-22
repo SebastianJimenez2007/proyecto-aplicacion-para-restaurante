@@ -64,7 +64,7 @@ public class LoginEmpleadoController {
             List<Empleado> usuarios = new ArrayList<>();
 
             // Crear usuario propietario por defecto
-            Empleado empleado = new Empleado("001", "Empleado Principal", "admin123", "empleado");
+            Empleado empleado = new Empleado("001", "Empleado Principal", "admin123");
             usuarios.add(empleado);
 
             // Guardar el archivo
@@ -114,7 +114,7 @@ public class LoginEmpleadoController {
         try {
 
             // Crear usuario propietario
-            Empleado empleado = new Empleado(id, nombre, contraseña, "empleado");
+            Empleado empleado = new Empleado(id, nombre, contraseña);
             usuarios.add(empleado);
 
             // Guardar el archivo

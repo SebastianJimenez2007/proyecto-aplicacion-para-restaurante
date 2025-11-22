@@ -7,10 +7,8 @@ package restaurant_chef_app.view;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import restaurant_chef_app.Controller.PedidoController;
-import restaurant_chef_app.Controller.PlatilloController;
-import restaurant_chef_app.clases.Pedido;
-import restaurant_chef_app.clases.Platillo;
+import restaurant_chef_app.Controller.*;
+import restaurant_chef_app.clases.*;
 
 /**
  *
@@ -18,11 +16,14 @@ import restaurant_chef_app.clases.Platillo;
  */
 public class TomarPedidos extends javax.swing.JFrame {
 
-    private List<Pedido> listaPedidos;
+    public List<Pedido> listaPedidos;
+    public Empleado empleado;
+    
 
-    public TomarPedidos() {
+    public TomarPedidos(Empleado empleado) {
         initComponents();
         setLocationRelativeTo(null);
+        this.empleado = empleado;
 
         List<Platillo> menu = PlatilloController.obtenerPlatillosDisponibles();
         DefaultListModel<String> modelo = new DefaultListModel<>();
@@ -311,7 +312,7 @@ public class TomarPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EnviarACocina1ActionPerformed
 
     private void btn_volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMouseClicked
-        new VentanaEmpleado().setVisible(true);
+        new VentanaEmpleado(empleado).setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_volverMouseClicked
 
@@ -363,7 +364,7 @@ public class TomarPedidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TomarPedidos().setVisible(true);
+                new TomarPedidos(new Empleado("0000","Empleado","1234")).setVisible(true);
             }
         });
     }

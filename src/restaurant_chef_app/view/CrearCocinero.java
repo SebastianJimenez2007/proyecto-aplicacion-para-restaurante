@@ -38,7 +38,7 @@ public class CrearCocinero extends javax.swing.JFrame {
         txt_idCocinero = new javax.swing.JTextField();
         txt_NombreCocinero = new javax.swing.JTextField();
         txt_passwCocinero = new javax.swing.JTextField();
-        btn_CrearAdministrador = new javax.swing.JButton();
+        btn_CrearCocinero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,13 +98,13 @@ public class CrearCocinero extends javax.swing.JFrame {
             }
         });
 
-        btn_CrearAdministrador.setBackground(new java.awt.Color(237, 63, 39));
-        btn_CrearAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btn_CrearAdministrador.setForeground(new java.awt.Color(254, 178, 26));
-        btn_CrearAdministrador.setText("REGISTRAR");
-        btn_CrearAdministrador.addActionListener(new java.awt.event.ActionListener() {
+        btn_CrearCocinero.setBackground(new java.awt.Color(237, 63, 39));
+        btn_CrearCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_CrearCocinero.setForeground(new java.awt.Color(254, 178, 26));
+        btn_CrearCocinero.setText("REGISTRAR");
+        btn_CrearCocinero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CrearAdministradorActionPerformed(evt);
+                btn_CrearCocineroActionPerformed(evt);
             }
         });
 
@@ -125,7 +125,7 @@ public class CrearCocinero extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_passwCocinero, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_CrearAdministrador)))))
+                                .addComponent(btn_CrearCocinero)))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,7 +144,7 @@ public class CrearCocinero extends javax.swing.JFrame {
                         .addContainerGap(47, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_CrearAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_CrearCocinero, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
         );
 
@@ -201,7 +201,7 @@ public class CrearCocinero extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_passwCocineroMouseClicked
 
-    private void btn_CrearAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearAdministradorActionPerformed
+    private void btn_CrearCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearCocineroActionPerformed
         // TODO add your handling code here:
         String id = txt_idCocinero.getText().trim();
         String nombre = txt_NombreCocinero.getText().trim();
@@ -217,7 +217,7 @@ public class CrearCocinero extends javax.swing.JFrame {
 
             dispose();
         }
-    }//GEN-LAST:event_btn_CrearAdministradorActionPerformed
+    }//GEN-LAST:event_btn_CrearCocineroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,7 +255,7 @@ public class CrearCocinero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_CrearAdministrador;
+    private javax.swing.JButton btn_CrearCocinero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

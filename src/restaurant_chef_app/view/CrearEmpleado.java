@@ -38,7 +38,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
         txt_idEmpleado = new javax.swing.JTextField();
         txt_NombreEmpleado = new javax.swing.JTextField();
         txt_passwEmpleado = new javax.swing.JTextField();
-        btn_CrearAdministrador = new javax.swing.JButton();
+        btn_CrearEmpleado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,13 +98,13 @@ public class CrearEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btn_CrearAdministrador.setBackground(new java.awt.Color(237, 63, 39));
-        btn_CrearAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btn_CrearAdministrador.setForeground(new java.awt.Color(254, 178, 26));
-        btn_CrearAdministrador.setText("REGISTRAR");
-        btn_CrearAdministrador.addActionListener(new java.awt.event.ActionListener() {
+        btn_CrearEmpleado.setBackground(new java.awt.Color(237, 63, 39));
+        btn_CrearEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_CrearEmpleado.setForeground(new java.awt.Color(254, 178, 26));
+        btn_CrearEmpleado.setText("REGISTRAR");
+        btn_CrearEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CrearAdministradorActionPerformed(evt);
+                btn_CrearEmpleadoActionPerformed(evt);
             }
         });
 
@@ -125,7 +125,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txt_passwEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_CrearAdministrador)))))
+                                .addComponent(btn_CrearEmpleado)))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,7 +144,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
                         .addContainerGap(47, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_CrearAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_CrearEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))))
         );
 
@@ -162,7 +162,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_CrearAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearAdministradorActionPerformed
+    private void btn_CrearEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearEmpleadoActionPerformed
         // TODO add your handling code here:
         String id = txt_idEmpleado.getText().trim();
         String nombre = txt_NombreEmpleado.getText().trim();
@@ -178,7 +178,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
 
             dispose();
         }
-    }//GEN-LAST:event_btn_CrearAdministradorActionPerformed
+    }//GEN-LAST:event_btn_CrearEmpleadoActionPerformed
 
     private void txt_idEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_idEmpleadoMouseClicked
         // TODO add your handling code here:
@@ -255,7 +255,7 @@ public class CrearEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_CrearAdministrador;
+    private javax.swing.JButton btn_CrearEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

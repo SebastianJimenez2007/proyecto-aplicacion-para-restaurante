@@ -4,6 +4,10 @@
  */
 package restaurant_chef_app.view;
 
+import javax.swing.JOptionPane;
+import restaurant_chef_app.Controller.*;
+import restaurant_chef_app.clases.*;
+
 /**
  *
  * @author PC PERSONAL
@@ -215,8 +219,30 @@ public class LoginCocinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingrsarLoginCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingrsarLoginCocineroActionPerformed
-        new VentanaCocinero().setVisible(true);
-        dispose();
+        String id = txt_idCocinero.getText().trim();
+        String contraseña = txt_passwCocinero.getText().trim();
+
+        // Validar campos vacíos
+        if (id.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar credenciales usando el archivo JSON
+        boolean credencialesValidas = LoginCocineroController.validarCredenciales(id, contraseña);
+
+        if (credencialesValidas) {
+            JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+            
+            // Aquí abres la ventana del administrador/propietario
+            new VentanaCocinero().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "ID o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+            // Limpiar campos
+            txt_passwCocinero.setText("");
+            txt_idCocinero.requestFocus();
+        }
     }//GEN-LAST:event_btn_ingrsarLoginCocineroActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

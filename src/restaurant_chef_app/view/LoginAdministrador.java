@@ -22,6 +22,8 @@ public class LoginAdministrador extends javax.swing.JFrame {
     public LoginAdministrador() {
         initComponents();
         setLocationRelativeTo(null);
+        txt_idAdministrador.setText("0002");
+        txt_passwAdministrador.setText("12345");
     }
 
     /**
