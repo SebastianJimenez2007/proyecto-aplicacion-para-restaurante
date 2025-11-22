@@ -5,6 +5,7 @@
 package restaurant_chef_app.view;
 
 import javax.swing.JOptionPane;
+import restaurant_chef_app.clases.*;
 
 /**
  *
@@ -12,12 +13,15 @@ import javax.swing.JOptionPane;
  */
 public class BuscarPedidos extends javax.swing.JFrame {
 
+    public Empleado empleado;
+    
     /**
      * Creates new form BuscarPedidos
      */
-    public BuscarPedidos() {
+    public BuscarPedidos(Empleado empleado) {
         initComponents();
         setLocationRelativeTo(null);
+        this.empleado = empleado;
     }
 
     /**
@@ -181,7 +185,7 @@ public class BuscarPedidos extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        new VentanaEmpleado().setVisible(true);
+        new VentanaEmpleado(empleado).setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
@@ -215,7 +219,7 @@ public class BuscarPedidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarPedidos().setVisible(true);
+                new BuscarPedidos(new Empleado("0000","Empleado",null)).setVisible(true);
             }
         });
     }

@@ -64,7 +64,7 @@ public class LoginAdministradorController {
             List<Administrador> usuarios = new ArrayList<>();
 
             // Crear usuario propietario por defecto
-            Administrador administrador = new Administrador("001", "Administrador Principal", "admin123", "Administrador");
+            Administrador administrador = new Administrador("001", "Administrador Principal", "admin123");
             usuarios.add(administrador);
 
             // Guardar el archivo
@@ -114,7 +114,7 @@ public class LoginAdministradorController {
         try {
 
             // Crear usuario propietario
-            Administrador administrador = new Administrador(id, nombre, contraseña, "administrador");
+            Administrador administrador = new Administrador(id, nombre, contraseña);
             usuarios.add(administrador);
 
             // Guardar el archivo

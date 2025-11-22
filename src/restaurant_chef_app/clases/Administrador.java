@@ -12,7 +12,7 @@ public class Administrador extends Usuario {
 
     public String tipo;
 
-    public Administrador(String id, String nombre, String contraseña, String tipo) {
+    public Administrador(String id, String nombre, String contraseña) {
         super(id, nombre, contraseña);
         this.tipo = "administrador";
     }

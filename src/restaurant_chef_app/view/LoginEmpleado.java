@@ -4,12 +4,18 @@
  */
 package restaurant_chef_app.view;
 
+import javax.swing.JOptionPane;
+import restaurant_chef_app.Controller.*;
+import restaurant_chef_app.clases.*;
+
 /**
  *
  * @author Sebastian JB
  */
 public class LoginEmpleado extends javax.swing.JFrame {
 
+    public Empleado empleado;
+    
     /**
      * Creates new form LoginEmpleado
      */
@@ -199,9 +205,30 @@ public class LoginEmpleado extends javax.swing.JFrame {
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:}
-        
-        new VentanaEmpleado().setVisible(true);
-        dispose();
+        String id = txt_IdEmpleado.getText().trim();
+        String contraseña = txt_passwEmpleado.getText().trim();
+
+        // Validar campos vacíos
+        if (id.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar credenciales usando el archivo JSON
+        boolean credencialesValidas = LoginEmpleadoController.validarCredenciales(id, contraseña);
+
+        if (credencialesValidas) {
+            JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+            empleado = LoginEmpleadoController.buscarEmpleado(id);
+            // Aquí abres la ventana del administrador/propietario
+            new VentanaEmpleado(empleado).setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "ID o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+            // Limpiar campos
+            txt_passwEmpleado.setText("");
+            txt_IdEmpleado.requestFocus();
+        }
     }//GEN-LAST:event_btn_IngresarActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
