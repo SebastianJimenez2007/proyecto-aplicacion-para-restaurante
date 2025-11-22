@@ -50,11 +50,11 @@ public class Propietario extends Usuario {
     }
 
     public Administrador crearCuentaAdministrador(String id, String nombre, String contraseña) {
-        return new Administrador(id, nombre, contraseña,"Administrador");
+        return new Administrador(id, nombre, contraseña,"administrador");
     }
 
     public Empleado crearCuentaEmpleado(String id, String nombre, String contraseña) {
-        return new Empleado(id, nombre, contraseña);
+        return new Empleado(id, nombre, contraseña,"empleado");
     }
 
     public void supervisarActividad() {

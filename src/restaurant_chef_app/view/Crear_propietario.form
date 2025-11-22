@@ -245,9 +245,6 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/restaurant_chef_app/img/propietario.png"/>
-                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -267,9 +264,7 @@
         <Component class="javax.swing.JLabel" name="btn_volver">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/restaurant_chef_app/img/devolver.png"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;--"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_volverMouseClicked"/>

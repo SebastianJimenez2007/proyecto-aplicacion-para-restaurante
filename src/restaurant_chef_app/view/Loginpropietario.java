@@ -9,14 +9,14 @@ import javax.swing.*;
 
 /**
  *
- * @author Sebastian
+ * @author Sebastian JB
  */
 public class LoginPropietario extends javax.swing.JFrame {
-    
+
     public Propietario propietario ;
     
     /**
-     * Creates new form Iniciar_sesion
+     * Creates new form NewLoginPropietario
      */
     public LoginPropietario() {
         initComponents();
@@ -43,7 +43,7 @@ public class LoginPropietario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Background.setBackground(new java.awt.Color(233, 236, 239));
 
@@ -190,7 +190,7 @@ public class LoginPropietario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -202,20 +202,38 @@ public class LoginPropietario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_passwPropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passwPropietarioMouseClicked
+        if(txt_idPropietario.getText().isEmpty()){
+            txt_idPropietario.setText("ID");
+        }
+        if(txt_passwPropietario.getText().equals("CONTRASEÑA")){
+            txt_passwPropietario.setText("");
+        }
+    }//GEN-LAST:event_txt_passwPropietarioMouseClicked
+
+    private void txt_idPropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_idPropietarioMouseClicked
+        if (txt_idPropietario.getText().equals("ID")){
+            txt_idPropietario.setText("");
+        }
+        if(txt_passwPropietario.getText().isEmpty()){
+            txt_passwPropietario.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_idPropietarioMouseClicked
+
     private void btn_ingresarLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarLoginAdministradorActionPerformed
         // TODO add your handling code here:
         String id = txt_idPropietario.getText().trim();
         String contraseña = txt_passwPropietario.getText().trim();
-        
+
         // Validar campos vacíos
         if (id.isEmpty() || contraseña.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         // Validar credenciales usando el archivo JSON
         boolean credencialesValidas = ArchivoManager.validarCredenciales(id, contraseña);
-        
+
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
             propietario = ArchivoManager.buscarPropietario(id);
@@ -235,24 +253,6 @@ public class LoginPropietario extends javax.swing.JFrame {
         new inicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVolverMouseClicked
-
-    private void txt_idPropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_idPropietarioMouseClicked
-        if (txt_idPropietario.getText().equals("ID")){
-            txt_idPropietario.setText("");
-        }
-        if(txt_passwPropietario.getText().isEmpty()){
-            txt_passwPropietario.setText("CONTRASEÑA");
-        }
-    }//GEN-LAST:event_txt_idPropietarioMouseClicked
-
-    private void txt_passwPropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passwPropietarioMouseClicked
-        if(txt_idPropietario.getText().isEmpty()){
-            txt_idPropietario.setText("ID");
-        }
-        if(txt_passwPropietario.getText().equals("CONTRASEÑA")){
-            txt_passwPropietario.setText("");
-        }
-    }//GEN-LAST:event_txt_passwPropietarioMouseClicked
 
     /**
      * @param args the command line arguments
