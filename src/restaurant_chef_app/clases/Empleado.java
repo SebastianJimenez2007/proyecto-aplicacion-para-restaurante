@@ -10,11 +10,46 @@ package restaurant_chef_app.clases;
  */
 import java.util.*;
 import restaurant_chef_app.Controller.PedidoController;
-        
+
 public class Empleado extends Usuario {
+
+    public String tipo;
 
     public Empleado(String id, String nombre, String contraseña) {
         super(id, nombre, contraseña);
+        this.tipo = "empleado";
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public void tomarPedido(Pedido pedido, List<Pedido> listaPedidos) {

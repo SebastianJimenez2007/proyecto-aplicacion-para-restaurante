@@ -4,6 +4,11 @@
  */
 package restaurant_chef_app.view;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import restaurant_chef_app.Controller.*;
+import restaurant_chef_app.clases.*;
+
 /**
  *
  * @author PC PERSONAL
@@ -30,9 +35,10 @@ public class CrearEmpleado extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txt_idEmpleado = new javax.swing.JTextField();
+        txt_NombreEmpleado = new javax.swing.JTextField();
+        txt_passwEmpleado = new javax.swing.JTextField();
+        btn_CrearEmpleado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -62,20 +68,45 @@ public class CrearEmpleado extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTextField1.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField1.setText("ID");
+        txt_idEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        txt_idEmpleado.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        txt_idEmpleado.setForeground(new java.awt.Color(253, 244, 227));
+        txt_idEmpleado.setText("ID");
+        txt_idEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_idEmpleadoMouseClicked(evt);
+            }
+        });
 
-        jTextField2.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField2.setText("NOMBRE");
+        txt_NombreEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        txt_NombreEmpleado.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        txt_NombreEmpleado.setForeground(new java.awt.Color(253, 244, 227));
+        txt_NombreEmpleado.setText("NOMBRE");
+        txt_NombreEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_NombreEmpleadoMouseClicked(evt);
+            }
+        });
 
-        jTextField3.setBackground(new java.awt.Color(254, 178, 26));
-        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(253, 244, 227));
-        jTextField3.setText("CONTRASEÑA");
+        txt_passwEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        txt_passwEmpleado.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        txt_passwEmpleado.setForeground(new java.awt.Color(253, 244, 227));
+        txt_passwEmpleado.setText("CONTRASEÑA");
+        txt_passwEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_passwEmpleadoMouseClicked(evt);
+            }
+        });
+
+        btn_CrearEmpleado.setBackground(new java.awt.Color(237, 63, 39));
+        btn_CrearEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_CrearEmpleado.setForeground(new java.awt.Color(254, 178, 26));
+        btn_CrearEmpleado.setText("REGISTRAR");
+        btn_CrearEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CrearEmpleadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,14 +118,14 @@ public class CrearEmpleado extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_passwEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_CrearEmpleado)))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -103,12 +134,18 @@ public class CrearEmpleado extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_idEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addComponent(txt_NombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_passwEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(47, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_CrearEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,6 +161,63 @@ public class CrearEmpleado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_CrearEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearEmpleadoActionPerformed
+        // TODO add your handling code here:
+        String id = txt_idEmpleado.getText().trim();
+        String nombre = txt_NombreEmpleado.getText().trim();
+        String contraseña = txt_passwEmpleado.getText().trim();
+        List<Empleado> usuarios = LoginEmpleadoController.leerEmpleado();
+
+        boolean credencialesValidas = LoginEmpleadoController.validarEmpleadoRegistrado(id);
+        if (credencialesValidas) {
+            JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
+        } else {
+            LoginEmpleadoController.CrearUsuariosEmpleado(usuarios, id, nombre, contraseña);
+            JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
+
+            dispose();
+        }
+    }//GEN-LAST:event_btn_CrearEmpleadoActionPerformed
+
+    private void txt_idEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_idEmpleadoMouseClicked
+        // TODO add your handling code here:
+        if (txt_idEmpleado.getText().equals("ID")) {
+            txt_idEmpleado.setText("");
+        }
+        if (txt_NombreEmpleado.getText().isEmpty()) {
+            txt_NombreEmpleado.setText("NOMBRE");
+        }
+        if (txt_passwEmpleado.getText().isEmpty()) {
+            txt_passwEmpleado.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_idEmpleadoMouseClicked
+
+    private void txt_NombreEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_NombreEmpleadoMouseClicked
+        // TODO add your handling code here:
+        if (txt_idEmpleado.getText().isEmpty()) {
+            txt_idEmpleado.setText("ID");
+        }
+        if (txt_NombreEmpleado.getText().equals("NOMBRE")) {
+            txt_NombreEmpleado.setText("");
+        }
+        if (txt_passwEmpleado.getText().isEmpty()) {
+            txt_passwEmpleado.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_NombreEmpleadoMouseClicked
+
+    private void txt_passwEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passwEmpleadoMouseClicked
+        // TODO add your handling code here:
+        if (txt_idEmpleado.getText().isEmpty()) {
+            txt_idEmpleado.setText("ID");
+        }
+        if (txt_NombreEmpleado.getText().isEmpty()) {
+            txt_NombreEmpleado.setText("NOMBRE");
+        }
+        if (txt_passwEmpleado.getText().equals("CONTRASEÑA")) {
+            txt_passwEmpleado.setText("");
+        }
+    }//GEN-LAST:event_txt_passwEmpleadoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -161,11 +255,12 @@ public class CrearEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_CrearEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txt_NombreEmpleado;
+    private javax.swing.JTextField txt_idEmpleado;
+    private javax.swing.JTextField txt_passwEmpleado;
     // End of variables declaration//GEN-END:variables
 }

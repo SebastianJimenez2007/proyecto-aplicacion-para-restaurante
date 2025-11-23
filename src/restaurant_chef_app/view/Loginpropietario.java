@@ -9,16 +9,20 @@ import javax.swing.*;
 
 /**
  *
- * @author Sebastian
+ * @author Sebastian JB
  */
 public class LoginPropietario extends javax.swing.JFrame {
 
+    public Propietario propietario ;
+    
     /**
-     * Creates new form Iniciar_sesion
+     * Creates new form NewLoginPropietario
      */
     public LoginPropietario() {
         initComponents();
         setLocationRelativeTo(null);
+        txt_idPropietario.setText("0001");
+        txt_passwPropietario.setText("admin123");
     }
 
     /**
@@ -32,11 +36,12 @@ public class LoginPropietario extends javax.swing.JFrame {
 
         Background = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        txt_contraseña = new javax.swing.JTextField();
-        txt_idAdministrador = new javax.swing.JTextField();
+        txt_passwPropietario = new javax.swing.JTextField();
+        txt_idPropietario = new javax.swing.JTextField();
         btn_ingresarLoginAdministrador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JLabel();
 
@@ -46,15 +51,25 @@ public class LoginPropietario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(19, 70, 134));
 
-        txt_contraseña.setBackground(new java.awt.Color(254, 178, 26));
-        txt_contraseña.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        txt_contraseña.setForeground(new java.awt.Color(253, 244, 227));
-        txt_contraseña.setText("CONTRASEÑA");
+        txt_passwPropietario.setBackground(new java.awt.Color(254, 178, 26));
+        txt_passwPropietario.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_passwPropietario.setForeground(new java.awt.Color(253, 244, 227));
+        txt_passwPropietario.setText("CONTRASEÑA");
+        txt_passwPropietario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_passwPropietarioMouseClicked(evt);
+            }
+        });
 
-        txt_idAdministrador.setBackground(new java.awt.Color(254, 178, 26));
-        txt_idAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        txt_idAdministrador.setForeground(new java.awt.Color(253, 244, 227));
-        txt_idAdministrador.setText("ID");
+        txt_idPropietario.setBackground(new java.awt.Color(254, 178, 26));
+        txt_idPropietario.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_idPropietario.setForeground(new java.awt.Color(253, 244, 227));
+        txt_idPropietario.setText("ID");
+        txt_idPropietario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_idPropietarioMouseClicked(evt);
+            }
+        });
 
         btn_ingresarLoginAdministrador.setBackground(new java.awt.Color(237, 63, 39));
         btn_ingresarLoginAdministrador.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -84,8 +99,8 @@ public class LoginPropietario extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_ingresarLoginAdministrador)
-                            .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_passwPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_idPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -94,9 +109,9 @@ public class LoginPropietario extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                .addComponent(txt_idAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_idPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_passwPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addComponent(btn_ingresarLoginAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -104,15 +119,24 @@ public class LoginPropietario extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(253, 244, 227));
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/propietario.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
@@ -168,7 +192,7 @@ public class LoginPropietario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -180,30 +204,49 @@ public class LoginPropietario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txt_passwPropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passwPropietarioMouseClicked
+        if(txt_idPropietario.getText().isEmpty()){
+            txt_idPropietario.setText("ID");
+        }
+        if(txt_passwPropietario.getText().equals("CONTRASEÑA")){
+            txt_passwPropietario.setText("");
+        }
+    }//GEN-LAST:event_txt_passwPropietarioMouseClicked
+
+    private void txt_idPropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_idPropietarioMouseClicked
+        if (txt_idPropietario.getText().equals("ID")){
+            txt_idPropietario.setText("");
+        }
+        if(txt_passwPropietario.getText().isEmpty()){
+            txt_passwPropietario.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_idPropietarioMouseClicked
+
     private void btn_ingresarLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarLoginAdministradorActionPerformed
         // TODO add your handling code here:
-        String id = txt_idAdministrador.getText().trim();
-        String contraseña = txt_contraseña.getText().trim();
-        
+        String id = txt_idPropietario.getText().trim();
+        String contraseña = txt_passwPropietario.getText().trim();
+
         // Validar campos vacíos
         if (id.isEmpty() || contraseña.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         // Validar credenciales usando el archivo JSON
         boolean credencialesValidas = ArchivoManager.validarCredenciales(id, contraseña);
-        
+
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+            propietario = ArchivoManager.buscarPropietario(id);
             // Aquí abres la ventana del administrador/propietario
-            new Propietario().setVisible(true);
+            new VentanaPropietario(propietario.getNombre()).setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "ID o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
             // Limpiar campos
-            txt_contraseña.setText("");
-            txt_idAdministrador.requestFocus();
+            txt_passwPropietario.setText("");
+            txt_idPropietario.requestFocus();
         }
     }//GEN-LAST:event_btn_ingresarLoginAdministradorActionPerformed
 
@@ -240,20 +283,6 @@ public class LoginPropietario extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -269,9 +298,10 @@ public class LoginPropietario extends javax.swing.JFrame {
     private javax.swing.JButton btn_ingresarLoginAdministrador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txt_contraseña;
-    private javax.swing.JTextField txt_idAdministrador;
+    private javax.swing.JTextField txt_idPropietario;
+    private javax.swing.JTextField txt_passwPropietario;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,9 +10,46 @@ package restaurant_chef_app.clases;
  */
 public class Administrador extends Usuario {
 
+    public String tipo;
+
     public Administrador(String id, String nombre, String contraseña) {
         super(id, nombre, contraseña);
+        this.tipo = "administrador";
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
+    
 
     public void agregarPlatillo(Menu menu, Platillo platillo) {
         menu.agregarPlatillo(platillo);
@@ -33,4 +70,3 @@ public class Administrador extends Usuario {
         }
     }
 }
-

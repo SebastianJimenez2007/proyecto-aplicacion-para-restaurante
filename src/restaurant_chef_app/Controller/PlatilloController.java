@@ -7,7 +7,9 @@ import restaurant_chef_app.clases.Platillo;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import javax.swing.DefaultListModel;
 
 public class PlatilloController {
 
@@ -49,7 +51,8 @@ public class PlatilloController {
 
         try (Reader reader = new FileReader(ARCHIVO_PLATILLOS)) {
 
-            Type tipoLista = new TypeToken<List<Platillo>>() {}.getType();
+            Type tipoLista = new TypeToken<List<Platillo>>() {
+            }.getType();
             List<Platillo> lista = gson.fromJson(reader, tipoLista);
 
             return (lista != null) ? lista : new ArrayList<>();
@@ -70,5 +73,82 @@ public class PlatilloController {
         } catch (IOException e) {
             System.out.println("Error al guardar platillos: " + e.getMessage());
         }
+    }
+
+    // MÉTODO ALTERNATIVO: Buscar por categoría (sin usar Streams)
+    public static List<Platillo> buscarPorCategoriaAlternativo(String categoria) {
+        List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
+        List<Platillo> platillosFiltrados = new ArrayList<>();
+
+        for (Platillo platillo : todosLosPlatillos) {
+            if (platillo.getCategoria() != null
+                    && platillo.getCategoria().equalsIgnoreCase(categoria)) {
+                platillosFiltrados.add(platillo);
+            }
+        }
+
+        return platillosFiltrados;
+    }
+
+    // MÉTODO PARA OBTENER TODAS LAS CATEGORÍAS ÚNICAS
+    public static List<String> obtenerCategorias() {
+        List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
+
+        return todosLosPlatillos.stream()
+                .map(Platillo::getCategoria)
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    // MÉTODO PARA BUSCAR POR NOMBRE (BONUS)
+    public static List<Platillo> buscarPorNombre(String nombre) {
+        List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
+
+        return todosLosPlatillos.stream()
+                .filter(platillo -> platillo.getNombre() != null
+                && platillo.getNombre().toLowerCase().contains(nombre.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    // MÉTODO PARA MOSTRAR PLATILLOS POR CATEGORÍAS
+    public static DefaultListModel<String> obtenerPlatillosPorCategoria() {
+        List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+
+        if (todosLosPlatillos.isEmpty()) {
+            listModel.addElement("No hay platillos disponibles");
+            return listModel;
+        }
+
+        // Agrupar platillos por categoría
+        Map<String, List<Platillo>> platillosPorCategoria = new HashMap<>();
+
+        for (Platillo platillo : todosLosPlatillos) {
+            String categoria = platillo.getCategoria();
+            platillosPorCategoria.putIfAbsent(categoria, new ArrayList<>());
+            platillosPorCategoria.get(categoria).add(platillo);
+        }
+
+        // Agregar al ListModel organizado por categorías
+        for (Map.Entry<String, List<Platillo>> entry : platillosPorCategoria.entrySet()) {
+            String categoria = entry.getKey();
+            List<Platillo> platillos = entry.getValue();
+
+            // Agregar categoría como separador
+            listModel.addElement("=== " + categoria.toUpperCase() + " ===");
+
+            // Agregar platillos de esta categoría
+            for (Platillo platillo : platillos) {
+                String platilloInfo = String.format("  • %s - $%,.0f",
+                        platillo.getNombre(), platillo.getPrecio());
+                listModel.addElement(platilloInfo);
+                listModel.addElement("Descripcion: -"+platillo.getDescripcion());
+            }
+
+            // Agregar línea en blanco entre categorías
+            listModel.addElement("");
+        }
+
+        return listModel;
     }
 }

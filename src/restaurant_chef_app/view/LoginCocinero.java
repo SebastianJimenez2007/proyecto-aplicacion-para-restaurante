@@ -4,6 +4,10 @@
  */
 package restaurant_chef_app.view;
 
+import javax.swing.JOptionPane;
+import restaurant_chef_app.Controller.*;
+import restaurant_chef_app.clases.*;
+
 /**
  *
  * @author PC PERSONAL
@@ -29,30 +33,41 @@ public class LoginCocinero extends javax.swing.JFrame {
 
         Background = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        pws_contraseña = new javax.swing.JTextField();
+        txt_passwCocinero = new javax.swing.JTextField();
         txt_idCocinero = new javax.swing.JTextField();
         btn_ingrsarLoginCocinero = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Background.setBackground(new java.awt.Color(233, 236, 239));
 
         jPanel1.setBackground(new java.awt.Color(19, 70, 134));
 
-        pws_contraseña.setBackground(new java.awt.Color(254, 178, 26));
-        pws_contraseña.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
-        pws_contraseña.setForeground(new java.awt.Color(253, 244, 227));
-        pws_contraseña.setText("CONTRASEÑA");
+        txt_passwCocinero.setBackground(new java.awt.Color(254, 178, 26));
+        txt_passwCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        txt_passwCocinero.setForeground(new java.awt.Color(253, 244, 227));
+        txt_passwCocinero.setText("CONTRASEÑA");
+        txt_passwCocinero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_passwCocineroMouseClicked(evt);
+            }
+        });
 
         txt_idCocinero.setBackground(new java.awt.Color(254, 178, 26));
         txt_idCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_idCocinero.setForeground(new java.awt.Color(253, 244, 227));
         txt_idCocinero.setText("ID");
+        txt_idCocinero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_idCocineroMouseClicked(evt);
+            }
+        });
 
         btn_ingrsarLoginCocinero.setBackground(new java.awt.Color(237, 63, 39));
         btn_ingrsarLoginCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -82,7 +97,7 @@ public class LoginCocinero extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_ingrsarLoginCocinero)
-                            .addComponent(pws_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_passwCocinero, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(67, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -96,7 +111,7 @@ public class LoginCocinero extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(pws_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_passwCocinero, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(btn_ingrsarLoginCocinero, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -109,15 +124,23 @@ public class LoginCocinero extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(253, 244, 227));
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
@@ -128,8 +151,9 @@ public class LoginCocinero extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(237, 63, 39));
         jSeparator1.setForeground(new java.awt.Color(237, 63, 39));
 
+        jLabel3.setBackground(new java.awt.Color(153, 255, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
+        jLabel3.setText("<--");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -195,8 +219,30 @@ public class LoginCocinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingrsarLoginCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingrsarLoginCocineroActionPerformed
-        new Cocinero().setVisible(true);
-        dispose();
+        String id = txt_idCocinero.getText().trim();
+        String contraseña = txt_passwCocinero.getText().trim();
+
+        // Validar campos vacíos
+        if (id.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar credenciales usando el archivo JSON
+        boolean credencialesValidas = LoginCocineroController.validarCredenciales(id, contraseña);
+
+        if (credencialesValidas) {
+            JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+            
+            // Aquí abres la ventana del administrador/propietario
+            new VentanaCocinero().setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "ID o contraseña incorrectos", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+            // Limpiar campos
+            txt_passwCocinero.setText("");
+            txt_idCocinero.requestFocus();
+        }
     }//GEN-LAST:event_btn_ingrsarLoginCocineroActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -204,6 +250,24 @@ public class LoginCocinero extends javax.swing.JFrame {
         new inicio().setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void txt_idCocineroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_idCocineroMouseClicked
+        if (txt_idCocinero.getText().equals("ID")){
+            txt_idCocinero.setText("");
+        }
+        if(txt_passwCocinero.getText().isEmpty()){
+            txt_passwCocinero.setText("CONTRASEÑA");
+        }
+    }//GEN-LAST:event_txt_idCocineroMouseClicked
+
+    private void txt_passwCocineroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passwCocineroMouseClicked
+        if(txt_idCocinero.getText().isEmpty()){
+            txt_idCocinero.setText("ID");
+        }
+        if(txt_passwCocinero.getText().equals("CONTRASEÑA")){
+            txt_passwCocinero.setText("");
+        }
+    }//GEN-LAST:event_txt_passwCocineroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -246,10 +310,11 @@ public class LoginCocinero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField pws_contraseña;
     private javax.swing.JTextField txt_idCocinero;
+    private javax.swing.JTextField txt_passwCocinero;
     // End of variables declaration//GEN-END:variables
 }

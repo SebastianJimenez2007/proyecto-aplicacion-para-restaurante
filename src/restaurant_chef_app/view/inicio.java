@@ -39,7 +39,7 @@ public class inicio extends javax.swing.JFrame {
         btnCocinero = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(235, 245, 246));
@@ -122,6 +122,11 @@ public class inicio extends javax.swing.JFrame {
         btnCocinero.setBorder(null);
         btnCocinero.setBorderPainted(false);
         btnCocinero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCocinero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCocineroActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCocinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 230, 210));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -149,7 +154,14 @@ public class inicio extends javax.swing.JFrame {
     private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
         // TODO add your handling code here:
         new LoginAdministrador().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnAdministradorActionPerformed
+
+    private void btnCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCocineroActionPerformed
+        // TODO add your handling code here:
+        new LoginCocinero().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCocineroActionPerformed
 
     /**
      * @param args the command line arguments

@@ -2,25 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package restaurant_chef_app.clases;
+package restaurant_chef_app.Controller;
 
-import java.io.*;
-import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.*;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import restaurant_chef_app.clases.*;
 
 /**
  *
- * @author Usuario
+ * @author Sebastian
  */
-public class ArchivoManager {
-
-    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Usuarios.json";
+public class LoginCocineroController {
+    
+    private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Cocineros.json";
     private static final Gson gson = new Gson();
 
-    public static List<Propietario> leerPropietarios() {
+    public static List<Cocinero> leerCocinero() {
         try {
             // Crear el directorio si no existe
             java.io.File directorio = new java.io.File(RUTA_USUARIOS);
@@ -31,7 +32,7 @@ public class ArchivoManager {
             // Crear archivo si no existe
             java.io.File archivo = new java.io.File(RUTA_USUARIOS);
             if (!archivo.exists()) {
-                crearArchivoUsuariosInicial();
+                crearArchivoCocineroInicial();
             }
 
             // Leer el archivo con BufferedReader y FileReader
@@ -45,10 +46,11 @@ public class ArchivoManager {
             reader.close();
 
             // Convertir JSON a lista de usuarios usando Gson
-            Type listType = new TypeToken<ArrayList<Propietario>>() {
+            Type listType = new TypeToken<ArrayList<Cocinero>>() {
             }.getType();
-            List<Propietario> usuarios = gson.fromJson(contenido.toString(), listType);
+            List<Cocinero> usuarios = gson.fromJson(contenido.toString(), listType);
 
+            
             return usuarios != null ? usuarios : new ArrayList<>();
 
         } catch (IOException e) {
@@ -57,13 +59,13 @@ public class ArchivoManager {
         }
     }
 
-    private static void crearArchivoUsuariosInicial() {
+    private static void crearArchivoCocineroInicial() {
         try {
-            List<Propietario> usuarios = new ArrayList<>();
+            List<Cocinero> usuarios = new ArrayList<>();
 
             // Crear usuario propietario por defecto
-            Propietario propietario = new Propietario("001", "Propietario Principal", "admin123", "Propietario");
-            usuarios.add(propietario);
+            Cocinero cocinero = new Cocinero("001", "Cocinero Principal", "admin123");
+            usuarios.add(cocinero);
 
             // Guardar el archivo
             FileWriter file = new FileWriter(RUTA_USUARIOS);
@@ -76,20 +78,20 @@ public class ArchivoManager {
     }
 
     public static boolean validarCredenciales(String id, String contraseña) {
-        List<Propietario> Usuarios = leerPropietarios();
+        List<Cocinero> Usuarios = leerCocinero();
 
-        for (Propietario usuario : Usuarios) {
-            if (usuario.getId().equals(id) && usuario.getContraseña().equals(contraseña) && usuario.getTipo().equals("propietario")) {
+        for (Cocinero usuario : Usuarios) {
+            if (usuario.getId().equals(id) && usuario.getContraseña().equals(contraseña) && usuario.getTipo().equals("cocinero")) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean validarUsuarioRegistrado(String id) {
-        List<Propietario> Usuarios = leerPropietarios();
+    public static boolean validarCocineroRegistrado(String id) {
+        List<Cocinero> Usuarios = leerCocinero();
 
-        for (Propietario usuario : Usuarios) {
+        for (Cocinero usuario : Usuarios) {
             if (usuario.getId().equals(id)) {
                 return true;
             }
@@ -97,10 +99,10 @@ public class ArchivoManager {
         return false;
     }
 
-    public static Propietario buscarPropietario(String id) {
-        List<Propietario> Usuarios = leerPropietarios();
+    public static Cocinero buscarCocinero(String id) {
+        List<Cocinero> Usuarios = leerCocinero();
 
-        for (Propietario usuario : Usuarios) {
+        for (Cocinero usuario : Usuarios) {
             if (usuario.getId().equals(id)) {
                 return usuario;
             }
@@ -108,12 +110,12 @@ public class ArchivoManager {
         return null;
     }
 
-    public static void CrearUsuariosPropietario(List<Propietario> usuarios, String id, String nombre, String contraseña) {
+    public static void CrearUsuariosCocinero(List<Cocinero> usuarios, String id, String nombre, String contraseña) {
         try {
 
-            // Crear usuario propietario
-            Propietario propietario = new Propietario(id, nombre, contraseña, "propietario");
-            usuarios.add(propietario);
+            // Crear usuario cocinero
+            Cocinero cocinero = new Cocinero(id, nombre, contraseña);
+            usuarios.add(cocinero);
 
             // Guardar el archivo
             FileWriter file = new FileWriter(RUTA_USUARIOS);

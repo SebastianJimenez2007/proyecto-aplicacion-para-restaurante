@@ -1,0 +1,12 @@
+[{
+        "tipo": "administrador",
+        "id": "0001",
+        "nombre": "Lucas",
+        "contraseña": "admin123"
+    },
+    {
+        "tipo": "administrador",
+        "id": "0002",
+        "nombre": "Maria",
+        "contraseña": "12345"
+    }]
