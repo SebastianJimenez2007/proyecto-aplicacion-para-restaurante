@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
 
 public class PlatilloController {
 
-    private static final String CARPETA_DATA = "data";
-    private static final String ARCHIVO_PLATILLOS = "data/platillos.json";
+    private static final String CARPETA_DATA = "Data";
+    private static final String ARCHIVO_PLATILLOS = "Data/Platillos.json";
     private static final Gson gson = new Gson();
 
     // Crea la carpeta "data" si no existe
