@@ -210,17 +210,41 @@ public class Crear_propietario extends javax.swing.JFrame {
         String nombre = txt_NombrePropietario.getText().trim();
         String contraseña = txt_passwPropietario.getText().trim();
         List<Propietario> usuarios = ArchivoManager.leerPropietarios();
-        
-        boolean credencialesValidas = ArchivoManager.validarUsuarioRegistrado(id);
-        if (credencialesValidas) {
-            JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Bienvenido", JOptionPane.ERROR_MESSAGE);
-        } else {
-            ArchivoManager.CrearUsuariosPropietario(usuarios, id, nombre, contraseña);
-            JOptionPane.showMessageDialog(this, "Usuario creado", "Bievenido", JOptionPane.INFORMATION_MESSAGE);
-            //Ingresa a la ventana del Propietario
-            new VentanaPropietario(txt_NombrePropietario.getText()).setVisible(true);
-            dispose();
+
+        // Validar campos vacíos
+        if (id.isEmpty() || nombre.isEmpty() || contraseña.isEmpty()
+            || id.equals("ID") || nombre.equals("NOMBRE") || contraseña.equals("CONTRASEÑA")) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+        // Validar que el ID sea solo números
+        if (!id.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El ID solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar que el nombre NO sea números
+        if (nombre.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "El nombre no puede contener solo números", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar si el usuario ya existe
+        boolean usuarioExiste = ArchivoManager.validarUsuarioRegistrado(id);
+
+        if (usuarioExiste) {
+            JOptionPane.showMessageDialog(this, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Crear usuario
+        ArchivoManager.CrearUsuariosPropietario(usuarios, id, nombre, contraseña);
+        JOptionPane.showMessageDialog(this, "Usuario creado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        // Abrir la ventana del propietario
+        new VentanaPropietario(nombre).setVisible(true);
+        dispose();
 
     }//GEN-LAST:event_btn_CrearPropietarioActionPerformed
 

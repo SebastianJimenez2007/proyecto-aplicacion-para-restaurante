@@ -218,6 +218,12 @@ public class LoginEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        // Validar que el ID contenga solo números
+        if (!id.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "El ID solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
 
         // Validar credenciales usando el archivo JSON
         boolean credencialesValidas = LoginEmpleadoController.validarCredenciales(id, contraseña);

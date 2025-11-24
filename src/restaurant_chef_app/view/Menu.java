@@ -278,6 +278,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btn_EditarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditarPlatoActionPerformed
         // TODO add your handling code here:
+        //validacion de que todos los campos deben estar llenos antes de editar
         Platillo platilloEditado = obtenerPLatilloLabel();
         PlatilloController.editarPlatillo(platilloEditado);
 
@@ -287,6 +288,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btn_EliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarPlatoActionPerformed
         // TODO add your handling code here:
+        //agregar validacion "estas seguro que deseas eliminar?"
         platillo = obtenerPLatilloLabel();
         PlatilloController.eliminarPlatillo(platillo.getId());
 
@@ -297,6 +299,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btn_CrearPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearPlatoActionPerformed
         // TODO add your handling code here:
+        // validacion en la mayoria de campos
         Platillo nuevo = obtenerPLatilloLabel();
         Boolean creado;
         creado = PlatilloController.crearPlatillo(nuevo);
@@ -328,6 +331,7 @@ public class Menu extends javax.swing.JFrame {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos en ID y Precio");
+            //validacion acá
             return platillo;
         }
 
