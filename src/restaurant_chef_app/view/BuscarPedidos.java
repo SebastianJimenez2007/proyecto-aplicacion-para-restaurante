@@ -4,7 +4,10 @@
  */
 package restaurant_chef_app.view;
 
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import restaurant_chef_app.Controller.PedidoController;
 import restaurant_chef_app.clases.*;
 
 /**
@@ -22,7 +25,18 @@ public class BuscarPedidos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.empleado = empleado;
+        cargarPedidosEnLista();
     }
+    
+   private void cargarPedidosEnLista() {
+    DefaultListModel<String> modelo = new DefaultListModel<>();
+
+    for (Pedido p : PedidoController.cargarPedidos()) {
+        modelo.addElement(p.toString());
+    }
+
+    listaPedidos.setModel(modelo);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +50,7 @@ public class BuscarPedidos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaPedidos = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btn_total$ = new javax.swing.JButton();
@@ -49,12 +63,12 @@ public class BuscarPedidos extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 63, 39)), "Pedidos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(237, 63, 39))); // NOI18N
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaPedidos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Pedido 1", "Pedido 2", "Pedido 3", "Pedido 4", "Pedido 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaPedidos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -180,7 +194,54 @@ public class BuscarPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_total$ActionPerformed
 
     private void btn_pedidoFinalizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidoFinalizadoActionPerformed
-        // TODO add your handling code here:
+      // 1. Obtener el pedido seleccionado
+    String seleccion = listaPedidos.getSelectedValue();
+
+    if (seleccion == null) {
+        JOptionPane.showMessageDialog(this, "Seleccione un pedido para finalizar.");
+        return;
+    }
+
+    // 2. Extraer ID del pedido
+    String id = seleccion.substring(seleccion.indexOf("ID=") + 3, seleccion.indexOf(", Cliente"));
+
+    // 3. Cargar pedidos desde archivo
+    List<Pedido> pedidos = PedidoController.cargarPedidos();
+
+    Pedido pedidoFinalizado = null;
+
+    for (Pedido p : pedidos) {
+        if (p.getId().equals(id)) {
+
+            if (!p.getEstado().equalsIgnoreCase("Entregado")) {
+                JOptionPane.showMessageDialog(this, 
+                    "El pedido debe estar en estado 'Entregado' para finalizarlo.");
+                return;
+            }
+
+            p.setEstado("Finalizado");
+            pedidoFinalizado = p;
+            break;
+        }
+    }
+
+    if (pedidoFinalizado == null) {
+        JOptionPane.showMessageDialog(this, "No se encontró el pedido.");
+        return;
+    }
+
+    // 4. Guardar cambios
+    PedidoController.guardarPedidos(pedidos);
+
+    // 5. MOSTRAR FACTURA
+    PedidoController.mostrarFactura(pedidoFinalizado);
+
+    // 6. Confirmación
+    JOptionPane.showMessageDialog(this, "Pedido finalizado correctamente.");
+
+    // 7. Recargar lista
+    cargarPedidosEnLista();
+
     }//GEN-LAST:event_btn_pedidoFinalizadoActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -229,10 +290,10 @@ public class BuscarPedidos extends javax.swing.JFrame {
     private javax.swing.JButton btn_total$;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listaPedidos;
     // End of variables declaration//GEN-END:variables
 }
