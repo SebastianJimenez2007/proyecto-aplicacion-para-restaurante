@@ -212,6 +212,7 @@ public class LoginCocinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingrsarLoginCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingrsarLoginCocineroActionPerformed
+        //validacion de que sean numeros y lo otro contraseña
         String id = txt_idCocinero.getText().trim();
         String contraseña = txt_passwCocinero.getText().trim();
 
@@ -221,6 +222,12 @@ public class LoginCocinero extends javax.swing.JFrame {
             return;
         }
 
+        // Validar que el ID contenga solo números
+        if (!id.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "El ID solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        
         // Validar credenciales usando el archivo JSON
         boolean credencialesValidas = LoginCocineroController.validarCredenciales(id, contraseña);
 

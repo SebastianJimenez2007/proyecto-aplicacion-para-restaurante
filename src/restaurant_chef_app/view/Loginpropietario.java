@@ -233,6 +233,12 @@ public class LoginPropietario extends javax.swing.JFrame {
             return;
         }
 
+        // Validar que el ID contenga solo números
+        if (!id.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "El ID solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        
         // Validar credenciales usando el archivo JSON
         boolean credencialesValidas = ArchivoManager.validarCredenciales(id, contraseña);
 
