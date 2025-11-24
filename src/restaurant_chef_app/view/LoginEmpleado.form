@@ -148,7 +148,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="f4" red="fd" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A"/>
+                <Property name="text" type="java.lang.String" value="1234"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_passwEmpleadoMouseClicked"/>
@@ -165,10 +165,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e3" green="f4" red="fd" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ID"/>
+                <Property name="text" type="java.lang.String" value="0001"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_IdEmpleadoMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_IdEmpleadoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_Ingresar">

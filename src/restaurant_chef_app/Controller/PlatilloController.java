@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class PlatilloController {
 
-    private static final String CARPETA_DATA = "data";
-    private static final String ARCHIVO_PLATILLOS = "data/platillos.json";
+    private static final String CARPETA_DATA = "Data";
+    private static final String ARCHIVO_PLATILLOS = "Data/Platillos.json";
     private static final Gson gson = new Gson();
 
     // Crea la carpeta "data" si no existe
@@ -69,7 +70,7 @@ public class PlatilloController {
 
         try (Writer writer = new FileWriter(ARCHIVO_PLATILLOS)) {
             gson.toJson(platillos, writer);
-            System.out.println("Platillos guardados correctamente.");
+            //System.out.println("Platillos guardados correctamente.");
         } catch (IOException e) {
             System.out.println("Error al guardar platillos: " + e.getMessage());
         }
@@ -139,10 +140,9 @@ public class PlatilloController {
 
             // Agregar platillos de esta categoría
             for (Platillo platillo : platillos) {
-                String platilloInfo = String.format("  • %s - $%,.0f",
-                        platillo.getNombre(), platillo.getPrecio());
-                listModel.addElement(platilloInfo);
-                listModel.addElement("Descripcion: -"+platillo.getDescripcion());
+                listModel.addElement(" " + platillo.getNombre());
+                listModel.addElement("  • Precio $ " + platillo.getPrecio());
+                listModel.addElement("Descripcion: -" + platillo.getDescripcion());
             }
 
             // Agregar línea en blanco entre categorías
@@ -150,5 +150,47 @@ public class PlatilloController {
         }
 
         return listModel;
+    }
+
+    public static boolean editarPlatillo(Platillo platilloActualizado) {
+        List<Platillo> platillos = obtenerPlatillosDisponibles();
+
+        for (int i = 0; i < platillos.size(); i++) {
+            if (platillos.get(i).getId() == platilloActualizado.getId()) {
+                platillos.set(i, platilloActualizado);
+                guardarPlatillos(platillos);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean eliminarPlatillo(int id) {
+        List<Platillo> platillos = obtenerPlatillosDisponibles();
+
+        for (int i = 0; i < platillos.size(); i++) {
+            if (platillos.get(i).getId() == id) {
+                platillos.remove(i);
+                guardarPlatillos(platillos);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean crearPlatillo(Platillo nuevoPlatillo) {
+        List<Platillo> platillos = obtenerPlatillosDisponibles();
+
+        // Verificar si ya existe un platillo con el mismo ID
+        for (Platillo platillo : platillos) {
+            if (platillo.getId() == nuevoPlatillo.getId()) {
+                JOptionPane.showMessageDialog(null,"Ya existe un platillo con ID: " + nuevoPlatillo.getId());
+                return false;
+            }
+        }
+
+        platillos.add(nuevoPlatillo);
+        guardarPlatillos(platillos);
+        return true;
     }
 }

@@ -18,32 +18,22 @@ public class Platillo implements Serializable {
         this.descripcion = (descripcion != null) ? descripcion : "Sin descripción";
     }
 
-    // Constructor vacío obligatorio para Gson
     public Platillo() {}
 
-    // Getters y Setters
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public String getNombre() { return nombre; }
+    public double getPrecio() { return precio; }
+    public String getCategoria() { return categoria; }
+    public String getDescripcion() { return descripcion; }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public void setId(int id) { this.id = id; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setPrecio(double precio) { this.precio = precio; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
     @Override
     public String toString() {
-        return nombre + " - $" + precio;
+        return nombre + " (" + categoria + ") - $" + precio;
     }
 }
