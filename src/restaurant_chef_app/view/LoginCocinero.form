@@ -118,17 +118,11 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="btn_ingrsarLoginCocinero" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="txt_passwCocinero" alignment="1" min="-2" pref="274" max="-2" attributes="0"/>
+                                  <Component id="txt_idCocinero" alignment="1" min="-2" pref="274" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace pref="67" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="txt_idCocinero" min="-2" pref="274" max="-2" attributes="0"/>
-                          <EmptySpace pref="79" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -137,18 +131,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="55" max="-2" attributes="0"/>
-                      <EmptySpace pref="223" max="32767" attributes="0"/>
+                      <EmptySpace pref="158" max="32767" attributes="0"/>
+                      <Component id="txt_idCocinero" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="txt_passwCocinero" min="-2" pref="38" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="btn_ingrsarLoginCocinero" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="260" max="32767" attributes="0"/>
-                          <Component id="txt_idCocinero" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -6,6 +6,7 @@ package restaurant_chef_app.view;
 
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import restaurant_chef_app.Controller.*;
 import restaurant_chef_app.Controller.*;
 import restaurant_chef_app.clases.Platillo;
@@ -16,14 +17,17 @@ import restaurant_chef_app.clases.Platillo;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
+    public Platillo platillo;
+    public DefaultListModel<String> modelo ;
+            /**
+             * Creates new form Menu
+             */
+
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
-        
-        DefaultListModel<String> modelo = PlatilloController.obtenerPlatillosPorCategoria();
+
+        modelo = PlatilloController.obtenerPlatillosPorCategoria();
         listaPlatillos.setModel(modelo);
     }
 
@@ -39,6 +43,21 @@ public class Menu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaPlatillos = new javax.swing.JList<>();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_idDescripcion = new javax.swing.JTextField();
+        txt_precioDescripcion = new javax.swing.JTextField();
+        txt_nombreDescripcion = new javax.swing.JTextField();
+        txt_categoriaDescripcion = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_DescripcionArea = new javax.swing.JTextArea();
+        btn_EditarPlato = new javax.swing.JButton();
+        btn_EliminarPlato = new javax.swing.JButton();
+        btn_CrearPlato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -46,11 +65,146 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(254, 178, 26), 3, true));
 
         listaPlatillos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "=== CATEGORIA ===", "• Nombre del plato -   Precio $0.00", "Descripcion: -----" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        listaPlatillos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPlatillosValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaPlatillos);
+
+        jPanel1.setBackground(new java.awt.Color(237, 63, 39));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(253, 244, 227), 3), "Descripcion del plato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 1, 12), new java.awt.Color(253, 244, 227))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(253, 244, 227));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel1.setText("ID");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(253, 244, 227));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel4.setText("PRECIO");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(253, 244, 227));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel2.setText("NOMBRE");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(253, 244, 227));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel3.setText("CATEGORIA");
+
+        txt_idDescripcion.setBackground(new java.awt.Color(254, 178, 26));
+        txt_idDescripcion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txt_idDescripcion.setForeground(new java.awt.Color(253, 244, 227));
+
+        txt_precioDescripcion.setBackground(new java.awt.Color(254, 178, 26));
+        txt_precioDescripcion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txt_precioDescripcion.setForeground(new java.awt.Color(253, 244, 227));
+
+        txt_nombreDescripcion.setBackground(new java.awt.Color(254, 178, 26));
+        txt_nombreDescripcion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txt_nombreDescripcion.setForeground(new java.awt.Color(253, 244, 227));
+
+        txt_categoriaDescripcion.setBackground(new java.awt.Color(254, 178, 26));
+        txt_categoriaDescripcion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txt_categoriaDescripcion.setForeground(new java.awt.Color(253, 244, 227));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(253, 244, 227));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel5.setText("DESCRIPCION");
+
+        txt_DescripcionArea.setBackground(new java.awt.Color(254, 178, 26));
+        txt_DescripcionArea.setColumns(20);
+        txt_DescripcionArea.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_DescripcionArea.setForeground(new java.awt.Color(253, 244, 227));
+        txt_DescripcionArea.setLineWrap(true);
+        txt_DescripcionArea.setRows(5);
+        txt_DescripcionArea.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(txt_DescripcionArea);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_idDescripcion)
+                    .addComponent(txt_precioDescripcion)
+                    .addComponent(txt_categoriaDescripcion)
+                    .addComponent(txt_nombreDescripcion)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_idDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_precioDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_nombreDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_categoriaDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btn_EditarPlato.setBackground(new java.awt.Color(19, 70, 134));
+        btn_EditarPlato.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_EditarPlato.setForeground(new java.awt.Color(253, 244, 227));
+        btn_EditarPlato.setText("EDITAR");
+        btn_EditarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EditarPlatoActionPerformed(evt);
+            }
+        });
+
+        btn_EliminarPlato.setBackground(new java.awt.Color(19, 70, 134));
+        btn_EliminarPlato.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_EliminarPlato.setForeground(new java.awt.Color(253, 244, 227));
+        btn_EliminarPlato.setText("ELIMINAR");
+        btn_EliminarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EliminarPlatoActionPerformed(evt);
+            }
+        });
+
+        btn_CrearPlato.setBackground(new java.awt.Color(19, 70, 134));
+        btn_CrearPlato.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_CrearPlato.setForeground(new java.awt.Color(253, 244, 227));
+        btn_CrearPlato.setText("CREAR");
+        btn_CrearPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CrearPlatoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -59,13 +213,31 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(btn_CrearPlato)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_EliminarPlato)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_EditarPlato)))
+                .addGap(52, 52, 52))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_EditarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_EliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_CrearPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -84,6 +256,82 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void listaPlatillosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPlatillosValueChanged
+        // TODO add your handling code here:
+        if (!evt.getValueIsAdjusting()) {
+            if (listaPlatillos.getSelectedValue() == null) {
+                return;
+            }
+            String platoSeleccionado = listaPlatillos.getSelectedValue().trim();
+
+            List<Platillo> platillos = PlatilloController.obtenerPlatillosDisponibles();
+            for (Platillo platillo : platillos) {
+                if (platoSeleccionado.equalsIgnoreCase(platillo.getNombre())) {
+                    actualizarLabels(platillo);
+                    this.platillo = platillo;
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_listaPlatillosValueChanged
+
+    private void btn_EditarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditarPlatoActionPerformed
+        // TODO add your handling code here:
+        Platillo platilloEditado = obtenerPLatilloLabel();
+        PlatilloController.editarPlatillo(platilloEditado);
+
+        modelo = PlatilloController.obtenerPlatillosPorCategoria();
+        listaPlatillos.setModel(modelo);
+    }//GEN-LAST:event_btn_EditarPlatoActionPerformed
+
+    private void btn_EliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarPlatoActionPerformed
+        // TODO add your handling code here:
+        platillo = obtenerPLatilloLabel();
+        PlatilloController.eliminarPlatillo(platillo.getId());
+
+        modelo = PlatilloController.obtenerPlatillosPorCategoria();
+        listaPlatillos.setModel(modelo);
+
+    }//GEN-LAST:event_btn_EliminarPlatoActionPerformed
+
+    private void btn_CrearPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearPlatoActionPerformed
+        // TODO add your handling code here:
+        Platillo nuevo = obtenerPLatilloLabel();
+        Boolean creado;
+        creado = PlatilloController.crearPlatillo(nuevo);
+        
+        if(creado){
+            JOptionPane.showConfirmDialog(this,"✅ Platillo creado Exitosamente","Plato creado",JOptionPane.PLAIN_MESSAGE);
+            modelo = PlatilloController.obtenerPlatillosPorCategoria();
+            listaPlatillos.setModel(modelo);
+        }
+    }//GEN-LAST:event_btn_CrearPlatoActionPerformed
+    private void actualizarLabels(Platillo platillo) {
+        txt_idDescripcion.setText("" + platillo.getId());
+        txt_precioDescripcion.setText("" + String.format("%.0f", platillo.getPrecio()));
+        txt_nombreDescripcion.setText("" + platillo.getNombre());
+        txt_categoriaDescripcion.setText("" + platillo.getCategoria());
+        txt_DescripcionArea.setText("" + platillo.getDescripcion());
+    }
+
+    private Platillo obtenerPLatilloLabel() {
+        Platillo platillo = new Platillo(0001, "SIn nombre", 0.0, "Sin categoria", "");
+        try {
+            platillo.setNombre(txt_nombreDescripcion.getText());
+            platillo.setCategoria(txt_categoriaDescripcion.getText());
+            platillo.setDescripcion(txt_DescripcionArea.getText());
+
+            platillo.setId(Integer.parseInt(txt_idDescripcion.getText().trim()));
+            platillo.setPrecio(Double.parseDouble(txt_precioDescripcion.getText().trim()));
+            return platillo;
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos en ID y Precio");
+            return platillo;
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -121,8 +369,23 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_CrearPlato;
+    private javax.swing.JButton btn_EditarPlato;
+    private javax.swing.JButton btn_EliminarPlato;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> listaPlatillos;
+    private javax.swing.JTextArea txt_DescripcionArea;
+    private javax.swing.JTextField txt_categoriaDescripcion;
+    private javax.swing.JTextField txt_idDescripcion;
+    private javax.swing.JTextField txt_nombreDescripcion;
+    private javax.swing.JTextField txt_precioDescripcion;
     // End of variables declaration//GEN-END:variables
 }
