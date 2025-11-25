@@ -215,11 +215,11 @@ public class LoginEmpleado extends javax.swing.JFrame {
         }
 
         // Validar credenciales usando el archivo JSON
-        boolean credencialesValidas = LoginEmpleadoController.validarCredenciales(id, contraseña);
+        boolean credencialesValidas = EmpleadoController.validarCredenciales(id, contraseña);
 
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
-            empleado = LoginEmpleadoController.buscarEmpleado(id);
+            empleado = EmpleadoController.buscarEmpleado(id);
             // Aquí abres la ventana del administrador/propietario
             new VentanaEmpleado(empleado).setVisible(true);
             dispose();

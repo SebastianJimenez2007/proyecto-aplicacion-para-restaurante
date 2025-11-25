@@ -206,13 +206,13 @@ public class CrearCocinero extends javax.swing.JFrame {
         String id = txt_idCocinero.getText().trim();
         String nombre = txt_NombreCocinero.getText().trim();
         String contraseña = txt_passwCocinero.getText().trim();
-        List<Cocinero> usuarios = LoginCocineroController.leerCocinero();
+        List<Cocinero> usuarios = CocineroController.leerCocinero();
 
-        boolean credencialesValidas = LoginCocineroController.validarCocineroRegistrado(id);
+        boolean credencialesValidas = CocineroController.validarCocineroRegistrado(id);
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
         } else {
-            LoginCocineroController.CrearUsuariosCocinero(usuarios, id, nombre, contraseña);
+            CocineroController.CrearUsuariosCocinero(usuarios, id, nombre, contraseña);
             JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
 
             dispose();

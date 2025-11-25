@@ -222,7 +222,7 @@ public class LoginCocinero extends javax.swing.JFrame {
         }
 
         // Validar credenciales usando el archivo JSON
-        boolean credencialesValidas = LoginCocineroController.validarCredenciales(id, contraseña);
+        boolean credencialesValidas = CocineroController.validarCredenciales(id, contraseña);
 
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "¡Login exitoso!", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
