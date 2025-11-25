@@ -38,16 +38,21 @@ public class VentanaPropietario extends javax.swing.JFrame {
         LblNombrePropietario = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btn_volver = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_Menu = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_Empleado = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        MenuEditar = new javax.swing.JMenu();
+        MenuEditarEmpleados = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        MenuEditarPlato = new javax.swing.JMenuItem();
         MenuCrear = new javax.swing.JMenu();
         MenuCrearAdm = new javax.swing.JMenuItem();
         MenuCrearEmp = new javax.swing.JMenuItem();
         MenuCrearCoc = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        MenuCrearPlato = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,15 +115,15 @@ public class VentanaPropietario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(237, 63, 39));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(254, 178, 26));
-        jButton1.setText("MENU");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_Menu.setBackground(new java.awt.Color(237, 63, 39));
+        btn_Menu.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_Menu.setForeground(new java.awt.Color(254, 178, 26));
+        btn_Menu.setText("MENU");
+        btn_Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Menu.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_Menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_MenuActionPerformed(evt);
             }
         });
 
@@ -129,15 +134,15 @@ public class VentanaPropietario extends javax.swing.JFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jButton3.setBackground(new java.awt.Color(237, 63, 39));
-        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 11)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(254, 178, 26));
-        jButton3.setText("EMPLEADOS");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_Empleado.setBackground(new java.awt.Color(237, 63, 39));
+        btn_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 11)); // NOI18N
+        btn_Empleado.setForeground(new java.awt.Color(254, 178, 26));
+        btn_Empleado.setText("EMPLEADOS");
+        btn_Empleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Empleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_Empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_EmpleadoActionPerformed(evt);
             }
         });
 
@@ -153,11 +158,11 @@ public class VentanaPropietario extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,9 +174,9 @@ public class VentanaPropietario extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(83, 83, 83)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(360, Short.MAX_VALUE))
         );
 
@@ -195,8 +200,26 @@ public class VentanaPropietario extends javax.swing.JFrame {
         jMenu1.setText("BUSCAR");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("EDITAR");
-        jMenuBar1.add(jMenu2);
+        MenuEditar.setText("EDITAR");
+
+        MenuEditarEmpleados.setText("Crear Administrador");
+        MenuEditarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEditarEmpleadosActionPerformed(evt);
+            }
+        });
+        MenuEditar.add(MenuEditarEmpleados);
+        MenuEditar.add(jSeparator2);
+
+        MenuEditarPlato.setText("Crear Plato");
+        MenuEditarPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEditarPlatoActionPerformed(evt);
+            }
+        });
+        MenuEditar.add(MenuEditarPlato);
+
+        jMenuBar1.add(MenuEditar);
 
         MenuCrear.setText("CREAR");
 
@@ -223,6 +246,15 @@ public class VentanaPropietario extends javax.swing.JFrame {
             }
         });
         MenuCrear.add(MenuCrearCoc);
+        MenuCrear.add(jSeparator1);
+
+        MenuCrearPlato.setText("Crear Plato");
+        MenuCrearPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCrearPlatoActionPerformed(evt);
+            }
+        });
+        MenuCrear.add(MenuCrearPlato);
 
         jMenuBar1.add(MenuCrear);
 
@@ -252,25 +284,38 @@ public class VentanaPropietario extends javax.swing.JFrame {
         new CrearAdministrador().setVisible(true);
     }//GEN-LAST:event_MenuCrearAdmActionPerformed
 
-    private void MenuCrearEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearEmpActionPerformed
+    private void btn_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MenuActionPerformed
         // TODO add your handling code here:
-        new CrearEmpleado().setVisible(true);
-    }//GEN-LAST:event_MenuCrearEmpActionPerformed
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_btn_MenuActionPerformed
 
     private void MenuCrearCocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearCocActionPerformed
         // TODO add your handling code here:
         new CrearCocinero().setVisible(true);
     }//GEN-LAST:event_MenuCrearCocActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void MenuCrearEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearEmpActionPerformed
         // TODO add your handling code here:
-        new Menu().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        new CrearEmpleado().setVisible(true);
+    }//GEN-LAST:event_MenuCrearEmpActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpleadoActionPerformed
         // TODO add your handling code here:
         new VerEmpleados().setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_EmpleadoActionPerformed
+
+    private void MenuCrearPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCrearPlatoActionPerformed
+        // TODO add your handling code here:
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_MenuCrearPlatoActionPerformed
+
+    private void MenuEditarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEditarEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuEditarEmpleadosActionPerformed
+
+    private void MenuEditarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEditarPlatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuEditarPlatoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,16 +359,21 @@ public class VentanaPropietario extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuCrearAdm;
     private javax.swing.JMenuItem MenuCrearCoc;
     private javax.swing.JMenuItem MenuCrearEmp;
+    private javax.swing.JMenuItem MenuCrearPlato;
+    private javax.swing.JMenu MenuEditar;
+    private javax.swing.JMenuItem MenuEditarEmpleados;
+    private javax.swing.JMenuItem MenuEditarPlato;
+    private javax.swing.JButton btn_Empleado;
+    private javax.swing.JButton btn_Menu;
     private javax.swing.JLabel btn_volver;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
