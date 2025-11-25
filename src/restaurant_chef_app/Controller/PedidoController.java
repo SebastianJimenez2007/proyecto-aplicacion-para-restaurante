@@ -7,6 +7,8 @@ import restaurant_chef_app.clases.Pedido;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import restaurant_chef_app.clases.Platillo;
 
 public class PedidoController {
 
@@ -35,9 +37,26 @@ public class PedidoController {
         }
     }
 
-    // -----------------------
-    //  GUARDAR PEDIDOS
-    // -----------------------
+    
+   public static String generarNuevoId() {
+    List<Pedido> pedidos = cargarPedidos();
+    int max = 0;
+
+    for (Pedido p : pedidos) {
+        try {
+            int idNum = Integer.parseInt(p.getId());
+            if (idNum > max) {
+                max = idNum;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("ID inválido encontrado: " + p.getId());
+        }
+    }
+
+    return String.valueOf(max + 1);
+}
+
+
     public static void guardarPedidos(List<Pedido> pedidos) {
         try (Writer writer = new FileWriter(ARCHIVO_PEDIDOS)) {
             gson.toJson(pedidos, writer);
@@ -83,4 +102,30 @@ public class PedidoController {
 
         guardarPedidos(pedidos);
     }
+    
+    public static void mostrarFactura(Pedido pedido) {
+    StringBuilder factura = new StringBuilder();
+
+    factura.append("=========== FACTURA ===========\n");
+    factura.append("ID Pedido: ").append(pedido.getId()).append("\n");
+    factura.append("Cliente: ").append(pedido.getNombreCliente()).append("\n");
+    factura.append("Estado: ").append(pedido.getEstado()).append("\n");
+    factura.append("--------------------------------\n");
+    factura.append("Platillos:\n");
+
+    for (Platillo p : pedido.getPlatillos()) {
+        factura.append(" - ").append(p.getNombre())
+               .append(" .... $").append(p.getPrecio()).append("\n");
+    }
+
+    factura.append("--------------------------------\n");
+    factura.append("TOTAL: $").append(pedido.getTotal()).append("\n");
+    factura.append("================================");
+
+    // Mostrar al usuario
+    JOptionPane.showMessageDialog(null, factura.toString(), 
+                                  "Factura del Pedido", 
+                                  JOptionPane.INFORMATION_MESSAGE);
+}
+
 }

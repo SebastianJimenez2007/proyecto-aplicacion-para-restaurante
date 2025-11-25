@@ -52,7 +52,7 @@ public class LoginCocinero extends javax.swing.JFrame {
         txt_passwCocinero.setBackground(new java.awt.Color(254, 178, 26));
         txt_passwCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_passwCocinero.setForeground(new java.awt.Color(253, 244, 227));
-        txt_passwCocinero.setText("CONTRASEÑA");
+        txt_passwCocinero.setText("chef123");
         txt_passwCocinero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_passwCocineroMouseClicked(evt);
@@ -62,7 +62,7 @@ public class LoginCocinero extends javax.swing.JFrame {
         txt_idCocinero.setBackground(new java.awt.Color(254, 178, 26));
         txt_idCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_idCocinero.setForeground(new java.awt.Color(253, 244, 227));
-        txt_idCocinero.setText("ID");
+        txt_idCocinero.setText("0001");
         txt_idCocinero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_idCocineroMouseClicked(evt);
@@ -212,6 +212,7 @@ public class LoginCocinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingrsarLoginCocineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingrsarLoginCocineroActionPerformed
+        //validacion de que sean numeros y lo otro contraseña
         String id = txt_idCocinero.getText().trim();
         String contraseña = txt_passwCocinero.getText().trim();
 
@@ -221,6 +222,12 @@ public class LoginCocinero extends javax.swing.JFrame {
             return;
         }
 
+        // Validar que el ID contenga solo números
+        if (!id.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "El ID solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        
         // Validar credenciales usando el archivo JSON
         boolean credencialesValidas = CocineroController.validarCredenciales(id, contraseña);
 

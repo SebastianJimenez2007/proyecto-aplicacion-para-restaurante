@@ -53,7 +53,7 @@ public class LoginEmpleado extends javax.swing.JFrame {
         txt_passwEmpleado.setBackground(new java.awt.Color(254, 178, 26));
         txt_passwEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_passwEmpleado.setForeground(new java.awt.Color(253, 244, 227));
-        txt_passwEmpleado.setText("CONTRASEÑA");
+        txt_passwEmpleado.setText("1234");
         txt_passwEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_passwEmpleadoMouseClicked(evt);
@@ -63,10 +63,15 @@ public class LoginEmpleado extends javax.swing.JFrame {
         txt_IdEmpleado.setBackground(new java.awt.Color(254, 178, 26));
         txt_IdEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_IdEmpleado.setForeground(new java.awt.Color(253, 244, 227));
-        txt_IdEmpleado.setText("ID");
+        txt_IdEmpleado.setText("0001");
         txt_IdEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_IdEmpleadoMouseClicked(evt);
+            }
+        });
+        txt_IdEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_IdEmpleadoActionPerformed(evt);
             }
         });
 
@@ -213,6 +218,12 @@ public class LoginEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        // Validar que el ID contenga solo números
+        if (!id.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "El ID solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
 
         // Validar credenciales usando el archivo JSON
         boolean credencialesValidas = EmpleadoController.validarCredenciales(id, contraseña);
@@ -254,6 +265,10 @@ public class LoginEmpleado extends javax.swing.JFrame {
             txt_passwEmpleado.setText("");
         }
     }//GEN-LAST:event_txt_passwEmpleadoMouseClicked
+
+    private void txt_IdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_IdEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
