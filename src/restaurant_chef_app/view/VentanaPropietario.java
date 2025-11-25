@@ -39,7 +39,7 @@ public class VentanaPropietario extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btn_volver = new javax.swing.JLabel();
         btn_Menu = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_Finanzas = new javax.swing.JButton();
         btn_Empleado = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -127,12 +127,17 @@ public class VentanaPropietario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(237, 63, 39));
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(254, 178, 26));
-        jButton2.setText("FINANZAS");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_Finanzas.setBackground(new java.awt.Color(237, 63, 39));
+        btn_Finanzas.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_Finanzas.setForeground(new java.awt.Color(254, 178, 26));
+        btn_Finanzas.setText("FINANZAS");
+        btn_Finanzas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Finanzas.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_Finanzas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_FinanzasActionPerformed(evt);
+            }
+        });
 
         btn_Empleado.setBackground(new java.awt.Color(237, 63, 39));
         btn_Empleado.setFont(new java.awt.Font("Segoe UI Black", 1, 11)); // NOI18N
@@ -160,7 +165,7 @@ public class VentanaPropietario extends javax.swing.JFrame {
                 .addGap(106, 106, 106)
                 .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Finanzas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140)
                 .addComponent(btn_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -175,7 +180,7 @@ public class VentanaPropietario extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Finanzas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(360, Short.MAX_VALUE))
         );
@@ -317,6 +322,11 @@ public class VentanaPropietario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuEditarPlatoActionPerformed
 
+    private void btn_FinanzasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FinanzasActionPerformed
+        // TODO add your handling code here:
+        new Finanzas().setVisible(true);
+    }//GEN-LAST:event_btn_FinanzasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,9 +374,9 @@ public class VentanaPropietario extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuEditarEmpleados;
     private javax.swing.JMenuItem MenuEditarPlato;
     private javax.swing.JButton btn_Empleado;
+    private javax.swing.JButton btn_Finanzas;
     private javax.swing.JButton btn_Menu;
     private javax.swing.JLabel btn_volver;
-    private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
