@@ -202,7 +202,7 @@ public class VentanaPropietario extends javax.swing.JFrame {
 
         MenuEditar.setText("EDITAR");
 
-        MenuEditarEmpleados.setText("Crear Administrador");
+        MenuEditarEmpleados.setText("Editar Administrador");
         MenuEditarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuEditarEmpleadosActionPerformed(evt);

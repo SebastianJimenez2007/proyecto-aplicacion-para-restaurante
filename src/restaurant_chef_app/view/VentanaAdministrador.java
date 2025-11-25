@@ -38,8 +38,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         LblNombreAdministrador = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btn_volver = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_Menu = new javax.swing.JButton();
+        btn_EmpleadosAdm = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuBuscar = new javax.swing.JMenu();
@@ -106,22 +106,27 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setBackground(new java.awt.Color(237, 63, 39));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(254, 178, 26));
-        jButton1.setText("MENU");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jButton2.setBackground(new java.awt.Color(237, 63, 39));
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(254, 178, 26));
-        jButton2.setText("EMPLEADO");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_Menu.setBackground(new java.awt.Color(237, 63, 39));
+        btn_Menu.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_Menu.setForeground(new java.awt.Color(254, 178, 26));
+        btn_Menu.setText("MENU");
+        btn_Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Menu.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_Menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_MenuActionPerformed(evt);
+            }
+        });
+
+        btn_EmpleadosAdm.setBackground(new java.awt.Color(237, 63, 39));
+        btn_EmpleadosAdm.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btn_EmpleadosAdm.setForeground(new java.awt.Color(254, 178, 26));
+        btn_EmpleadosAdm.setText("EMPLEADO");
+        btn_EmpleadosAdm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_EmpleadosAdm.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_EmpleadosAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EmpleadosAdmActionPerformed(evt);
             }
         });
 
@@ -144,11 +149,11 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_EmpleadosAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(172, 172, 172))
         );
         jPanel2Layout.setVerticalGroup(
@@ -160,8 +165,8 @@ public class VentanaAdministrador extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(140, 140, 140)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_EmpleadosAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(303, Short.MAX_VALUE))
         );
@@ -216,9 +221,15 @@ public class VentanaAdministrador extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_volverMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_EmpleadosAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpleadosAdmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new VerEmpleadosAdministrador().setVisible(true);
+    }//GEN-LAST:event_btn_EmpleadosAdmActionPerformed
+
+    private void btn_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MenuActionPerformed
+        // TODO add your handling code here:
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_btn_MenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,9 +278,9 @@ public class VentanaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu MenuBuscar;
     private javax.swing.JMenu MenuEditar;
     private javax.swing.JMenu MenuListar;
+    private javax.swing.JButton btn_EmpleadosAdm;
+    private javax.swing.JButton btn_Menu;
     private javax.swing.JLabel btn_volver;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

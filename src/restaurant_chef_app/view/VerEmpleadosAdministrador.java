@@ -13,9 +13,8 @@ import restaurant_chef_app.clases.*;
  *
  * @author Sebastian JB
  */
-public class VerEmpleados extends javax.swing.JFrame {
+public class VerEmpleadosAdministrador extends javax.swing.JFrame {
 
-    public Administrador administrador;
     public Empleado empleado;
     public Cocinero cocinero;
     public DefaultListModel<String> modelo;
@@ -23,7 +22,7 @@ public class VerEmpleados extends javax.swing.JFrame {
     /**
      * Creates new form VerEmpleados
      */
-    public VerEmpleados() {
+    public VerEmpleadosAdministrador() {
         initComponents();
         setLocationRelativeTo(null);
 
@@ -111,7 +110,7 @@ public class VerEmpleados extends javax.swing.JFrame {
         cbx_Roles.setBackground(new java.awt.Color(254, 178, 26));
         cbx_Roles.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         cbx_Roles.setForeground(new java.awt.Color(253, 244, 227));
-        cbx_Roles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ROL", "ADMINISTRADOR", "EMPLEADO", "COCINERO" }));
+        cbx_Roles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ROL", "EMPLEADO", "COCINERO" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,15 +227,13 @@ public class VerEmpleados extends javax.swing.JFrame {
         }
 
         String seleccion = listaUsuarios.getSelectedValue().trim();
-
-        // Ignorar los títulos de sección
+        
         if (seleccion.startsWith("===") || seleccion.isEmpty() || seleccion.equals("No hay usuarios registrados")) {
             return;
         }
 
         int selectedIndex = listaUsuarios.getSelectedIndex();
-
-        // Determinar sección basado en el índice seleccionado
+        
         String seccion = determinarSeccion(selectedIndex);
 
         if (seleccion.startsWith("ID:")) {
@@ -254,7 +251,7 @@ public class VerEmpleados extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un usuario para editar");
             return;
         }
-        
+
         String id = txt_idDescripcion.getText().trim();
         String nombre = txt_nombreDescripcion.getText().trim();
         String contraseña = txt_categoriaDescripcion.getText().trim();
@@ -268,20 +265,17 @@ public class VerEmpleados extends javax.swing.JFrame {
         boolean exito = false;
 
         switch (tipo) {
-            case "ADMINISTRADOR":
-                exito = AdministradorController.editarAdministrador(administrador.getId(), administrador.getNombre(), administrador.getContraseña());
-                break;
             case "EMPLEADO":
-                exito = EmpleadoController.editarEmpleado(empleado.getId(), empleado.getNombre(), empleado.getContraseña());
+                exito = EmpleadoController.editarEmpleado(id, nombre, contraseña);
                 break;
             case "COCINERO":
-                exito = CocineroController.editarCocinero(cocinero.getId(), cocinero.getNombre(), cocinero.getContraseña());
+                exito = CocineroController.editarCocinero(id, nombre, contraseña);
                 break;
         }
 
         if (exito) {
             javax.swing.JOptionPane.showMessageDialog(this, "Usuario editado correctamente");
-            // Actualizar la lista
+            
             modelo = obtenerTodosLosUsuariosParaLista();
             listaUsuarios.setModel(modelo);
         } else {
@@ -292,55 +286,43 @@ public class VerEmpleados extends javax.swing.JFrame {
     private void btn_EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarUsuarioActionPerformed
         // TODO add your handling code here:
         if (listaUsuarios.getSelectedValue() == null) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un usuario para eliminar");
-        return;
-    }
-    
-    String id = txt_idDescripcion.getText().trim();
-    String tipo = cbx_Roles.getSelectedItem().toString();
-    
-    int confirm = javax.swing.JOptionPane.showConfirmDialog(this, 
-        "¿Está seguro de eliminar este usuario?", "Confirmar eliminación", 
-        javax.swing.JOptionPane.YES_NO_OPTION);
-    
-    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
-        boolean exito = false;
-        
-        switch (tipo) {
-            case "ADMINISTRADOR":
-                exito = AdministradorController.eliminarAdministrador(id);
-                break;
-            case "EMPLEADO":
-                exito = EmpleadoController.eliminarEmpleado(id);
-                break;
-            case "COCINERO":
-                exito = CocineroController.eliminarCocinero(id);
-                break;
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione un usuario para eliminar");
+            return;
         }
-        
-        if (exito) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Usuario eliminado correctamente");
-            // Actualizar la lista y limpiar campos
-            modelo = obtenerTodosLosUsuariosParaLista();
-            listaUsuarios.setModel(modelo);
-            limpiarCampos();
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar usuario");
+
+        String id = txt_idDescripcion.getText().trim();
+        String tipo = cbx_Roles.getSelectedItem().toString();
+
+        int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
+                "¿Está seguro de eliminar este usuario?", "Confirmar eliminación",
+                javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+            boolean exito = false;
+
+            switch (tipo) {
+                case "EMPLEADO":
+                    exito = EmpleadoController.eliminarEmpleado(id);
+                    break;
+                case "COCINERO":
+                    exito = CocineroController.eliminarCocinero(id);
+                    break;
+            }
+
+            if (exito) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Usuario eliminado correctamente");
+                
+                modelo = obtenerTodosLosUsuariosParaLista();
+                listaUsuarios.setModel(modelo);
+                limpiarCampos();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar usuario");
+            }
         }
-    }
     }//GEN-LAST:event_btn_EliminarUsuarioActionPerformed
 
     private void buscarUsuarioPorIdYSeccion(String id, String seccion) {
         switch (seccion) {
-            case "administrador":
-                List<Administrador> admins = AdministradorController.leerAdministrador();
-                for (Administrador admin : admins) {
-                    if (admin.getId().equals(id)) {
-                        actualizarLabels(admin);
-                        return;
-                    }
-                }
-                break;
 
             case "empleado":
                 List<Empleado> empleados = EmpleadoController.leerEmpleado();
@@ -367,12 +349,10 @@ public class VerEmpleados extends javax.swing.JFrame {
     private String determinarSeccion(int index) {
         DefaultListModel<String> modelo = (DefaultListModel<String>) listaUsuarios.getModel();
 
-        // Recorrer hacia atrás para encontrar la sección
+        
         for (int i = index; i >= 0; i--) {
             String elemento = modelo.getElementAt(i);
-            if (elemento.startsWith("=== ADMINISTRADORES ===")) {
-                return "administrador";
-            }
+
             if (elemento.startsWith("=== EMPLEADOS ===")) {
                 return "empleado";
             }
@@ -384,16 +364,7 @@ public class VerEmpleados extends javax.swing.JFrame {
     }
 
     private void buscarUsuarioPorId(String id) {
-        // Buscar en administradores
-        List<Administrador> admins = AdministradorController.leerAdministrador();
-        for (Administrador admin : admins) {
-            if (admin.getId().equals(id)) {
-                actualizarLabels(admin);
-                return;
-            }
-        }
 
-        // Buscar en empleados
         List<Empleado> empleados = EmpleadoController.leerEmpleado();
         for (Empleado empleado : empleados) {
             if (empleado.getId().equals(id)) {
@@ -401,8 +372,7 @@ public class VerEmpleados extends javax.swing.JFrame {
                 return;
             }
         }
-
-        // Buscar en cocineros
+        
         List<Cocinero> cocineros = CocineroController.leerCocinero();
         for (Cocinero cocinero : cocineros) {
             if (cocinero.getId().equals(id)) {
@@ -416,12 +386,10 @@ public class VerEmpleados extends javax.swing.JFrame {
         txt_idDescripcion.setText("" + usuario.getId());
         txt_nombreDescripcion.setText("" + usuario.getNombre());
         txt_categoriaDescripcion.setText("" + usuario.getContraseña());
-        if (usuario.getTipo().equalsIgnoreCase("administrador")) {
+        if (usuario.getTipo().equalsIgnoreCase("empleado")) {
             cbx_Roles.setSelectedIndex(1);
-        } else if (usuario.getTipo().equalsIgnoreCase("empleado")) {
-            cbx_Roles.setSelectedIndex(2);
         } else if (usuario.getTipo().equalsIgnoreCase("cocinero")) {
-            cbx_Roles.setSelectedIndex(3);
+            cbx_Roles.setSelectedIndex(2);
         } else {
             cbx_Roles.setSelectedIndex(0);
         }
@@ -437,34 +405,22 @@ public class VerEmpleados extends javax.swing.JFrame {
     public static DefaultListModel<String> obtenerTodosLosUsuariosParaLista() {
         DefaultListModel<String> modelo = new DefaultListModel<>();
 
-        // Obtener usuarios de cada tipo
         List<Cocinero> cocineros = CocineroController.leerCocinero();
-        List<Administrador> administradores = AdministradorController.leerAdministrador();
         List<Empleado> empleados = EmpleadoController.leerEmpleado();
 
-        // Agregar administradores
-        modelo.addElement("=== ADMINISTRADORES ===");
-        for (Administrador admin : administradores) {
-            modelo.addElement(" ID: " + admin.getId() + " - " + admin.getNombre());
-        }
-
-        modelo.addElement(""); // Línea separadora
-
-        // Agregar empleados
         modelo.addElement("=== EMPLEADOS ===");
         for (Empleado empleado : empleados) {
             modelo.addElement(" ID: " + empleado.getId() + " - " + empleado.getNombre());
         }
 
-        modelo.addElement(""); // Línea separadora
-
-        // Agregar cocineros
+        modelo.addElement("");
+        
         modelo.addElement("=== COCINEROS ===");
         for (Cocinero cocinero : cocineros) {
             modelo.addElement("ID: " + cocinero.getId() + " - " + cocinero.getNombre());
         }
 
-        if (cocineros.isEmpty() && administradores.isEmpty() && empleados.isEmpty()) {
+        if (cocineros.isEmpty() && empleados.isEmpty()) {
             modelo.addElement("No hay usuarios registrados");
         }
 
@@ -488,20 +444,21 @@ public class VerEmpleados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VerEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpleadosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VerEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpleadosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VerEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpleadosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VerEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerEmpleadosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VerEmpleados().setVisible(true);
+                new VerEmpleadosAdministrador().setVisible(true);
             }
         });
     }

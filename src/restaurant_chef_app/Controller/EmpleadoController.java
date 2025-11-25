@@ -87,6 +87,42 @@ public class EmpleadoController {
         return false;
     }
 
+    public static boolean editarEmpleado(String id, String nuevoNombre, String nuevaContraseña) {
+        List<Empleado> empleados = leerEmpleado();
+
+        for (int i = 0; i < empleados.size(); i++) {
+            if (empleados.get(i).getId().equals(id)) {
+                Empleado empleadoActualizado = new Empleado(id, nuevoNombre, nuevaContraseña);
+                empleados.set(i, empleadoActualizado);
+
+                guardarEmpleados(empleados);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean eliminarEmpleado(String id) {
+        List<Empleado> empleados = leerEmpleado();
+
+        for (int i = 0; i < empleados.size(); i++) {
+            if (empleados.get(i).getId().equals(id)) {
+                empleados.remove(i);
+                guardarEmpleados(empleados);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void guardarEmpleados(List<Empleado> empleados) {
+        try (FileWriter file = new FileWriter(RUTA_USUARIOS)) {
+            gson.toJson(empleados, file);
+        } catch (IOException e) {
+            System.err.println("Error al guardar empleados: " + e.getMessage());
+        }
+    }
+
     public static boolean validarEmpleadoRegistrado(String id) {
         List<Empleado> Usuarios = leerEmpleado();
 
@@ -132,7 +168,7 @@ public class EmpleadoController {
         if (empleados.isEmpty()) {
             modelo.addElement("No hay empleados registrados");
             return modelo;
-        }else{
+        } else {
             modelo.addElement("===EMPLEADOS===");
         }
 

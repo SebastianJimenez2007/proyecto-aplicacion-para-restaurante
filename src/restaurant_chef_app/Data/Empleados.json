@@ -1,1 +1,22 @@
-[{"id":"0001","nombre":"Pablo","contraseña":"12345","tipo":"empleado"},{"id":"0002","nombre":"Pedro","contraseña":"empleado123","tipo":"empleado"},{"id":"2025","nombre":"Kiara","contraseña":"yulissa","tipo":"empleado"},{"id":"1234","nombre":"Silvia","contraseña":"12345","tipo":"empleado"},{"id":"0005","nombre":"Javier","contraseña":"hijo","tipo":"empleado"}]
+[{
+        "id": "0001",
+        "nombre": "Pablo",
+        "contraseña": "12345",
+        "tipo": "empleado"
+    }, {
+        "id": "0002",
+        "nombre": "Pedro",
+        "contraseña": "empleado123",
+        "tipo": "empleado"
+    }, {
+        "id": "0003",
+        "nombre": "Kiara",
+        "contraseña": "yulissa",
+        "tipo": "empleado"
+    }, {
+        "id": "0004",
+        "nombre": "Julian",
+        "contraseña": "12345",
+        "tipo": "empleado"
+    }]
+
