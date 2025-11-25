@@ -18,11 +18,11 @@ import restaurant_chef_app.clases.Platillo;
 public class Menu extends javax.swing.JFrame {
 
     public Platillo platillo;
-    public DefaultListModel<String> modelo ;
-            /**
-             * Creates new form Menu
-             */
+    public DefaultListModel<String> modelo;
 
+    /**
+     * Creates new form Menu
+     */
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
@@ -299,13 +299,74 @@ public class Menu extends javax.swing.JFrame {
 
     private void btn_CrearPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CrearPlatoActionPerformed
         // TODO add your handling code here:
-        // validacion en la mayoria de campos
+        // VALIDAR CAMPOS VACÍOS
+        if (txt_idDescripcion.getText().trim().isEmpty()
+                || txt_precioDescripcion.getText().trim().isEmpty()
+                || txt_nombreDescripcion.getText().trim().isEmpty()
+                || txt_categoriaDescripcion.getText().trim().isEmpty()
+                || txt_DescripcionArea.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Todos los campos deben estar llenos antes de crear un platillo.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // VALIDAR QUE ID Y PRECIO SEAN NÚMEROS
+        if (!txt_idDescripcion.getText().trim().matches("\\d+")) {
+            JOptionPane.showMessageDialog(this,
+                    "El ID debe contener solo números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!txt_precioDescripcion.getText().trim().matches("\\d+(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(this,
+                    "El precio debe ser un número válido (ej: 15 o 15.50).",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //  VALIDAMOS QUE EL NOMBRE NO TENGA NÚMEROS
+        if (txt_nombreDescripcion.getText().trim().matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this,
+                    "El nombre no puede contener números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // ✅ VALIDAR QUE LA CATEGORÍA NO TENGA NÚMEROS
+        if (txt_categoriaDescripcion.getText().trim().matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this,
+                    "La categoría no puede contener números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // ✅ VALIDAR QUE LA DESCRIPCIÓN NO SEA SOLO NÚMEROS
+        if (txt_DescripcionArea.getText().trim().matches("\\d+")) {
+            JOptionPane.showMessageDialog(this,
+                    "La descripción no puede ser solo números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // SI TODO ES CORRECTO → crear el platillo 
         Platillo nuevo = obtenerPLatilloLabel();
-        Boolean creado;
-        creado = PlatilloController.crearPlatillo(nuevo);
-        
-        if(creado){
-            JOptionPane.showConfirmDialog(this,"✅ Platillo creado Exitosamente","Plato creado",JOptionPane.PLAIN_MESSAGE);
+        boolean creado = PlatilloController.crearPlatillo(nuevo);
+
+        if (creado) {
+            JOptionPane.showMessageDialog(this,
+                    "✅ Platillo creado exitosamente",
+                    "Plato creado",
+                    JOptionPane.INFORMATION_MESSAGE);
+
             modelo = PlatilloController.obtenerPlatillosPorCategoria();
             listaPlatillos.setModel(modelo);
         }
