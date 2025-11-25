@@ -167,13 +167,13 @@ public class CrearEmpleado extends javax.swing.JFrame {
         String id = txt_idEmpleado.getText().trim();
         String nombre = txt_NombreEmpleado.getText().trim();
         String contraseña = txt_passwEmpleado.getText().trim();
-        List<Empleado> usuarios = LoginEmpleadoController.leerEmpleado();
+        List<Empleado> usuarios = EmpleadoController.leerEmpleado();
 
-        boolean credencialesValidas = LoginEmpleadoController.validarEmpleadoRegistrado(id);
+        boolean credencialesValidas = EmpleadoController.validarEmpleadoRegistrado(id);
         if (credencialesValidas) {
             JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
         } else {
-            LoginEmpleadoController.CrearUsuariosEmpleado(usuarios, id, nombre, contraseña);
+            EmpleadoController.CrearUsuariosEmpleado(usuarios, id, nombre, contraseña);
             JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
 
             dispose();

@@ -12,9 +12,7 @@ import java.util.*;
 import restaurant_chef_app.Controller.PedidoController;
 
 public class Empleado extends Usuario {
-
-    public String tipo;
-
+    
     public Empleado(String id, String nombre, String contraseña) {
         super(id, nombre, contraseña);
         this.tipo = "empleado";

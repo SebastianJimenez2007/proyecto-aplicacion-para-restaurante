@@ -16,8 +16,8 @@ import restaurant_chef_app.clases.*;
  *
  * @author Sebastian
  */
-public class LoginEmpleadoController {
-    
+public class EmpleadoController {
+
     private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Empleados.json";
     private static final Gson gson = new Gson();
 
@@ -50,7 +50,6 @@ public class LoginEmpleadoController {
             }.getType();
             List<Empleado> usuarios = gson.fromJson(contenido.toString(), listType);
 
-            
             return usuarios != null ? usuarios : new ArrayList<>();
 
         } catch (IOException e) {
@@ -125,4 +124,23 @@ public class LoginEmpleadoController {
             System.err.println("Error al crear Usuario " + e.getMessage());
         }
     }
+
+    public static DefaultListModel<String> obtenerEmpleadosParaLista() {
+        List<Empleado> empleados = leerEmpleado();
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+
+        if (empleados.isEmpty()) {
+            modelo.addElement("No hay empleados registrados");
+            return modelo;
+        }else{
+            modelo.addElement("===EMPLEADOS===");
+        }
+
+        for (Empleado empleado : empleados) {
+            modelo.addElement("ID: " + empleado.getId() + " - " + empleado.getNombre());
+        }
+
+        return modelo;
+    }
+
 }
