@@ -16,8 +16,8 @@ import restaurant_chef_app.clases.*;
  *
  * @author Sebastian
  */
-public class LoginAdministradorController {
-    
+public class AdministradorController {
+
     private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Administrador.json";
     private static final Gson gson = new Gson();
 
@@ -50,7 +50,6 @@ public class LoginAdministradorController {
             }.getType();
             List<Administrador> usuarios = gson.fromJson(contenido.toString(), listType);
 
-            
             return usuarios != null ? usuarios : new ArrayList<>();
 
         } catch (IOException e) {
@@ -124,5 +123,23 @@ public class LoginAdministradorController {
         } catch (IOException e) {
             System.err.println("Error al crear Usuario " + e.getMessage());
         }
+    }
+
+    public static DefaultListModel<String> obtenerAdministradoresParaLista() {
+        List<Administrador> administradores = leerAdministrador();
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+
+        if (administradores.isEmpty()) {
+            modelo.addElement("No hay administradores registrados");
+            return modelo;
+        }else{
+            modelo.addElement("===ADMINISTRADORES===");
+        }
+
+        for (Administrador admin : administradores) {
+            modelo.addElement("ID: " + admin.getId() + " - " + admin.getNombre());
+        }
+
+        return modelo;
     }
 }

@@ -16,8 +16,8 @@ import restaurant_chef_app.clases.*;
  *
  * @author Sebastian
  */
-public class LoginCocineroController {
-    
+public class CocineroController {
+
     private static final String RUTA_USUARIOS = "src/restaurant_chef_app/Data/Cocineros.json";
     private static final Gson gson = new Gson();
 
@@ -50,7 +50,6 @@ public class LoginCocineroController {
             }.getType();
             List<Cocinero> usuarios = gson.fromJson(contenido.toString(), listType);
 
-            
             return usuarios != null ? usuarios : new ArrayList<>();
 
         } catch (IOException e) {
@@ -124,5 +123,23 @@ public class LoginCocineroController {
         } catch (IOException e) {
             System.err.println("Error al crear Usuario " + e.getMessage());
         }
+    }
+
+    public static DefaultListModel<String> obtenerCocinerosParaLista() {
+        List<Cocinero> cocineros = leerCocinero();
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+
+        if (cocineros.isEmpty()) {
+            modelo.addElement("No hay cocineros registrados");
+            return modelo;
+        }else{
+            modelo.addElement("===COCINEROS===");
+        }
+
+        for (Cocinero cocinero : cocineros) {
+            modelo.addElement("ID: " + cocinero.getId() + " - " + cocinero.getNombre());
+        }
+
+        return modelo;
     }
 }
