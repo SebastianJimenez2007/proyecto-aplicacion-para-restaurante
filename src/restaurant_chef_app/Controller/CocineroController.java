@@ -87,6 +87,44 @@ public class CocineroController {
         return false;
     }
 
+    public static boolean editarCocinero(String id, String nuevoNombre, String nuevaContraseña) {
+        List<Cocinero> cocineros = leerCocinero();
+
+        for (int i = 0; i < cocineros.size(); i++) {
+            if (cocineros.get(i).getId().equals(id)) {
+                // Crear cocinero actualizado
+                Cocinero cocineroActualizado = new Cocinero(id, nuevoNombre, nuevaContraseña);
+                cocineros.set(i, cocineroActualizado);
+
+                // Guardar cambios
+                guardarCocineros(cocineros);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean eliminarCocinero(String id) {
+        List<Cocinero> cocineros = leerCocinero();
+
+        for (int i = 0; i < cocineros.size(); i++) {
+            if (cocineros.get(i).getId().equals(id)) {
+                cocineros.remove(i);
+                guardarCocineros(cocineros);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void guardarCocineros(List<Cocinero> cocineros) {
+        try (FileWriter file = new FileWriter(RUTA_USUARIOS)) {
+            gson.toJson(cocineros, file);
+        } catch (IOException e) {
+            System.err.println("Error al guardar cocineros: " + e.getMessage());
+        }
+    }
+
     public static boolean validarCocineroRegistrado(String id) {
         List<Cocinero> Usuarios = leerCocinero();
 
@@ -132,7 +170,7 @@ public class CocineroController {
         if (cocineros.isEmpty()) {
             modelo.addElement("No hay cocineros registrados");
             return modelo;
-        }else{
+        } else {
             modelo.addElement("===COCINEROS===");
         }
 

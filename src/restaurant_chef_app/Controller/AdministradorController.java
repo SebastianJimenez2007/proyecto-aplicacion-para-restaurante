@@ -87,6 +87,42 @@ public class AdministradorController {
         return false;
     }
 
+    public static boolean editarAdministrador(String id, String nuevoNombre, String nuevaContraseña) {
+        List<Administrador> administradores = leerAdministrador();
+
+        for (int i = 0; i < administradores.size(); i++) {
+            if (administradores.get(i).getId().equals(id)) {
+                Administrador adminActualizado = new Administrador(id, nuevoNombre, nuevaContraseña);
+                administradores.set(i, adminActualizado);
+
+                guardarAdministradores(administradores);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean eliminarAdministrador(String id) {
+        List<Administrador> administradores = leerAdministrador();
+
+        for (int i = 0; i < administradores.size(); i++) {
+            if (administradores.get(i).getId().equals(id)) {
+                administradores.remove(i);
+                guardarAdministradores(administradores);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void guardarAdministradores(List<Administrador> administradores) {
+        try (FileWriter file = new FileWriter(RUTA_USUARIOS)) {
+            gson.toJson(administradores, file);
+        } catch (IOException e) {
+            System.err.println("Error al guardar administradores: " + e.getMessage());
+        }
+    }
+
     public static boolean validarUsuarioRegistrado(String id) {
         List<Administrador> Usuarios = leerAdministrador();
 
@@ -132,7 +168,7 @@ public class AdministradorController {
         if (administradores.isEmpty()) {
             modelo.addElement("No hay administradores registrados");
             return modelo;
-        }else{
+        } else {
             modelo.addElement("===ADMINISTRADORES===");
         }
 

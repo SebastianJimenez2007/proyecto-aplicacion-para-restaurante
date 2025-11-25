@@ -16,7 +16,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuEditarEmpleados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Crear Administrador"/>
+                <Property name="text" type="java.lang.String" value="Editar Administrador"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuEditarEmpleadosActionPerformed"/>

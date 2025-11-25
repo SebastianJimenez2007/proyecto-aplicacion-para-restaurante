@@ -1,21 +1,21 @@
 [{
-        "tipo": "empleado",
         "id": "0001",
         "nombre": "Pablo",
-        "contraseña": "12345"
+        "contraseña": "12345",
+        "tipo": "empleado"
     }, {
-        "tipo": "empleado",
         "id": "0002",
         "nombre": "Pedro",
-        "contraseña": "empleado123"
+        "contraseña": "empleado123",
+        "tipo": "empleado"
     }, {
-        "tipo": "empleado",
-        "id": "2025",
+        "id": "0003",
         "nombre": "Kiara",
-        "contraseña": "yulissa"
+        "contraseña": "yulissa",
+        "tipo": "empleado"
     }, {
-        "tipo": "empleado",
-        "id": "1234",
-        "nombre": "Silvia",
-        "contraseña": "12345"
+        "id": "0004",
+        "nombre": "Julian",
+        "contraseña": "12345",
+        "tipo": "empleado"
     }]
