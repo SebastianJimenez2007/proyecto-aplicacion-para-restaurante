@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package restaurant_chef_app.view;
 
 import java.util.List;
@@ -10,17 +7,10 @@ import javax.swing.JOptionPane;
 import restaurant_chef_app.Controller.PedidoController;
 import restaurant_chef_app.clases.*;
 
-/**
- *
- * @author Usuario
- */
 public class BuscarPedidos extends javax.swing.JFrame {
 
     public Empleado empleado;
-    
-    /**
-     * Creates new form BuscarPedidos
-     */
+ 
     public BuscarPedidos(Empleado empleado) {
         initComponents();
         setLocationRelativeTo(null);
@@ -190,11 +180,11 @@ public class BuscarPedidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_total$ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_total$ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_total$ActionPerformed
 
     private void btn_pedidoFinalizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidoFinalizadoActionPerformed
-      // 1. Obtener el pedido seleccionado
+
     String seleccion = listaPedidos.getSelectedValue();
 
     if (seleccion == null) {
@@ -202,10 +192,10 @@ public class BuscarPedidos extends javax.swing.JFrame {
         return;
     }
 
-    // 2. Extraer ID del pedido
+  
     String id = seleccion.substring(seleccion.indexOf("ID=") + 3, seleccion.indexOf(", Cliente"));
 
-    // 3. Cargar pedidos desde archivo
+    
     List<Pedido> pedidos = PedidoController.cargarPedidos();
 
     Pedido pedidoFinalizado = null;
@@ -230,16 +220,16 @@ public class BuscarPedidos extends javax.swing.JFrame {
         return;
     }
 
-    // 4. Guardar cambios
+
     PedidoController.guardarPedidos(pedidos);
 
-    // 5. MOSTRAR FACTURA
+    
     PedidoController.mostrarFactura(pedidoFinalizado);
 
-    // 6. Confirmación
+   
     JOptionPane.showMessageDialog(this, "Pedido finalizado correctamente.");
 
-    // 7. Recargar lista
+    
     cargarPedidosEnLista();
 
     }//GEN-LAST:event_btn_pedidoFinalizadoActionPerformed

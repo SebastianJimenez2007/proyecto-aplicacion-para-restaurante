@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package restaurant_chef_app.view;
 
 import java.util.ArrayList;
@@ -12,10 +8,7 @@ import javax.swing.JOptionPane;
 import restaurant_chef_app.Controller.*;
 import restaurant_chef_app.clases.*;
 
-/**
- *
- * @author Usuario
- */
+
 public class TomarPedidos extends javax.swing.JFrame {
     DefaultListModel<String> modeloCarrito = new DefaultListModel<>();
     public List<Pedido> listaPedidos;
@@ -320,7 +313,7 @@ public class TomarPedidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_EnviarACocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EnviarACocinaActionPerformed
-    // 1. Cliente
+    
     String cliente = txtNombreCliente.getText().trim();
 
     if (cliente.isEmpty()) {
@@ -328,23 +321,23 @@ public class TomarPedidos extends javax.swing.JFrame {
         return;
     }
 
-    // 2. Verificar que el carrito no esté vacío
+    
     if (modeloCarrito.isEmpty()) {
         JOptionPane.showMessageDialog(this, "La orden esta vacia. agregue platillos");
         return;
     }
 
-    // 3. Generar ID nuevo
+   
     String id = PedidoController.generarNuevoId();
 
-    // 4. Crear el pedido
+   
     Pedido nuevo = new Pedido(id, cliente);
 
-    // 5. Convertir de String -> Platillo
+   
     List<Platillo> disponibles = PlatilloController.obtenerPlatillosDisponibles();
 
     for (int i = 0; i < modeloCarrito.size(); i++) {
-        String texto = modeloCarrito.get(i); // Ej: • Pizza ($15000)Categoria
+        String texto = modeloCarrito.get(i); 
 
         for (Platillo p : disponibles) {
             if (texto.contains(p.getNombre())) {
@@ -354,14 +347,13 @@ public class TomarPedidos extends javax.swing.JFrame {
         }
     }
 
-    // 6. Guardar en JSON
+    
     PedidoController.agregarPedido(nuevo);
 
-    // 7. Confirmación
     JOptionPane.showMessageDialog(this,
         "Pedido enviado a cocina exitosamente.\nID: " + id);
 
-    // 8. Reiniciar campos
+    
     modeloCarrito.clear();
     txtNombreCliente.setText("Nombre del Cliente");
     }//GEN-LAST:event_btn_EnviarACocinaActionPerformed
@@ -391,7 +383,7 @@ public class TomarPedidos extends javax.swing.JFrame {
 
     private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
     
-    // Obtener los platillos seleccionados del JList
+    
     List<String> seleccion = listaPlatillos.getSelectedValuesList();
 
     if (seleccion.isEmpty()) {
@@ -399,12 +391,11 @@ public class TomarPedidos extends javax.swing.JFrame {
         return;
     }
 
-    // Agregar cada platillo al carrito (JList)
+    
     for (String platillo : seleccion) {
         modeloCarrito.addElement(platillo);
     }
 
-    // Limpiar selección del JList original
     listaPlatillos.clearSelection();
     }//GEN-LAST:event_btn_AgregarActionPerformed
 

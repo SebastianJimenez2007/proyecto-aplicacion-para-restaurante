@@ -18,7 +18,7 @@ public class PlatilloController {
     private static final String ARCHIVO_PLATILLOS = "Data/Platillos.json";
     private static final Gson gson = new Gson();
 
-    // Crea la carpeta "data" si no existe
+   
     private static void crearCarpetaData() {
         File carpeta = new File(CARPETA_DATA);
         if (!carpeta.exists()) {
@@ -26,7 +26,7 @@ public class PlatilloController {
         }
     }
 
-    // Crea el archivo platillos.json si no existe
+    
     private static void crearArchivoSiNoExiste() {
         File archivo = new File(ARCHIVO_PLATILLOS);
         if (!archivo.exists()) {
@@ -70,13 +70,13 @@ public class PlatilloController {
 
         try (Writer writer = new FileWriter(ARCHIVO_PLATILLOS)) {
             gson.toJson(platillos, writer);
-            //System.out.println("Platillos guardados correctamente.");
+           
         } catch (IOException e) {
             System.out.println("Error al guardar platillos: " + e.getMessage());
         }
     }
 
-    // MÉTODO ALTERNATIVO: Buscar por categoría (sin usar Streams)
+   
     public static List<Platillo> buscarPorCategoriaAlternativo(String categoria) {
         List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
         List<Platillo> platillosFiltrados = new ArrayList<>();
@@ -91,7 +91,7 @@ public class PlatilloController {
         return platillosFiltrados;
     }
 
-    // MÉTODO PARA OBTENER TODAS LAS CATEGORÍAS ÚNICAS
+   
     public static List<String> obtenerCategorias() {
         List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
 
@@ -101,7 +101,7 @@ public class PlatilloController {
                 .collect(Collectors.toList());
     }
 
-    // MÉTODO PARA BUSCAR POR NOMBRE (BONUS)
+    
     public static List<Platillo> buscarPorNombre(String nombre) {
         List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
 
@@ -111,7 +111,7 @@ public class PlatilloController {
                 .collect(Collectors.toList());
     }
 
-    // MÉTODO PARA MOSTRAR PLATILLOS POR CATEGORÍAS
+
     public static DefaultListModel<String> obtenerPlatillosPorCategoria() {
         List<Platillo> todosLosPlatillos = obtenerPlatillosDisponibles();
         DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -121,7 +121,7 @@ public class PlatilloController {
             return listModel;
         }
 
-        // Agrupar platillos por categoría
+      
         Map<String, List<Platillo>> platillosPorCategoria = new HashMap<>();
 
         for (Platillo platillo : todosLosPlatillos) {
@@ -130,22 +130,22 @@ public class PlatilloController {
             platillosPorCategoria.get(categoria).add(platillo);
         }
 
-        // Agregar al ListModel organizado por categorías
+       
         for (Map.Entry<String, List<Platillo>> entry : platillosPorCategoria.entrySet()) {
             String categoria = entry.getKey();
             List<Platillo> platillos = entry.getValue();
 
-            // Agregar categoría como separador
+           
             listModel.addElement("=== " + categoria.toUpperCase() + " ===");
 
-            // Agregar platillos de esta categoría
+        
             for (Platillo platillo : platillos) {
                 listModel.addElement(" " + platillo.getNombre());
                 listModel.addElement("  • Precio $ " + platillo.getPrecio());
                 listModel.addElement("Descripcion: -" + platillo.getDescripcion());
             }
 
-            // Agregar línea en blanco entre categorías
+          
             listModel.addElement("");
         }
 
@@ -181,7 +181,6 @@ public class PlatilloController {
     public static boolean crearPlatillo(Platillo nuevoPlatillo) {
         List<Platillo> platillos = obtenerPlatillosDisponibles();
 
-        // Verificar si ya existe un platillo con el mismo ID
         for (Platillo platillo : platillos) {
             if (platillo.getId() == nuevoPlatillo.getId()) {
                 JOptionPane.showMessageDialog(null,"Ya existe un platillo con ID: " + nuevoPlatillo.getId());
