@@ -9,9 +9,7 @@ package restaurant_chef_app.clases;
  * @author Usuario
  */
 public class Administrador extends Usuario {
-
-    public String tipo;
-
+    
     public Administrador(String id, String nombre, String contraseña) {
         super(id, nombre, contraseña);
         this.tipo = "administrador";

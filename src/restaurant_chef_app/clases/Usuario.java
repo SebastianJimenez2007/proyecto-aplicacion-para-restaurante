@@ -9,9 +9,10 @@ package restaurant_chef_app.clases;
  * @author Usuario
  */
 public abstract class Usuario {
-    protected String id;
-    protected String nombre;
-    protected String contraseña;
+    public String id;
+    public String nombre;
+    public String contraseña;
+    public String tipo;
 
     public Usuario(String id, String nombre, String contraseña) {
         this.id = id;
@@ -37,7 +38,19 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
 
+    public String getContraseña() {
+        return contraseña;
+    }
+
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

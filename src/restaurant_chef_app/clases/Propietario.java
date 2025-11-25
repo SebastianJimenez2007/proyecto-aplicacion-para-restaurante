@@ -11,7 +11,6 @@ package restaurant_chef_app.clases;
  */
 public class Propietario extends Usuario {
     
-    public String tipo ;
     public Propietario(String id, String nombre, String contraseña, String tipo) {
         super(id, nombre, contraseña);
         this.tipo = "propietario";
