@@ -115,7 +115,7 @@
                       <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                       <Component id="btn_Menu" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace pref="96" max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="btn_Finanzas" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Component id="btn_EmpleadosAdm" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
@@ -134,7 +134,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_EmpleadosAdm" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
                           <Component id="btn_Menu" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="btn_Finanzas" alignment="3" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="303" max="32767" attributes="0"/>
                   </Group>
@@ -284,7 +284,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_EmpleadosAdmActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="btn_Finanzas">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="27" green="3f" red="ed" type="rgb"/>
@@ -301,6 +301,9 @@
                 </Property>
                 <Property name="verticalAlignment" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_FinanzasActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

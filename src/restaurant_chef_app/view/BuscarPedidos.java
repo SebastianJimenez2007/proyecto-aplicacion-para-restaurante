@@ -1,4 +1,3 @@
-
 package restaurant_chef_app.view;
 
 import java.util.List;
@@ -10,23 +9,23 @@ import restaurant_chef_app.clases.*;
 public class BuscarPedidos extends javax.swing.JFrame {
 
     public Empleado empleado;
- 
+
     public BuscarPedidos(Empleado empleado) {
         initComponents();
         setLocationRelativeTo(null);
         this.empleado = empleado;
         cargarPedidosEnLista();
     }
-    
-   private void cargarPedidosEnLista() {
-    DefaultListModel<String> modelo = new DefaultListModel<>();
 
-    for (Pedido p : PedidoController.cargarPedidos()) {
-        modelo.addElement(p.toString());
+    private void cargarPedidosEnLista() {
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+
+        for (Pedido p : PedidoController.cargarPedidos()) {
+            modelo.addElement(p.toString());
+        }
+
+        listaPedidos.setModel(modelo);
     }
-
-    listaPedidos.setModel(modelo);
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,57 +179,53 @@ public class BuscarPedidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_total$ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_total$ActionPerformed
-        
+
     }//GEN-LAST:event_btn_total$ActionPerformed
 
     private void btn_pedidoFinalizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pedidoFinalizadoActionPerformed
 
-    String seleccion = listaPedidos.getSelectedValue();
+        String seleccion = listaPedidos.getSelectedValue();
 
-    if (seleccion == null) {
-        JOptionPane.showMessageDialog(this, "Seleccione un pedido para finalizar.");
-        return;
-    }
-
-  
-    String id = seleccion.substring(seleccion.indexOf("ID=") + 3, seleccion.indexOf(", Cliente"));
-
-    
-    List<Pedido> pedidos = PedidoController.cargarPedidos();
-
-    Pedido pedidoFinalizado = null;
-
-    for (Pedido p : pedidos) {
-        if (p.getId().equals(id)) {
-
-            if (!p.getEstado().equalsIgnoreCase("Entregado")) {
-                JOptionPane.showMessageDialog(this, 
-                    "El pedido debe estar en estado 'Entregado' para finalizarlo.");
-                return;
-            }
-
-            p.setEstado("Finalizado");
-            pedidoFinalizado = p;
-            break;
+        if (seleccion == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione un pedido para finalizar.");
+            return;
         }
-    }
 
-    if (pedidoFinalizado == null) {
-        JOptionPane.showMessageDialog(this, "No se encontró el pedido.");
-        return;
-    }
+        String id = seleccion.substring(seleccion.indexOf("ID=") + 3, seleccion.indexOf(", Cliente"));
 
+        List<Pedido> pedidos = PedidoController.cargarPedidos();
 
-    PedidoController.guardarPedidos(pedidos);
+        Pedido pedidoFinalizado = null;
 
-    
-    PedidoController.mostrarFactura(pedidoFinalizado);
+        for (Pedido p : pedidos) {
+            if (p.getId().equals(id)) {
 
-   
-    JOptionPane.showMessageDialog(this, "Pedido finalizado correctamente.");
+                if (!p.getEstado().equalsIgnoreCase("Entregado")) {
+                    JOptionPane.showMessageDialog(this,
+                            "El pedido debe estar en estado 'Entregado' para finalizarlo.");
+                    return;
+                }
 
-    
-    cargarPedidosEnLista();
+                p.setEstado("Finalizado");
+                pedidoFinalizado = p;
+                break;
+            }
+        }
+
+        if (pedidoFinalizado == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró el pedido.");
+            return;
+        }
+
+        PedidoController.guardarPedidos(pedidos);
+
+        PedidoController.mostrarFactura(pedidoFinalizado);
+
+        JOptionPane.showMessageDialog(this, "Pedido finalizado correctamente.");
+        
+        PedidoController.marcarPedidoComoEntregado(id);
+        
+        cargarPedidosEnLista();
 
     }//GEN-LAST:event_btn_pedidoFinalizadoActionPerformed
 
@@ -270,7 +265,7 @@ public class BuscarPedidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarPedidos(new Empleado("0000","Empleado",null)).setVisible(true);
+                new BuscarPedidos(new Empleado("0000", "Empleado", null)).setVisible(true);
             }
         });
     }
