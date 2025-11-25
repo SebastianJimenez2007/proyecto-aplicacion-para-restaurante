@@ -208,15 +208,55 @@ public class CrearCocinero extends javax.swing.JFrame {
         String contraseña = txt_passwCocinero.getText().trim();
         List<Cocinero> usuarios = CocineroController.leerCocinero();
 
-        boolean credencialesValidas = CocineroController.validarCocineroRegistrado(id);
-        if (credencialesValidas) {
-            JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
-        } else {
-            CocineroController.CrearUsuariosCocinero(usuarios, id, nombre, contraseña);
-            JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
+        // VALIDAR CAMPOS VACÍOS O PLACEHOLDERS
+        if (id.isEmpty() || nombre.isEmpty() || contraseña.isEmpty()
+                || id.equals("ID") || nombre.equals("NOMBRE") || contraseña.equals("CONTRASEÑA")) {
 
-            dispose();
+            JOptionPane.showMessageDialog(this,
+                    "Complete todos los campos antes de continuar.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+        // VALIDAR ID SOLO NÚMEROS
+        if (!id.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this,
+                    "El ID solo debe contener números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // VALIDAR NOMBRE SIN NÚMEROS
+        if (nombre.matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this,
+                    "El nombre no puede contener números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // VALIDAR SI YA EXISTE EL COCINERO
+        boolean usuarioExiste = CocineroController.validarCocineroRegistrado(id);
+
+        if (usuarioExiste) {
+            JOptionPane.showMessageDialog(this,
+                    "El cocinero con ese ID ya existe.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // CREAR COCINERO
+        CocineroController.CrearUsuariosCocinero(usuarios, id, nombre, contraseña);
+
+        JOptionPane.showMessageDialog(this,
+                "Cocinero creado exitosamente.",
+                "Éxito",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        dispose();
     }//GEN-LAST:event_btn_CrearCocineroActionPerformed
 
     /**

@@ -207,15 +207,53 @@ public class CrearAdministrador extends javax.swing.JFrame {
         String contraseña = txt_passwAdministrador.getText().trim();
         List<Administrador> usuarios = AdministradorController.leerAdministrador();
 
-        boolean credencialesValidas = AdministradorController.validarUsuarioRegistrado(id);
-        if (credencialesValidas) {
-            JOptionPane.showMessageDialog(this, "Usario ya existe!!!", "Error de creacion", JOptionPane.ERROR_MESSAGE);
-        } else {
-            AdministradorController.CrearUsuariosAdministrador(usuarios, id, nombre, contraseña);
-            JOptionPane.showMessageDialog(this, "Usuario creado", "Usuario Creado", JOptionPane.INFORMATION_MESSAGE);
-
-            dispose();
+        // VALIDAR CAMPOS VACÍOS O PLACEHOLDERS
+        if (id.isEmpty() || nombre.isEmpty() || contraseña.isEmpty()
+                || id.equals("ID") || nombre.equals("NOMBRE") || contraseña.equals("CONTRASEÑA")) {
+            JOptionPane.showMessageDialog(this,
+                    "Complete todos los campos antes de continuar.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
+        // VALIDAR ID SOLO NÚMEROS
+        if (!id.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this,
+                    "El ID solo debe contener números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // VALIDAR NOMBRE SIN NÚMEROS
+        if (nombre.matches(".*\\d.*")) {
+            JOptionPane.showMessageDialog(this,
+                    "El nombre no puede contener números.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // VALIDAR SI EL USUARIO YA EXISTE
+        boolean usuarioExiste = AdministradorController.validarUsuarioRegistrado(id);
+        if (usuarioExiste) {
+            JOptionPane.showMessageDialog(this,
+                    "El usuario con ese ID ya existe.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // CREAR ADMINISTRADOR
+        AdministradorController.CrearUsuariosAdministrador(usuarios, id, nombre, contraseña);
+
+        JOptionPane.showMessageDialog(this,
+                "Administrador creado correctamente.",
+                "Éxito",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        dispose();
     }//GEN-LAST:event_btn_CrearAdministradorActionPerformed
 
     /**
