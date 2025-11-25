@@ -53,10 +53,15 @@ public class LoginEmpleado extends javax.swing.JFrame {
         txt_passwEmpleado.setBackground(new java.awt.Color(254, 178, 26));
         txt_passwEmpleado.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_passwEmpleado.setForeground(new java.awt.Color(253, 244, 227));
-        txt_passwEmpleado.setText("1234");
+        txt_passwEmpleado.setText("12345");
         txt_passwEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_passwEmpleadoMouseClicked(evt);
+            }
+        });
+        txt_passwEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_passwEmpleadoActionPerformed(evt);
             }
         });
 
@@ -269,6 +274,10 @@ public class LoginEmpleado extends javax.swing.JFrame {
     private void txt_IdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdEmpleadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_IdEmpleadoActionPerformed
+
+    private void txt_passwEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_passwEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
