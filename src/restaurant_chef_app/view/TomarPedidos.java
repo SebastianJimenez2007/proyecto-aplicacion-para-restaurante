@@ -4,7 +4,9 @@
  */
 package restaurant_chef_app.view;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import restaurant_chef_app.Controller.*;
@@ -15,7 +17,7 @@ import restaurant_chef_app.clases.*;
  * @author Usuario
  */
 public class TomarPedidos extends javax.swing.JFrame {
-
+    DefaultListModel<String> modeloCarrito = new DefaultListModel<>();
     public List<Pedido> listaPedidos;
     public Empleado empleado;
     
@@ -24,11 +26,11 @@ public class TomarPedidos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.empleado = empleado;
+         jListCarrito.setModel(modeloCarrito);
         
-        // Generar ID automático
         String nuevoId = PedidoController.generarNuevoId();
         txt_IdPedido.setText(nuevoId);
-        txt_IdPedido.setEnabled(false); // desactivar edición
+        txt_IdPedido.setEnabled(false); 
 
 
         List<Platillo> menu = PlatilloController.obtenerPlatillosDisponibles();
@@ -99,7 +101,12 @@ public class TomarPedidos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaPlatillos = new javax.swing.JList<>();
-        btn_EnviarACocina1 = new javax.swing.JButton();
+        btn_EnviarACocina = new javax.swing.JButton();
+        btn_Agregar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListCarrito = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        btn_Agregar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -196,13 +203,45 @@ public class TomarPedidos extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaPlatillos);
 
-        btn_EnviarACocina1.setBackground(new java.awt.Color(254, 178, 26));
-        btn_EnviarACocina1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btn_EnviarACocina1.setForeground(new java.awt.Color(237, 63, 39));
-        btn_EnviarACocina1.setText("Enviar a cocina");
-        btn_EnviarACocina1.addActionListener(new java.awt.event.ActionListener() {
+        btn_EnviarACocina.setBackground(new java.awt.Color(254, 178, 26));
+        btn_EnviarACocina.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_EnviarACocina.setForeground(new java.awt.Color(237, 63, 39));
+        btn_EnviarACocina.setText("Enviar a cocina");
+        btn_EnviarACocina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_EnviarACocina1ActionPerformed(evt);
+                btn_EnviarACocinaActionPerformed(evt);
+            }
+        });
+
+        btn_Agregar.setBackground(new java.awt.Color(254, 178, 26));
+        btn_Agregar.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_Agregar.setForeground(new java.awt.Color(237, 63, 39));
+        btn_Agregar.setText("Agregar");
+        btn_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarActionPerformed(evt);
+            }
+        });
+
+        jListCarrito.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jListCarrito);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(237, 63, 39));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Orden");
+
+        btn_Agregar1.setBackground(new java.awt.Color(254, 178, 26));
+        btn_Agregar1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_Agregar1.setForeground(new java.awt.Color(237, 63, 39));
+        btn_Agregar1.setText("Eliminar");
+        btn_Agregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Agregar1ActionPerformed(evt);
             }
         });
 
@@ -210,36 +249,56 @@ public class TomarPedidos extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(160, 160, 160)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_IdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(btn_EnviarACocina1))))))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1)
+                            .addComponent(btn_Agregar, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))
+                        .addGap(111, 111, 111)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_Agregar1)
+                                    .addComponent(txt_IdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_EnviarACocina, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jLabel3)
-                .addGap(4, 4, 4)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_IdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btn_EnviarACocina1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel3)
+                        .addGap(4, 4, 4)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btn_Agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(423, 423, 423)
+                                .addComponent(btn_EnviarACocina, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Agregar1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_IdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,65 +319,52 @@ public class TomarPedidos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_EnviarACocina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EnviarACocina1ActionPerformed
-        String id = PedidoController.generarNuevoId();  // ID automático
-    txt_IdPedido.setText(id); // Mostrarlo en el campo
+    private void btn_EnviarACocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EnviarACocinaActionPerformed
+    // 1. Cliente
+    String cliente = txtNombreCliente.getText().trim();
 
-    String nombreCliente = txtNombreCliente.getText().trim();
-
-    if (nombreCliente.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe ingresar el nombre del cliente");
+    if (cliente.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese el nombre del cliente");
         return;
     }
 
-    // Obtener platillos seleccionados
-    List<String> seleccion = listaPlatillos.getSelectedValuesList();
-
-    if (seleccion.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe seleccionar al menos un platillo");
+    // 2. Verificar que el carrito no esté vacío
+    if (modeloCarrito.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "La orden esta vacia. agregue platillos");
         return;
     }
 
-    // Crear pedido
-    Pedido pedido = new Pedido(id, nombreCliente);
-    pedido.setEstado("En cocina");
+    // 3. Generar ID nuevo
+    String id = PedidoController.generarNuevoId();
 
-    // Obtener lista real de objetos Platillo
+    // 4. Crear el pedido
+    Pedido nuevo = new Pedido(id, cliente);
+
+    // 5. Convertir de String -> Platillo
     List<Platillo> disponibles = PlatilloController.obtenerPlatillosDisponibles();
 
-    // Añadir platillos al pedido
-    for (String linea : seleccion) {
-        if (!linea.startsWith("----")) { // Saltar etiquetas de categoría
-            try {
-                String nombrePlatillo = linea.substring(
-                        linea.indexOf("• ") + 2,
-                        linea.indexOf(" ($")
-                );
+    for (int i = 0; i < modeloCarrito.size(); i++) {
+        String texto = modeloCarrito.get(i); // Ej: • Pizza ($15000)Categoria
 
-                // Buscar objeto Platillo
-                for (Platillo p : disponibles) {
-                    if (p.getNombre().equals(nombrePlatillo)) {
-                        pedido.agregarPlatillo(p);
-                        break;
-                    }
-                }
-
-            } catch (Exception e) {
-                System.err.println("⚠️ Error procesando: " + linea);
+        for (Platillo p : disponibles) {
+            if (texto.contains(p.getNombre())) {
+                nuevo.agregarPlatillo(p);
+                break;
             }
         }
     }
 
-    // Guardar pedido en archivo
-    PedidoController.agregarPedido(pedido);
+    // 6. Guardar en JSON
+    PedidoController.agregarPedido(nuevo);
 
-    JOptionPane.showMessageDialog(this, "✅ Pedido enviado a cocina correctamente");
+    // 7. Confirmación
+    JOptionPane.showMessageDialog(this,
+        "Pedido enviado a cocina exitosamente.\nID: " + id);
 
-    // Limpiar interfaz
-    txt_IdPedido.setText("");
-    txtNombreCliente.setText("");
-    listaPlatillos.clearSelection();
-    }//GEN-LAST:event_btn_EnviarACocina1ActionPerformed
+    // 8. Reiniciar campos
+    modeloCarrito.clear();
+    txtNombreCliente.setText("Nombre del Cliente");
+    }//GEN-LAST:event_btn_EnviarACocinaActionPerformed
 
     private void btn_volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMouseClicked
         new VentanaEmpleado(empleado).setVisible(true);
@@ -342,6 +388,40 @@ public class TomarPedidos extends javax.swing.JFrame {
             txtNombreCliente.setText("");
         }
     }//GEN-LAST:event_txtNombreClienteMouseClicked
+
+    private void btn_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarActionPerformed
+    
+    // Obtener los platillos seleccionados del JList
+    List<String> seleccion = listaPlatillos.getSelectedValuesList();
+
+    if (seleccion.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Selecciona al menos un platillo");
+        return;
+    }
+
+    // Agregar cada platillo al carrito (JList)
+    for (String platillo : seleccion) {
+        modeloCarrito.addElement(platillo);
+    }
+
+    // Limpiar selección del JList original
+    listaPlatillos.clearSelection();
+    }//GEN-LAST:event_btn_AgregarActionPerformed
+
+    private void btn_Agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Agregar1ActionPerformed
+        int index = jListCarrito.getSelectedIndex();
+
+    if (index == -1) {
+        JOptionPane.showMessageDialog(this,
+                "Selecciona un platillo del carrito para eliminarlo");
+        return;
+    }
+
+    // Eliminar el seleccionado
+    modeloCarrito.remove(index);
+
+    JOptionPane.showMessageDialog(this, "Platillo eliminado del carrito");
+    }//GEN-LAST:event_btn_Agregar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,14 +459,19 @@ public class TomarPedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_EnviarACocina1;
+    private javax.swing.JButton btn_Agregar;
+    private javax.swing.JButton btn_Agregar1;
+    private javax.swing.JButton btn_EnviarACocina;
     private javax.swing.JLabel btn_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JList<String> jListCarrito;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JList<String> listaPlatillos;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txt_IdPedido;
