@@ -8,6 +8,7 @@ import restaurant_chef_app.Controller.PedidoController;
 import restaurant_chef_app.clases.Pedido;
 import javax.swing.DefaultListModel;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -71,33 +72,8 @@ public class VentanaCocinero extends javax.swing.JFrame {
             }
         });
 
-        // Botón ENTREGAR -> cambiar estado
-        btn_ingresarPedido.addActionListener(e -> {
-            int index = jList1.getSelectedIndex();
-            if (index == -1) {
-                return;
-            }
+      
 
-            Pedido p = listaPedidos.get(index);
-            PedidoController.actualizarEstado(p.getId(), "ENTREGADO");
-
-            cargarPedidosEnLista();
-            jTextArea1.setText("PEDIDO ENTREGADO.");
-        });
-
-        // Botón ELIMINAR -> eliminar del JSON
-        btn_eliminarPedido.addActionListener(e -> {
-            int index = jList1.getSelectedIndex();
-            if (index == -1) {
-                return;
-            }
-
-            Pedido p = listaPedidos.get(index);
-            PedidoController.eliminarPedido(p.getId());
-
-            cargarPedidosEnLista();
-            jTextArea1.setText("");
-        });
     }
 
     /**
@@ -152,14 +128,14 @@ public class VentanaCocinero extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -169,24 +145,27 @@ public class VentanaCocinero extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(63, 63, 63)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         txtDetalles.setBackground(new java.awt.Color(253, 244, 227));
         txtDetalles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 70, 134), 2, true));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -200,24 +179,35 @@ public class VentanaCocinero extends javax.swing.JFrame {
             .addGroup(txtDetallesLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         txtDetallesLayout.setVerticalGroup(
             txtDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txtDetallesLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 56, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         btn_ingresarPedido.setBackground(new java.awt.Color(19, 70, 134));
         btn_ingresarPedido.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btn_ingresarPedido.setForeground(new java.awt.Color(233, 236, 239));
         btn_ingresarPedido.setText("ENTREGAR");
+        btn_ingresarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresarPedidoActionPerformed(evt);
+            }
+        });
 
         btn_eliminarPedido.setBackground(new java.awt.Color(19, 70, 134));
         btn_eliminarPedido.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btn_eliminarPedido.setForeground(new java.awt.Color(233, 236, 239));
         btn_eliminarPedido.setText("ELIMINAR");
+        btn_eliminarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarPedidoActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(233, 236, 239));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 63, 39), 2, true));
@@ -252,18 +242,14 @@ public class VentanaCocinero extends javax.swing.JFrame {
         BackgroundLayout.setHorizontalGroup(
             BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(35, 35, 35)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_ingresarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_eliminarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(txtDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(92, 92, 92)
+                .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDetalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_ingresarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_eliminarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(145, Short.MAX_VALUE))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,16 +260,18 @@ public class VentanaCocinero extends javax.swing.JFrame {
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
                 .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
                         .addComponent(txtDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_ingresarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_eliminarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
+                    .addGroup(BackgroundLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -304,6 +292,67 @@ public class VentanaCocinero extends javax.swing.JFrame {
         new LoginCocinero().setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_volverMouseClicked
+
+    private void btn_ingresarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarPedidoActionPerformed
+     String seleccion = jList1.getSelectedValue();
+
+    if (seleccion == null) {
+        JOptionPane.showMessageDialog(this, "Seleccione un pedido para entregar.");
+        return;
+    }
+
+    int index = jList1.getSelectedIndex();
+    Pedido pedido = listaPedidos.get(index); 
+
+    
+    if (pedido.getEstado().equalsIgnoreCase("Finalizado")) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Este pedido ya está finalizado.",
+            "Aviso",
+            JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    
+    pedido.setEstado("Entregado");
+
+    
+    PedidoController.guardarPedidos(listaPedidos);
+
+
+    cargarPedidosEnLista();
+    }//GEN-LAST:event_btn_ingresarPedidoActionPerformed
+
+    private void btn_eliminarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarPedidoActionPerformed
+    int index = jList1.getSelectedIndex();
+
+    if (index == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un pedido para eliminar.");
+        return;
+    }
+
+    Pedido p = listaPedidos.get(index);
+    int opcion = JOptionPane.showConfirmDialog(
+            this,
+            "¿Eliminar el pedido #" + p.getId() + "?",
+            "Confirmar eliminación",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (opcion != JOptionPane.YES_OPTION) {
+        return;
+    }
+
+  
+    PedidoController.eliminarPedido(p.getId());
+    cargarPedidosEnLista();
+
+    jTextArea1.setText("");
+
+    JOptionPane.showMessageDialog(this, "Pedido eliminado correctamente.");
+    }//GEN-LAST:event_btn_eliminarPedidoActionPerformed
 
     /**
      * @param args the command line arguments
