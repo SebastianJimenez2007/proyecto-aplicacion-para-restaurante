@@ -23,19 +23,17 @@ public class AdministradorController {
 
     public static List<Administrador> leerAdministrador() {
         try {
-            // Crear el directorio si no existe
+            
             java.io.File directorio = new java.io.File(RUTA_USUARIOS);
             if (!directorio.exists()) {
                 directorio.mkdirs();
             }
 
-            // Crear archivo si no existe
             java.io.File archivo = new java.io.File(RUTA_USUARIOS);
             if (!archivo.exists()) {
                 crearArchivoUsuariosInicial();
             }
 
-            // Leer el archivo con BufferedReader y FileReader
             BufferedReader reader = new BufferedReader(new FileReader(RUTA_USUARIOS));
             StringBuilder contenido = new StringBuilder();
             String linea;
@@ -45,7 +43,6 @@ public class AdministradorController {
             }
             reader.close();
 
-            // Convertir JSON a lista de usuarios usando Gson
             Type listType = new TypeToken<ArrayList<Administrador>>() {
             }.getType();
             List<Administrador> usuarios = gson.fromJson(contenido.toString(), listType);

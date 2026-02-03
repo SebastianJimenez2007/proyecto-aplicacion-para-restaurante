@@ -128,6 +128,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(253, 244, 227));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/administrador.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -152,7 +153,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
         jLabel2.setText("ADMINISTRADOR");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("regresar");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -176,7 +177,7 @@ public class LoginAdministrador extends javax.swing.JFrame {
                         .addGap(47, 47, 47))))
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         BackgroundLayout.setVerticalGroup(

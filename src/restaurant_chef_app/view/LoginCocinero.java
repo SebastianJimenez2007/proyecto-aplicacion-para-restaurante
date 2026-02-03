@@ -52,7 +52,7 @@ public class LoginCocinero extends javax.swing.JFrame {
         txt_passwCocinero.setBackground(new java.awt.Color(254, 178, 26));
         txt_passwCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_passwCocinero.setForeground(new java.awt.Color(253, 244, 227));
-        txt_passwCocinero.setText("chef123");
+        txt_passwCocinero.setText("CONTRASEÑA");
         txt_passwCocinero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_passwCocineroMouseClicked(evt);
@@ -62,7 +62,7 @@ public class LoginCocinero extends javax.swing.JFrame {
         txt_idCocinero.setBackground(new java.awt.Color(254, 178, 26));
         txt_idCocinero.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         txt_idCocinero.setForeground(new java.awt.Color(253, 244, 227));
-        txt_idCocinero.setText("0001");
+        txt_idCocinero.setText("ID");
         txt_idCocinero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_idCocineroMouseClicked(evt);
@@ -118,6 +118,7 @@ public class LoginCocinero extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(253, 244, 227));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/cocinero.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,7 +147,7 @@ public class LoginCocinero extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(153, 255, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("<--");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);

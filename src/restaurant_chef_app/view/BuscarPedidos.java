@@ -115,7 +115,7 @@ public class BuscarPedidos extends javax.swing.JFrame {
         });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("<--");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/devolver.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);

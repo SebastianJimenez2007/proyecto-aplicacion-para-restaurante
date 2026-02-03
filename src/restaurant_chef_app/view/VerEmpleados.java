@@ -55,7 +55,7 @@ public class VerEmpleados extends javax.swing.JFrame {
         btn_EditarUsuario = new javax.swing.JButton();
         btn_EliminarUsuario = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(237, 63, 39));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(254, 178, 26), 3, true));

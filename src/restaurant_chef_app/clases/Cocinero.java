@@ -14,7 +14,7 @@ public class Cocinero extends Usuario {
 
     public Cocinero(String id, String nombre, String contraseña) {
         super(id, nombre, contraseña);
-        this.tipo = "propietario";
+        this.tipo = "cocinero";
     }
 
     public String getTipo() {

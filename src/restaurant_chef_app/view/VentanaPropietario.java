@@ -316,10 +316,12 @@ public class VentanaPropietario extends javax.swing.JFrame {
 
     private void MenuEditarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEditarEmpleadosActionPerformed
         // TODO add your handling code here:
+        new VerEmpleados().setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_MenuEditarEmpleadosActionPerformed
 
     private void MenuEditarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEditarPlatoActionPerformed
         // TODO add your handling code here:
+        new Menu().setVisible(true);
     }//GEN-LAST:event_MenuEditarPlatoActionPerformed
 
     private void btn_FinanzasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FinanzasActionPerformed

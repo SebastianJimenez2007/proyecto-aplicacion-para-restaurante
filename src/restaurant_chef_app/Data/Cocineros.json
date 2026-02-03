@@ -1,1 +1,11 @@
-[{"id":"0001","nombre":"Mariano","contraseña":"chef123","tipo":"cocinero"},{"id":"0004","nombre":"Gordon Ramsi","contraseña":"untreh","tipo":"propietario"}]
+[{
+        "id": "0001",
+        "nombre": "Mariano",
+        "contraseña": "chef123",
+        "tipo": "cocinero"
+    }, {
+        "id": "0004",
+        "nombre": "Gordon Ramsi",
+        "contraseña": "untreh",
+        "tipo": "cocinero"
+    }]

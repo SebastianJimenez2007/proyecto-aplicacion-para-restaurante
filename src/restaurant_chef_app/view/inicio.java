@@ -71,6 +71,7 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 960, 130));
 
         btnEmpleado.setBackground(new java.awt.Color(254, 178, 26));
+        btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/usuario.png"))); // NOI18N
         btnEmpleado.setBorder(null);
         btnEmpleado.setBorderPainted(false);
         btnEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -82,6 +83,7 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 230, 210));
 
         btnPropietario.setBackground(new java.awt.Color(254, 178, 26));
+        btnPropietario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/propietario.png"))); // NOI18N
         btnPropietario.setBorder(null);
         btnPropietario.setBorderPainted(false);
         btnPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -103,6 +105,7 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
 
         btnAdministrador.setBackground(new java.awt.Color(254, 178, 26));
+        btnAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/administrador.png"))); // NOI18N
         btnAdministrador.setBorder(null);
         btnAdministrador.setBorderPainted(false);
         btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -119,6 +122,7 @@ public class inicio extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 660, -1, -1));
 
         btnCocinero.setBackground(new java.awt.Color(254, 178, 26));
+        btnCocinero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/restaurant_chef_app/img/cocinero.png"))); // NOI18N
         btnCocinero.setBorder(null);
         btnCocinero.setBorderPainted(false);
         btnCocinero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
